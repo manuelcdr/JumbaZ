@@ -1,0 +1,12 @@
+C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\Chamada.Domain\bin\Debug\netcoreapp2.2\Chamada.Domain.deps.json
+C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\Chamada.Domain\bin\Debug\netcoreapp2.2\Chamada.Domain.dll
+C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\Chamada.Domain\bin\Debug\netcoreapp2.2\Chamada.Domain.pdb
+C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\Chamada.Domain\bin\Debug\netcoreapp2.2\TyperCore.dll
+C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\Chamada.Domain\bin\Debug\netcoreapp2.2\TyperCore.pdb
+C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\Chamada.Domain\obj\Debug\netcoreapp2.2\Chamada.Domain.csprojAssemblyReference.cache
+C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\Chamada.Domain\obj\Debug\netcoreapp2.2\Chamada.Domain.csproj.CoreCompileInputs.cache
+C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\Chamada.Domain\obj\Debug\netcoreapp2.2\Chamada.Domain.AssemblyInfoInputs.cache
+C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\Chamada.Domain\obj\Debug\netcoreapp2.2\Chamada.Domain.AssemblyInfo.cs
+C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\Chamada.Domain\obj\Debug\netcoreapp2.2\Chamada.Domain.csproj.CopyComplete
+C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\Chamada.Domain\obj\Debug\netcoreapp2.2\Chamada.Domain.dll
+C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\Chamada.Domain\obj\Debug\netcoreapp2.2\Chamada.Domain.pdb

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Abstractions\Entities\Deactivated.cs" />
+    <Compile Remove="Abstractions\Entities\DefaultEntity.cs" />
+    <Compile Remove="Abstractions\Entities\RelashionshipEntity.cs" />
+    <Compile Remove="Abstractions\Entities\TypeModel.cs" />
+    <Compile Remove="Entities\Animal.cs" />
+    <Compile Remove="Entities\Fruta.cs" />
+    <Compile Remove="Entities\Pessoa.cs" />
+    <Compile Remove="Entities\Professor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Infra\Cross\Typer\Typer.csproj" />
+  </ItemGroup>
+
+</Project>

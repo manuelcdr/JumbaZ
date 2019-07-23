@@ -1,0 +1,21 @@
+<mat-toolbar class="toolbar" color="primary">
+  <a [routerLink]="['/turmas']" mat-icon-button aria-label="Example icon-button with a menu">
+    <mat-icon>arrow_back</mat-icon>
+  </a>
+  <span>Nova Turma</span>
+</mat-toolbar>
+
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button> -->
+<div class="content">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <mat-form-field [floatLabel]="floatLabel">
+      <mat-label>Nome da turma</mat-label>
+      <input matInput placeholder="Turma C" formControlName="nomeTurma" required>
+    </mat-form-field>
+    <div>
+      <button type="submit" mat-raised-button color="primary" >Criar</button>
+    </div>
+  </form>
+</div>
