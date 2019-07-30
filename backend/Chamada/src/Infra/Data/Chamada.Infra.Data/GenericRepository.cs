@@ -10,59 +10,67 @@ using TyperCore;
 
 namespace Chamada.Infra.Data
 {
-  public class GenericRepository : RepositoryBase, IGenericRepository
-  {
-    public GenericRepository() : base() { }
+   public class GenericRepository : RepositoryBase, IGenericRepository
+   {
+      public GenericRepository() : base() { }
 
-    #region privates
+      #region privates
 
-    private IMongoCollection<T> GetCollection<T>()
-    {
-      var collection = MongoDB.GetCollection<T>(Typer.CurrentTyperName);
-      return collection;
-    }
+      private IMongoCollection<T> GetCollection<T>()
+      {
+         var collection = MongoDB.GetCollection<T>(Typer.CurrentTyperName);
+         return collection;
+      }
 
-    private FilterDefinition<T> GetFilterIdDefinition<T>(string id)
-    {
-      FilterDefinition<T> filter = $"{{_id: '{id}'}}";
-      return filter;
-    }
+      private FilterDefinition<T> GetFilterIdDefinition<T>(string id)
+      {
+         FilterDefinition<T> filter = $"{{_id: '{id}'}}";
+         return filter;
+      }
 
-    #endregion
+      #endregion
 
-    public void Add<T>(T entidade) where T : class
-    {
-      GetCollection<T>().InsertOne(entidade);
-    }
+      public void Add<T>(T entidade) where T : class
+      {
+         GetCollection<T>().InsertOne(entidade);
+      }
 
-    public IEnumerable<T> Search<T>(Expression<Func<T, bool>> predicate) where T : class
-    {
-      return GetCollection<T>().Find(predicate).ToEnumerable();
-    }
+      public IEnumerable<T> Search<T>(Expression<Func<T, bool>> predicate) where T : class
+      {
+         return GetCollection<T>().Find(predicate).ToEnumerable();
+      }
 
-    public void Update<T>(T entidade) where T : class, IDefaultModel
-    {
-      GetCollection<T>().FindOneAndReplace<T>(GetFilterIdDefinition<T>(entidade.Id), entidade);
-    }
+      public IEnumerable<T> Search<T>(string filter) where T : class
+      {
+         FilterDefinition<T> filterDefinition = filter;
+         var col = GetCollection<T>();
+         var all = col.Find(_ => true).ToEnumerable();
+         return GetCollection<T>().Find(filterDefinition).ToEnumerable();
+      }
 
-    public T GetSingle<T>(string id, T entidadeReferencia) where T : class, IDefaultModel
-    {
-      return GetCollection<T>().Find(GetFilterIdDefinition<T>(id)).FirstOrDefault();
-    }
+      public void Update<T>(T entidade) where T : class, IDefaultModel
+      {
+         GetCollection<T>().FindOneAndReplace<T>(GetFilterIdDefinition<T>(entidade.Id), entidade);
+      }
 
-    public IEnumerable<T> GetAll<T>(T entidadeReferencia) where T : class
-    {
-      return GetCollection<T>().Find(_ => true).ToEnumerable();
-    }
+      public T GetSingle<T>(string id, T entidadeReferencia) where T : class, IDefaultModel
+      {
+         return GetCollection<T>().Find(GetFilterIdDefinition<T>(id)).FirstOrDefault();
+      }
 
-    public IEnumerable<T> GetActives<T>(T entidadeReferencia) where T : class, IDeactivated
-    {
-      return GetCollection<T>().Find(x => x.Active).ToEnumerable();
-    }
+      public IEnumerable<T> GetAll<T>(T entidadeReferencia) where T : class
+      {
+         return GetCollection<T>().Find(_ => true).ToEnumerable();
+      }
 
-    public void Delete<T>(string id, T entidadeReferencia) where T : class, IDefaultModel
-    {
-      GetCollection<T>().FindOneAndDelete(GetFilterIdDefinition<T>(id));
-    }
-  }
+      public IEnumerable<T> GetActives<T>(T entidadeReferencia) where T : class, IDeactivated
+      {
+         return GetCollection<T>().Find(x => x.Active).ToEnumerable();
+      }
+
+      public void Delete<T>(string id, T entidadeReferencia) where T : class, IDefaultModel
+      {
+         GetCollection<T>().FindOneAndDelete(GetFilterIdDefinition<T>(id));
+      }
+   }
 }

@@ -33,7 +33,7 @@ namespace TyperCore
 
     }
 
-    private static void SetCurrentTyper(Type typer)
+    public static void SetCurrentTyper(Type typer)
     {
       CurrentTyper = typer;
       SetCurrentTyperName(typer);

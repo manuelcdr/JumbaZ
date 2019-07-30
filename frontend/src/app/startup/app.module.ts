@@ -14,7 +14,7 @@ import {
   MatFormFieldModule, MatInputModule, MatSlideToggleModule,
   MatGridListModule, MatTabsModule, MatDatepickerModule,
   MatNativeDateModule, MatExpansionModule, MatTooltipModule,
-  MatSnackBarModule} from '@angular/material';
+  MatSnackBarModule, MatRadioModule} from '@angular/material';
 
 import { TurmasComponent } from '../components/turmas/turmas.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -50,7 +50,7 @@ import { ChamadaComponent } from '../components/turma/chamada/chamada.component'
     MatFormFieldModule, MatInputModule, MatSlideToggleModule,
     MatGridListModule, MatTabsModule, MatDatepickerModule,
     MatNativeDateModule, MatExpansionModule, MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule, MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

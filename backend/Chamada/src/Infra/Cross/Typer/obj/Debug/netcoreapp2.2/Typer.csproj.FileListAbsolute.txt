@@ -6,3 +6,4 @@ C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Infra\Cr
 C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Infra\Cross\Typer\obj\Debug\netcoreapp2.2\Typer.AssemblyInfo.cs
 C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Infra\Cross\Typer\obj\Debug\netcoreapp2.2\TyperCore.dll
 C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Infra\Cross\Typer\obj\Debug\netcoreapp2.2\TyperCore.pdb
+C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Infra\Cross\Typer\obj\Debug\netcoreapp2.2\Typer.csprojAssemblyReference.cache

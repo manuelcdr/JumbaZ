@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
 import { TurmasComponent } from '../components/turmas/turmas.component';
 import { TurmaComponent } from '../components/turma/turma.component';
 import { NovaTurmaComponent } from '../components/nova-turma/nova-turma.component';

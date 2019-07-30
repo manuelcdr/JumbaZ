@@ -25,7 +25,6 @@ namespace Chamada.Infra.Cross.IoC
       //services.AddScoped<IUnitOfWork, UnitOfWork>();
       services.AddScoped<IGenericRepository, GenericRepository>();
       services.AddScoped<IGenericRepositoryRead, GenericRepository>();
-      services.AddScoped<IGenericRepositoryReadByName, GenericRepository>();
 
       // Infra - Identity
       //services.AddTransient<IEmailSender, EmailSender>();

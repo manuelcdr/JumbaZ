@@ -6,31 +6,34 @@ using TyperCore.Attributes;
 
 namespace Chamada.Services.Api.Models
 {
-  [TyperReference(typeof(Aluno))]
-  [AcceptTyperActions(TyperAction.Insert, TyperAction.GetAll, TyperAction.GetActives, TyperAction.GetSingle)]
-  public class AlunoVM : DefaultModel
-  {
-    public AlunoVM() : base(Guid.NewGuid().ToString())
-    {
-    }
+   [TyperReference(typeof(Aluno))]
+   [AcceptTyperActions(TyperAction.Insert, TyperAction.GetAll, TyperAction.GetActives, TyperAction.GetSingle)]
+   public class AlunoVM : DefaultModel
+   {
+      public AlunoVM() : base(Guid.NewGuid().ToString())
+      {
+      }
 
-    [Required]
-    public string Nome { get; set; }
+      [Required]
+      public string TurmaId { get; set; }
 
-    public string Apelido { get; set; }
+      [Required]
+      public string Nome { get; set; }
 
-    public Sexo Sexo { get; set; }
-  }
+      public string Apelido { get; set; }
 
-  [TyperReference(typeof(Aluno))]
-  [AcceptTyperActions(TyperAction.Update)]
-  public class AlunoUpdateVM
-  {
-    [Required]
-    public string Nome { get; set; }
+      public Sexo Sexo { get; set; }
+   }
 
-    public string Apelido { get; set; }
+   [TyperReference(typeof(Aluno))]
+   [AcceptTyperActions(TyperAction.Update)]
+   public class AlunoUpdateVM
+   {
+      [Required]
+      public string Nome { get; set; }
 
-    public Sexo Sexo { get; set; }
-  }
+      public string Apelido { get; set; }
+
+      public Sexo Sexo { get; set; }
+   }
 }

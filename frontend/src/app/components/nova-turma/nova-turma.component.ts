@@ -1,9 +1,9 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { FloatLabelType, MatSnackBar } from '@angular/material';
+import { FloatLabelType } from '@angular/material';
 import { HttpGenericService } from 'src/app/services/http-generic.service';
 import { first } from 'rxjs/operators';
-import { ComponentBase } from '../abstractions/ComponentBase';
+import { MessengerService } from 'src/app/services/messenger.service';
 
 /**
  * @title Stepper vertical
@@ -23,7 +23,7 @@ export class NovaTurmaComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _httpService: HttpGenericService,
-    private _snackBar: MatSnackBar) {}
+    private _messenger: MessengerService) {}
 
   ngOnInit() {
     this._httpService.initialize('turma');
@@ -49,14 +49,10 @@ export class NovaTurmaComponent implements OnInit {
       .pipe(first())
       .subscribe(
         response => {
-          this.showMessage('turma adicionada');
+          this._messenger.showMessage('turma adicionada');
         },
         error => {
-          this.showMessage('ops! ocorreu algum erro');
+          this._messenger.showMessage('ops! ocorreu algum erro');
         });
-  }
-
-  public showMessage(message: string) {
-    this._snackBar.open(message, '', { duration: 5000 });
   }
 }
