@@ -11,9 +11,7 @@ namespace Chamada.Services.Api.Models
    [AcceptTyperActions(TyperAction.Insert)]
    public class TurmaInsertVM : DefaultModel
    {
-      public TurmaInsertVM() : base(Guid.NewGuid().ToString())
-      {
-      }
+      public TurmaInsertVM() : base(Guid.NewGuid().ToString()) { }
 
       [Required]
       public string Nome { get; set; }
@@ -21,16 +19,15 @@ namespace Chamada.Services.Api.Models
 
    [TyperReference(typeof(Turma))]
    [AcceptTyperActions(TyperAction.GetAll, TyperAction.GetActives, TyperAction.GetSingle)]
-   public class TurmaVM : DefaultModel
+   public class TurmaVM
    {
-      public TurmaVM() : base(Guid.NewGuid().ToString())
-      {
-      }
+      public string Id { get; set; }
 
-      [Required]
       public string Nome { get; set; }
 
       public List<AlunoVM> Alunos { get; set; }
+
+      public List<ChamadaVM> Chamadas { get; set; }
    }
 
    [TyperReference(typeof(Turma))]

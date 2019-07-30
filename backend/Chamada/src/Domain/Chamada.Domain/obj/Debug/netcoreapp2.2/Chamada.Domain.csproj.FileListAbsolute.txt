@@ -10,3 +10,5 @@ C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\C
 C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\Chamada.Domain\obj\Debug\netcoreapp2.2\Chamada.Domain.csproj.CopyComplete
 C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\Chamada.Domain\obj\Debug\netcoreapp2.2\Chamada.Domain.dll
 C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\Chamada.Domain\obj\Debug\netcoreapp2.2\Chamada.Domain.pdb
+C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\Chamada.Domain\bin\Debug\netcoreapp2.2\Chamada.Infra.Cross.Helpers.dll
+C:\Users\manue\Documents\Projetos\SmartTime\chamada\backend\Chamada\src\Domain\Chamada.Domain\bin\Debug\netcoreapp2.2\Chamada.Infra.Cross.Helpers.pdb

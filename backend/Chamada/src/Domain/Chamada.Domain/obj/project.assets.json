@@ -1121,6 +1121,19 @@
           "lib/netcoreapp2.1/_._": {}
         }
       },
+      "Chamada.Infra.Cross.Helpers/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"
+        },
+        "compile": {
+          "bin/placeholder/Chamada.Infra.Cross.Helpers.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Chamada.Infra.Cross.Helpers.dll": {}
+        }
+      },
       "TyperCore/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
@@ -3975,6 +3988,11 @@
         "version.txt"
       ]
     },
+    "Chamada.Infra.Cross.Helpers/1.0.0": {
+      "type": "project",
+      "path": "../../Infra/Cross/Chamada.Infra.Cross.Helpers/Chamada.Infra.Cross.Helpers.csproj",
+      "msbuildProject": "../../Infra/Cross/Chamada.Infra.Cross.Helpers/Chamada.Infra.Cross.Helpers.csproj"
+    },
     "TyperCore/1.0.0": {
       "type": "project",
       "path": "../../Infra/Cross/Typer/Typer.csproj",
@@ -3983,6 +4001,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "Chamada.Infra.Cross.Helpers >= 1.0.0",
       "Microsoft.NETCore.App >= 2.2.0",
       "TyperCore >= 1.0.0"
     ]
@@ -4020,6 +4039,9 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
+            "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj": {
+              "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj"
+            },
             "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj": {
               "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj"
             }

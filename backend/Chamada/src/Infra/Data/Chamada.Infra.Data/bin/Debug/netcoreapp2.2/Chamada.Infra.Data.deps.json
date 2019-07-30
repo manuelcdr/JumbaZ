@@ -1395,10 +1395,19 @@
       },
       "Chamada.Domain/1.0.0": {
         "dependencies": {
+          "Chamada.Infra.Cross.Helpers": "1.0.0",
           "TyperCore": "1.0.0"
         },
         "runtime": {
           "Chamada.Domain.dll": {}
+        }
+      },
+      "Chamada.Infra.Cross.Helpers/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"
+        },
+        "runtime": {
+          "Chamada.Infra.Cross.Helpers.dll": {}
         }
       },
       "TyperCore/1.0.0": {
@@ -2283,6 +2292,11 @@
       "hashPath": "system.threading.threadpool.4.3.0.nupkg.sha512"
     },
     "Chamada.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Chamada.Infra.Cross.Helpers/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -44,7 +44,7 @@ namespace Chamada.Services.Api.Controllers
          if (!Typer.TrySetCurrentTyper(objectName))
             return BadRequest();
 
-         var entidades = repositoryRead.GetAll(Typer.GetObjectReference());
+         var entidades = repositoryRead.GetAll();
 
          if (entidades == null)
             return ResponseApi(null);
@@ -69,7 +69,7 @@ namespace Chamada.Services.Api.Controllers
 
          var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.GetSingle);
 
-         var entidade = repositoryRead.GetSingle(id, Typer.GetObjectReference() as IDefaultModel);
+         var entidade = repositoryRead.GetSingle(id);
 
          if (tipoModel == null)
             return ResponseApi(entidade);
@@ -153,7 +153,7 @@ namespace Chamada.Services.Api.Controllers
 
          if (TryValidateModel(model))
          {
-            var entity = repositoryRead.GetSingle(id, Typer.GetObjectReference() as IDefaultModel) as IDefaultModel;
+            var entity = repositoryRead.GetSingle(id) as IDefaultModel;
             Mapper.Map(model, entity, tipoModel, Typer.CurrentTyper);
             service.Update(entity);
             //uoW.SaveChanges();
@@ -182,7 +182,7 @@ namespace Chamada.Services.Api.Controllers
             if (!TryValidateModel(model))
                return ResponseApi(models);
 
-            var entity = repositoryRead.GetSingle((model as IDefaultModel).Id, Typer.GetObjectReference() as IDefaultModel) as IDefaultModel;
+            var entity = repositoryRead.GetSingle((model as IDefaultModel).Id) as IDefaultModel;
             Mapper.Map(model, entity, tipoModel, Typer.CurrentTyper);
             service.Update(entity);
             //uoW.SaveChanges();

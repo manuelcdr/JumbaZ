@@ -28,13 +28,17 @@ namespace Chamada.Services.Api.Controllers
       public IActionResult Get(string id)
       {
          Typer.SetCurrentTyper(typeof(Turma));
-         var turma = repositoryRead.GetSingle(id, new Turma());
+         var turma = repositoryRead.GetSingle(id) as Turma;
          if (turma == null)
             return NotFound(id);
 
          Typer.SetCurrentTyper(typeof(Aluno));
-         var alunos = repositoryRead.Search<Aluno>(x => x.Active == true && x.TurmaId == id);
+         var alunos = repositoryRead.Search<Aluno>(x => x.TurmaId == id);
          turma.SetAlunos(alunos);
+
+         Typer.SetCurrentTyper(typer: typeof(Domain.Entities.Chamada));
+         var chamadas = repositoryRead.Search<Domain.Entities.Chamada>(x => x.TurmaId == id);
+         turma.SetChamadas(chamadas);
 
          Typer.SetCurrentTyper(typeof(Turma));
          var tipoModelTurma = Typer.GetRefTyper("ViewModel", TyperAction.GetSingle);

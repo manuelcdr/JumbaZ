@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Domain\Chamada.Domain\Chamada.Domain.csproj" />
     <ProjectReference Include="..\..\Data\Chamada.Infra.Data\Chamada.Infra.Data.csproj" />
+    <ProjectReference Include="..\Chamada.Infra.Cross.Helpers\Chamada.Infra.Cross.Helpers.csproj" />
     <ProjectReference Include="..\Typer\Typer.csproj" />
   </ItemGroup>
 

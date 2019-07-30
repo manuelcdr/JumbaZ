@@ -32,6 +32,9 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
+              "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj": {
+                "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj"
+              },
               "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj": {
                 "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj"
               }
@@ -47,6 +50,64 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj",
+        "projectName": "Chamada.Infra.Cross.Helpers",
+        "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj",
+        "packagesPath": "C:\\Users\\manue\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\manue\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",

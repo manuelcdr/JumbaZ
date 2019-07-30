@@ -1,44 +1,69 @@
 using Chamada.Abstractions.Services;
 using Chamada.Domain.Abstractions.Entities;
 using Chamada.Domain.Abstractions.Repositories;
+using Chamada.Domain.Abstractions.Validations;
+using Chamada.Infra.Cross.Helpers;
 using TyperCore;
+using TyperCore.Attributes;
 
 namespace Chamada.Domain.Services
 {
-  public class GenericService : IGenericDomainService
-  {
-    private readonly IGenericRepository repository;
+   public class GenericService : IGenericDomainService
+   {
+      private readonly IGenericRepository repository;
+      private readonly ServiceBuilder serviceBuilder;
 
-    public GenericService(IGenericRepository repository)
-    {
-      this.repository = repository;
-    }
+      public GenericService(IGenericRepository repository, ServiceBuilder serviceBuilder)
+      {
+         this.repository = repository;
+         this.serviceBuilder = serviceBuilder;
+      }
 
-    public void Add(IDefaultModel entity)
-    {
-      if (repository.GetSingle(entity.Id, Typer.GetObjectReference() as IDefaultModel) != null)
-        return;
+      public void Add(IDefaultModel entity)
+      {
+         var valid = true;
 
-      repository.Add(entity);
+         if (repository.GetSingle(entity.Id) != null)
+            return;
 
-      return;
-    }
+         var validatorTyper = Typer.GetRefTyper("Validator", TyperAction.Insert);
+         if (validatorTyper != null)
+         {
+            var validator = serviceBuilder.GetService(validatorTyper);
+            valid = (validator as IValidator).Run(entity);
+         }
 
-    public void Update(IDefaultModel entity)
-    {
-      if (repository.GetSingle(entity.Id, Typer.GetObjectReference() as IDefaultModel) == null)
-        return;
+         if (valid)
+            repository.Add(entity);
 
-      repository.Update(entity as IDefaultModel);
+         return;
+      }
 
-      return;
-    }
+      public void Update(IDefaultModel entity)
+      {
+         var valid = true;
 
-    public void Delete(string id)
-    {
-      repository.Delete(id, Typer.GetObjectReference() as IDefaultModel);
+         if (repository.GetSingle(entity.Id) == null)
+            return;
 
-      return;
-    }
-  }
+         var validatorTyper = Typer.GetRefTyper("Validator", TyperAction.Update);
+         if (validatorTyper != null)
+         {
+            var validator = serviceBuilder.GetService(validatorTyper);
+            valid = (validator as IValidator).Run(entity);
+         }
+
+         if (valid)
+            repository.Update(entity as IDefaultModel);
+
+         return;
+      }
+
+      public void Delete(string id)
+      {
+         repository.Delete(id);
+
+         return;
+      }
+   }
 }

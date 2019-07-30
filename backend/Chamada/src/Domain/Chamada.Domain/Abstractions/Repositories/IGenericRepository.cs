@@ -5,32 +5,24 @@ using System.Linq.Expressions;
 
 namespace Chamada.Domain.Abstractions.Repositories
 {
-  public interface IGenericRepositoryReadDefault
-  {
-    T GetSingle<T>(string id, T entidadeReferencia) where T : class, IDefaultModel;
-    IEnumerable<T> GetAll<T>(T entidadeReferencia) where T : class;
-    IEnumerable<T> GetActives<T>(T entidadeReferencia) where T : class, IDeactivated;
-    IEnumerable<T> Search<T>(Expression<Func<T, bool>> predicate) where T : class;
-    IEnumerable<T> Search<T>(string filter) where T : class;
+   public interface IGenericRepositoryRead
+   {
+      object GetSingle(string id);
+      IEnumerable<object> GetAll();
+      IEnumerable<object> GetActives();
+      IEnumerable<T> Search<T>(Expression<Func<T, bool>> predicate) where T : class;
+      IEnumerable<object> Search(string filter);
    }
 
-  public interface IGenericRepositoryWriteDefault
-  {
-    void Add<T>(T entidade) where T : class;
-    void Update<T>(T entidade) where T : class, IDefaultModel;
-    void Delete<T>(string id, T entidadeReferencia) where T : class, IDefaultModel;
-  }
+   public interface IGenericRepositoryWrite
+   {
+      void Add<T>(T entidade) where T : class;
+      void Update<T>(T entidade) where T : class, IDefaultModel;
+      void Delete(string id);
+   }
 
-  public interface IGenericRepositoryRead :
-      IGenericRepositoryReadDefault
-  { }
-
-  public interface IGenericRepositoryWrite :
-      IGenericRepositoryWriteDefault
-  { }
-
-  public interface IGenericRepository :
-      IGenericRepositoryRead,
-      IGenericRepositoryWrite
-  { }
+   public interface IGenericRepository :
+       IGenericRepositoryRead,
+       IGenericRepositoryWrite
+   { }
 }

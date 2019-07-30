@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Infra\Cross\Chamada.Infra.Cross.Helpers\Chamada.Infra.Cross.Helpers.csproj" />
     <ProjectReference Include="..\..\Infra\Cross\Typer\Typer.csproj" />
   </ItemGroup>
 

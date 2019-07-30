@@ -2,71 +2,76 @@ using System;
 
 namespace Chamada.Domain.Abstractions.Entities
 {
-  public abstract class DefaultModel : IDefaultModel
-  {
-    protected DefaultModel() { }
+   public abstract class DefaultModel : IDefaultModel
+   {
+      protected DefaultModel() { }
 
-    protected DefaultModel(string id)
-    {
-      Id = id;
-    }
+      protected DefaultModel(string id)
+      {
+         Id = id;
+      }
 
-    public void SetId(string id)
-    {
-      Id = id;
-    }
+      public void SetId(string id)
+      {
+         Id = id;
+      }
 
-    public string Id { get; set; }
+      public string GetId()
+      {
+         return Id;
+      }
 
-    public override bool Equals(object obj)
-    {
-      var compareTo = obj as DefaultModel;
+      public string Id { get; set; }
 
-      if (ReferenceEquals(this, compareTo)) return true;
-      if (ReferenceEquals(null, compareTo)) return false;
+      public override bool Equals(object obj)
+      {
+         var compareTo = obj as DefaultModel;
 
-      return Id.Equals(compareTo.Id);
-    }
+         if (ReferenceEquals(this, compareTo)) return true;
+         if (ReferenceEquals(null, compareTo)) return false;
 
-    public override int GetHashCode()
-    {
-      return (GetType().GetHashCode() * 907) + Id.GetHashCode();
-    }
+         return Id.Equals(compareTo.Id);
+      }
 
-    public static bool operator ==(DefaultModel a, DefaultModel b)
-    {
-      if (ReferenceEquals(a, null) && ReferenceEquals(b, null))
-        return true;
+      public override int GetHashCode()
+      {
+         return (GetType().GetHashCode() * 907) + Id.GetHashCode();
+      }
 
-      if (ReferenceEquals(a, null) || ReferenceEquals(b, null))
-        return false;
+      public static bool operator ==(DefaultModel a, DefaultModel b)
+      {
+         if (ReferenceEquals(a, null) && ReferenceEquals(b, null))
+            return true;
 
-      return a.Equals(b);
-    }
+         if (ReferenceEquals(a, null) || ReferenceEquals(b, null))
+            return false;
 
-    public static bool operator !=(DefaultModel a, DefaultModel b)
-    {
-      return !(a == b);
-    }
-  }
+         return a.Equals(b);
+      }
+
+      public static bool operator !=(DefaultModel a, DefaultModel b)
+      {
+         return !(a == b);
+      }
+   }
 
 
-  public abstract class DefaultDeactivatedModel : DefaultModel, IDeactivated
-  {
-    public DefaultDeactivatedModel() : base() { }
+   public abstract class DefaultDeactivatedModel : DefaultModel, IDeactivated
+   {
+      public DefaultDeactivatedModel() : base() { }
 
-    public DefaultDeactivatedModel(string id) : base(id) { }
+      public DefaultDeactivatedModel(string id) : base(id) { }
 
-    public bool Active { get; set; }
+      public bool Active { get; set; }
 
-    public void Activate()
-    {
-      Active = true;
-    }
+      public void Activate()
+      {
+         Active = true;
+      }
 
-    public void Deactivate()
-    {
-      Active = false;
-    }
-  }
+      public void Deactivate()
+      {
+         Active = false;
+      }
+   }
 }

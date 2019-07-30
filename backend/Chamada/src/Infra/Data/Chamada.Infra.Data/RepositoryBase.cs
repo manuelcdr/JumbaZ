@@ -11,35 +11,42 @@ using TyperCore;
 
 namespace Chamada.Infra.Data
 {
-  public abstract class RepositoryBase
-  {
-    protected readonly IMongoDatabase MongoDB;
+   public abstract class RepositoryBase
+   {
+      protected readonly IMongoDatabase MongoDB = MongoConfiguration.MongoDB;
 
-    public RepositoryBase()
-    {
-      MongoClientSettings settings = MongoClientSettings.FromUrl(new MongoUrl(RepositorySettings.ConnectionString));
-      settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
-
-      var mongoClient = new MongoClient(settings);
-      this.MongoDB = mongoClient.GetDatabase(RepositorySettings.DataBaseName);
-
-      MapearClassesMongo();
-
-    }
-
-    private void MapearClassesMongo()
-    {
-      if (BsonClassMap.GetRegisteredClassMaps().Any())
-        return;
-
-      foreach (var type in Typer.Typers)
+      protected IMongoCollection<T> GetCollection<T>()
       {
-        var map = new BsonClassMap(type);
-        map.AutoMap();
-        BsonClassMap.RegisterClassMap(map);
+         var collection = MongoDB.GetCollection<T>(Typer.CurrentTyperName);
+         return collection;
       }
 
-    }
+      protected IMongoCollection<T> GetCollection<T>(T entidadeReferencia)
+      {
+         var collection = GetCollection<T>();
+         return collection;
+      }
 
-  }
+      protected FilterDefinition<T> GetFilterIdDefinition<T>(string id)
+      {
+         FilterDefinition<T> filter = $"{{_id: '{id}'}}";
+         return filter;
+      }
+
+      protected FilterDefinition<T> GetFilterIdDefinition<T>(string id, T entidadeReferencia)
+      {
+         return GetFilterIdDefinition<T>(id);
+      }
+
+      protected FilterDefinition<T> GetFilterDefinition<T>(T entidadeReferencia, string filter = null)
+      {
+         if (string.IsNullOrEmpty(filter))
+            return Builders<T>.Filter.Empty;
+
+         return Builders<T>.Filter.Text(filter);
+      }
+
+      public RepositoryBase() { }
+
+   }
 }

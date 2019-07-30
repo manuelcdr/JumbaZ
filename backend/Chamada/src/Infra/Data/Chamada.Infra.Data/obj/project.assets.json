@@ -2122,6 +2122,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
+          "Chamada.Infra.Cross.Helpers": "1.0.0",
           "TyperCore": "1.0.0"
         },
         "compile": {
@@ -2129,6 +2130,19 @@
         },
         "runtime": {
           "bin/placeholder/Chamada.Domain.dll": {}
+        }
+      },
+      "Chamada.Infra.Cross.Helpers/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"
+        },
+        "compile": {
+          "bin/placeholder/Chamada.Infra.Cross.Helpers.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Chamada.Infra.Cross.Helpers.dll": {}
         }
       },
       "TyperCore/1.0.0": {
@@ -6845,6 +6859,11 @@
       "type": "project",
       "path": "../../../Domain/Chamada.Domain/Chamada.Domain.csproj",
       "msbuildProject": "../../../Domain/Chamada.Domain/Chamada.Domain.csproj"
+    },
+    "Chamada.Infra.Cross.Helpers/1.0.0": {
+      "type": "project",
+      "path": "../../Cross/Chamada.Infra.Cross.Helpers/Chamada.Infra.Cross.Helpers.csproj",
+      "msbuildProject": "../../Cross/Chamada.Infra.Cross.Helpers/Chamada.Infra.Cross.Helpers.csproj"
     },
     "TyperCore/1.0.0": {
       "type": "project",
