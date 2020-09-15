@@ -1,5 +1,6 @@
 using Chamada.Domain.Abstractions.Entities;
 using Chamada.Domain.Abstractions.Repositories;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,11 @@ namespace Chamada.Infra.Data
    {
       public GenericRepository() : base() { }
 
-      public void Add<T>(T entidade) where T : class
+      public T Add<T>(T entidade) where T : class, IDefaultModel
       {
+         entidade.SetId(ObjectId.GenerateNewId().ToString());
          GetCollection<T>().InsertOne(entidade);
+         return entidade;
       }
 
       public IEnumerable<T> Search<T>(Expression<Func<T, bool>> predicate) where T : class
@@ -29,9 +32,10 @@ namespace Chamada.Infra.Data
          return GetCollection(Typer.GetObjectReference()).Find(filterDefinition).ToEnumerable();
       }
 
-      public void Update<T>(T entidade) where T : class, IDefaultModel
+      public T Update<T>(T entidade) where T : class, IDefaultModel
       {
          GetCollection<T>().FindOneAndReplace<T>(GetFilterIdDefinition<T>(entidade.Id), entidade);
+         return entidade;
       }
 
       public object GetSingle(string id)
@@ -51,10 +55,11 @@ namespace Chamada.Infra.Data
          return GetCollection(Typer.GetObjectReference()).Find("{Active: true}").ToEnumerable();
       }
 
-      public void Delete(string id)
+      public object Delete(string id)
       {
          var filter = GetFilterIdDefinition(id, Typer.GetObjectReference());
-         GetCollection(Typer.GetObjectReference()).FindOneAndDelete(filter);
+         var objeto = GetCollection(Typer.GetObjectReference()).FindOneAndDelete(filter);
+         return objeto;
       }
    }
 }

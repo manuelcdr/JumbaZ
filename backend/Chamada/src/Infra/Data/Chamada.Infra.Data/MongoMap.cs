@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.IdGenerators;
 using MongoDB.Driver;
 using System.Linq;
 using System.Security.Authentication;
@@ -30,6 +31,10 @@ namespace Chamada.Infra.Data
          {
             var map = new BsonClassMap(type);
             map.AutoMap();
+            
+            //map.
+            //map.IdMemberMap.SetIdGenerator(BsonObjectIdGenerator.Instance);
+            //map.IdMemberMap.SetIdGenerator()
             BsonClassMap.RegisterClassMap(map);
          }
       }

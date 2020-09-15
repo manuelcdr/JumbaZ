@@ -25,6 +25,7 @@ import { AlunosComponent } from '../components/turma/alunos/alunos.component';
 import { AdicionarAlunosComponent } from '../components/turma/adicionar-alunos/adicionar-alunos.component';
 import { ChamadaComponent } from '../components/turma/chamada/chamada.component';
 import { TesteComponent } from '../components/teste/teste.component';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import { TesteComponent } from '../components/teste/teste.component';
     MatFormFieldModule, MatInputModule, MatSlideToggleModule,
     MatGridListModule, MatTabsModule, MatDatepickerModule,
     MatNativeDateModule, MatExpansionModule, MatTooltipModule,
-    MatSnackBarModule, MatRadioModule
+    MatSnackBarModule, MatRadioModule, GraphQLModule
   ],
   providers: [],
   bootstrap: [AppComponent]

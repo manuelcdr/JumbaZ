@@ -548,6 +548,7 @@
       "Chamada.Domain/1.0.0": {
         "dependencies": {
           "Chamada.Infra.Cross.Helpers": "1.0.0",
+          "MongoDB.Bson": "2.8.1",
           "TyperCore": "1.0.0"
         },
         "runtime": {

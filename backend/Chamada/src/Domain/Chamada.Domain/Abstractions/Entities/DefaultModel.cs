@@ -1,3 +1,6 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson.Serialization.IdGenerators;
 using System;
 
 namespace Chamada.Domain.Abstractions.Entities
@@ -60,7 +63,7 @@ namespace Chamada.Domain.Abstractions.Entities
    {
       public DefaultDeactivatedModel() : base() { }
 
-      public DefaultDeactivatedModel(string id) : base(id) { }
+      //public DefaultDeactivatedModel(string id) : base(id) { }
 
       public bool Active { get; set; }
 

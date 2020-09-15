@@ -1,4 +1,6 @@
 using Chamada.Domain.Abstractions.Entities;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Chamada.Domain.Entities
 {
@@ -9,6 +11,7 @@ namespace Chamada.Domain.Entities
          Activate();
       }
 
+      [BsonRepresentation(BsonType.ObjectId)]
       public string TurmaId { get; set; }
       public string Nome { get; set; }
       public string Apelido { get; set; }

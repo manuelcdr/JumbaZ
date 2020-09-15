@@ -15,7 +15,7 @@ export class AdicionarAlunosComponent implements OnInit {
   @Input('turmaId')
   set turmaId(turmaId: string) {
     console.log('turmaId', turmaId);
-    this.aluno = new Aluno(turmaId);
+    this.aluno = new Aluno();
   }
 
   @Output() adicionarAlunoNaLista = new EventEmitter();
@@ -30,7 +30,7 @@ export class AdicionarAlunosComponent implements OnInit {
 
   ngOnInit() {
     this._httpService.initialize('aluno');
-    this.aluno = new Aluno(this.turmaId);
+    this.aluno = new Aluno();
   }
 
   onSubmit(form: NgForm) {

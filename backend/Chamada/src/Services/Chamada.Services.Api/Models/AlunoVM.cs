@@ -10,9 +10,9 @@ namespace Chamada.Services.Api.Models
    [AcceptTyperActions(TyperAction.Insert, TyperAction.GetAll, TyperAction.GetActives, TyperAction.GetSingle)]
    public class AlunoVM : DefaultModel
    {
-      public AlunoVM() : base(Guid.NewGuid().ToString())
-      {
-      }
+      //public AlunoVM() : base(Guid.NewGuid().ToString())
+      //{
+      //}
 
       [Required]
       public string TurmaId { get; set; }

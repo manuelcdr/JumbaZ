@@ -1,0 +1,20 @@
+type Turma {
+  id: ID!,
+  nome: String!,
+  detalhes: String,
+
+  alunos: [Aluno!],
+  chamadas: [Chamada!]
+}
+
+
+type Query {
+  turmas: [Turma!]!,
+  turma(id: ID!): Turma,
+}
+
+type Mutation {
+  criarTurma(nome: String!, detalhes: String): Turma,
+  atualizarTurma(id: ID!, nome: String, detalhes: String): Turma,
+  addAlunoNaTurma(turmaId: ID!, alunoId: ID!): Aluno,
+}

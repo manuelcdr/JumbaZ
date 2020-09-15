@@ -16,9 +16,9 @@ namespace Chamada.Domain.Abstractions.Repositories
 
    public interface IGenericRepositoryWrite
    {
-      void Add<T>(T entidade) where T : class;
-      void Update<T>(T entidade) where T : class, IDefaultModel;
-      void Delete(string id);
+      T Add<T>(T entidade) where T : class, IDefaultModel;
+      T Update<T>(T entidade) where T : class, IDefaultModel;
+      object Delete(string id);
    }
 
    public interface IGenericRepository :

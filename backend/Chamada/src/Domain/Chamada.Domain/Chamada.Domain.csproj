@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +13,10 @@
     <Compile Remove="Entities\Fruta.cs" />
     <Compile Remove="Entities\Pessoa.cs" />
     <Compile Remove="Entities\Professor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Bson" Version="2.11.2" />
   </ItemGroup>
 
   <ItemGroup>

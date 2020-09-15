@@ -7,6 +7,7 @@ import { Turma } from 'src/app/models/Turma';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { Aluno } from 'src/app/models/Aluno';
 import { StoreService } from 'src/app/services/store.service';
+import { TurmaService } from 'src/app/services/turma-services.service';
 
 @Component({
   selector: 'app-turma',
@@ -23,11 +24,12 @@ export class TurmaComponent implements OnInit {
     private _route: ActivatedRoute,
     private _httpService: HttpGenericService,
     private _storeService: StoreService,
-    private _messenger: MessengerService) { }
+    private _messenger: MessengerService,
+    private _turmaService: TurmaService) { }
 
   ngOnInit() {
     // const turmaId = this._route.snapshot.paramMap.get('id');
-    this._httpService.initialize('turma');
+    // this._httpService.initialize('turma');
     this.turma = this._storeService.turma;
     // this._httpService.getOne(turmaId).subscribe(
     //   turmaResponse => {
@@ -35,6 +37,8 @@ export class TurmaComponent implements OnInit {
     //     console.log('turma', this._storeService.turma);
     //   },
     //   error => this._messenger.show('ops! ocorreu algum erro ao buscar a turma'));
+
+    // this._turmaService.turma(turmaId).subscribe(result => this.turma = result);
   }
 
   adicionarAlunoNaLista(aluno: Aluno) {

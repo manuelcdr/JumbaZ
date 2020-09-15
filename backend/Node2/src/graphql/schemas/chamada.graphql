@@ -1,0 +1,19 @@
+type Chamada {
+  id: ID!,
+  data: String!,
+  presentes: [ID!]!,
+  ausentes: [ID!]!,
+  visitantes: [ID!]!,
+
+  turma: Turma
+}
+
+type Query {
+  chamadas: [Chamada!]!,
+  chamdas(id: ID!): Chamada,
+}
+
+type Mutation {
+  criarChamada(turmaId: ID!, data: String!, presentes: [ID!], ausentes: [ID!], visitantes: [ID!]): Chamada,
+  atualizarChamada(id: ID!, data: String!, presentes: [ID!], ausentes: [ID!], visitantes: [ID!]): Chamada,
+}

@@ -11,7 +11,7 @@ namespace Chamada.Services.Api.Models
    [AcceptTyperActions(TyperAction.Insert)]
    public class TurmaInsertVM : DefaultModel
    {
-      public TurmaInsertVM() : base(Guid.NewGuid().ToString()) { }
+      //public TurmaInsertVM() : base(Guid.NewGuid().ToString()) { }
 
       [Required]
       public string Nome { get; set; }

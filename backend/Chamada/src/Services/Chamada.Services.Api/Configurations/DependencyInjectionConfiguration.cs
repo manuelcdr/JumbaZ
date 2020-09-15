@@ -4,18 +4,18 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Chamada.Services.Api.Configurations
 {
-  public static class DependencyInjectionConfiguration
-  {
-    public static void AddDIConfiguration(this IServiceCollection services)
+    public static class DependencyInjectionConfiguration
     {
-      Mapper.Initialize(config =>
-      {
-        config.AddProfile<AutoMapperProfile>();
-      });
+        public static void AddDIConfiguration(this IServiceCollection services)
+        {
+            var config = new MapperConfiguration(config =>
+            {
+                config.AddProfile<AutoMapperProfile>();
+            });
 
-      services.AddAutoMapper(typeof(AutoMapperProfile));
+            services.AddAutoMapper(typeof(AutoMapperProfile));
 
-      NativeInjectorBootStrapper.RegisterServices(services);
+            NativeInjectorBootStrapper.RegisterServices(services);
+        }
     }
-  }
 }

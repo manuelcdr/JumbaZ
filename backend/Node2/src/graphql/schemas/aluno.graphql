@@ -1,0 +1,27 @@
+type Aluno {
+  id: ID!,
+  nome: String!,
+  apelido: String,
+  email: String,
+  
+  turmas: [Turma!]!,
+  movimentacoes: [Movimentacao!]!,
+  credito: Float!,
+}
+
+type Movimentacao {
+  id: ID!,
+  valor: Float!,
+  Data: String!
+}
+
+type Query {
+  alunos: [Aluno!]!,
+  aluno(id: ID!): Aluno,
+  alunosPorTurma(turmaId: ID!): [Aluno!]!
+}
+
+type Mutation {
+  criarAluno(nome: String!, apelido: String, email: String): Aluno,
+  atualizarAluno(id: ID!, nome: String, apelido: String, email: String): Aluno,
+}

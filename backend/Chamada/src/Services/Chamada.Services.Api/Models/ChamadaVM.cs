@@ -10,7 +10,7 @@ namespace Chamada.Services.Api.Models
   [AcceptTyperActions(TyperAction.Insert, TyperAction.GetAll, TyperAction.GetActives, TyperAction.GetSingle)]
   public class ChamadaVM : DefaultModel
   {
-    public ChamadaVM() : base(Guid.NewGuid().ToString()) { }
+    //public ChamadaVM() : base(Guid.NewGuid().ToString()) { }
 
     public string TurmaId { get; set; }
     public DateTime Data { get; set; }

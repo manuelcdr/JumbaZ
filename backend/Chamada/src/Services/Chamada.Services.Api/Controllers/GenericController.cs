@@ -12,196 +12,200 @@ using Chamada.Domain.Abstractions.Repositories;
 
 namespace Chamada.Services.Api.Controllers
 {
-   [Route("api")]
-   public class GenericController : ControllerBase
-   {
-      private readonly IGenericRepositoryRead repositoryRead;
-      private readonly IGenericDomainService service;
-      //private readonly IUnitOfWork uoW;
+    [Route("api")]
+    public class GenericController : ControllerBase
+    {
+        private readonly IGenericRepositoryRead repositoryRead;
+        private readonly IGenericDomainService service;
+        private readonly IMapper mapper;
+        //private readonly IUnitOfWork uoW;
 
-      public GenericController(
+        public GenericController(
           IGenericRepositoryRead repositoryRead,
-          IGenericDomainService service
+          IGenericDomainService service,
+          IMapper mapper
           /*IUnitOfWork uoW*/)
           : base()
-      {
-         this.repositoryRead = repositoryRead;
-         this.service = service;
-         //this.uoW = uoW;
-      }
+        {
+            this.repositoryRead = repositoryRead;
+            this.service = service;
+            this.mapper = mapper;
+            //this.uoW = uoW;
+        }
 
-      [HttpGet("")]
-      public IActionResult Index()
-      {
-         return Ok("api inicializada");
-      }
+        [HttpGet("")]
+        public IActionResult Index()
+        {
+            return Ok("api inicializada");
+        }
 
-      [HttpGet("{objectName}")]
-      public IActionResult Get(string objectName)
-      {
-         ModelState.Clear();
+        [HttpGet("{objectName}")]
+        public IActionResult Get(string objectName)
+        {
+            ModelState.Clear();
 
-         if (!Typer.TrySetCurrentTyper(objectName))
-            return BadRequest();
+            if (!Typer.TrySetCurrentTyper(objectName))
+                return BadRequest();
 
-         var entidades = repositoryRead.GetAll();
+            var entidades = repositoryRead.GetAll();
 
-         if (entidades == null)
-            return ResponseApi(null);
+            if (entidades == null)
+                return ResponseApi(null);
 
-         var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.GetAll);
+            var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.GetAll);
 
-         if (tipoModel == null)
-            return ResponseApi(entidades);
+            if (tipoModel == null)
+                return ResponseApi(entidades);
 
-         var models = Mapper.Map(entidades, entidades.GetType(), typeof(IEnumerable<>).MakeGenericType(tipoModel));
-         return ResponseApi(models);
-      }
+            var models = mapper.Map(entidades, entidades.GetType(), typeof(IEnumerable<>).MakeGenericType(tipoModel));
+            return ResponseApi(models);
+        }
 
-      [ObjectNameFilter("turma")]
-      [HttpGet("{objectName}/{id}")]
-      public IActionResult Get(string objectName, string id)
-      {
-         ModelState.Clear();
+        [ObjectNameFilter("turma")]
+        [HttpGet("{objectName}/{id}")]
+        public IActionResult Get(string objectName, string id)
+        {
+            ModelState.Clear();
 
-         if (!Typer.TrySetCurrentTyper(objectName))
-            return BadRequest();
+            if (!Typer.TrySetCurrentTyper(objectName))
+                return BadRequest();
 
-         var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.GetSingle);
+            var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.GetSingle);
 
-         var entidade = repositoryRead.GetSingle(id);
+            var entidade = repositoryRead.GetSingle(id);
 
-         if (tipoModel == null)
-            return ResponseApi(entidade);
+            if (tipoModel == null)
+                return ResponseApi(entidade);
 
-         if (entidade == null)
-            return NotFound(id);
+            if (entidade == null)
+                return NotFound(id);
 
-         var model = Mapper.Map(entidade, entidade.GetType(), tipoModel);
-         return ResponseApi(model);
-      }
+            var model = mapper.Map(entidade, entidade.GetType(), tipoModel);
+            return ResponseApi(model);
+        }
 
-      [HttpPost("{objectName}")]
-      public IActionResult Post(string objectName, [FromBody] object value)
-      {
-         ModelState.Clear();
+        [HttpPost("{objectName}")]
+        public IActionResult Post(string objectName, [FromBody] object value)
+        {
+            ModelState.Clear();
 
-         if (!Typer.TrySetCurrentTyper(objectName))
-            return BadRequest();
+            if (!Typer.TrySetCurrentTyper(objectName))
+                return BadRequest();
 
-         var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.Insert);
+            var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.Insert);
 
-         if (tipoModel == null)
-            return NotFound();
+            if (tipoModel == null)
+                return NotFound();
 
-         var stringJsonObject = JsonConvert.SerializeObject(value);
-         var model = JsonConvert.DeserializeObject(stringJsonObject, tipoModel);
+            var stringJsonObject = JsonConvert.SerializeObject(value);
+            var model = JsonConvert.DeserializeObject(stringJsonObject, tipoModel);
 
-         if (TryValidateModel(model))
-         {
-            var entity = Mapper.Map(model, tipoModel, Typer.CurrentTyper) as IDefaultModel;
-            service.Add(entity);
+            if (TryValidateModel(model))
+            {
+                var entity = mapper.Map(model, tipoModel, Typer.CurrentTyper) as IDefaultModel;
+                service.Add(entity);
+                //uoW.SaveChanges();
+            }
+
+            return ResponseApi(model);
+        }
+
+        [HttpPost("{objectName}/lot")]
+        public IActionResult PostLot(string objectName, [FromBody] object value)
+        {
+            ModelState.Clear();
+
+            if (!Typer.TrySetCurrentTyper(objectName))
+                return BadRequest();
+
+            var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.Insert);
+
+            if (tipoModel == null)
+                return NotFound();
+
+            var models = BindModel(value, tipoModel) as IEnumerable<object>;
+
+            foreach (var model in models)
+            {
+                if (!TryValidateModel(model))
+                    return ResponseApi(models);
+
+                var entity = Typer.CurrentTyper.CreateInstance();
+                mapper.Map(model, entity, tipoModel, Typer.CurrentTyper);
+                service.Add(entity as IDefaultModel);
+            }
+
             //uoW.SaveChanges();
-         }
+            return Ok(models);
+        }
 
-         return ResponseApi(model);
-      }
+        [HttpPut("{objectName}/{id}")]
+        public IActionResult Put(string objectName, string id, [FromBody] object value)
+        {
+            ModelState.Clear();
 
-      [HttpPost("{objectName}/lot")]
-      public IActionResult PostLot(string objectName, [FromBody] object value)
-      {
-         ModelState.Clear();
+            if (!Typer.TrySetCurrentTyper(objectName))
+                return BadRequest();
 
-         if (!Typer.TrySetCurrentTyper(objectName))
-            return BadRequest();
+            var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.Update);
 
-         var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.Insert);
+            if (tipoModel == null)
+                return NotFound();
 
-         if (tipoModel == null)
-            return NotFound();
+            var model = BindModel(value, tipoModel);
 
-         var models = BindModel(value, tipoModel) as IEnumerable<object>;
+            if (TryValidateModel(model))
+            {
+                var entity = repositoryRead.GetSingle(id) as IDefaultModel;
+                mapper.Map(model, entity, tipoModel, Typer.CurrentTyper);
+                service.Update(entity);
+                //uoW.SaveChanges();
+            }
 
-         foreach (var model in models)
-         {
-            if (!TryValidateModel(model))
-               return ResponseApi(models);
+            return ResponseApi(model);
+        }
 
-            var entity = Typer.CurrentTyper.CreateInstance();
-            Mapper.Map(model, entity, tipoModel, Typer.CurrentTyper);
-            service.Add(entity as IDefaultModel);
-         }
+        [HttpPut("{objectName}/lot")]
+        public IActionResult Put(string objectName, [FromBody] object value)
+        {
+            ModelState.Clear();
 
-         //uoW.SaveChanges();
-         return Ok(models);
-      }
+            if (!Typer.TrySetCurrentTyper(objectName))
+                return BadRequest();
 
-      [HttpPut("{objectName}/{id}")]
-      public IActionResult Put(string objectName, string id, [FromBody] object value)
-      {
-         ModelState.Clear();
+            var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.Update);
 
-         if (!Typer.TrySetCurrentTyper(objectName))
-            return BadRequest();
+            if (tipoModel == null)
+                return NotFound();
 
-         var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.Update);
+            var models = BindModel(value, tipoModel) as IEnumerable<object>;
 
-         if (tipoModel == null)
-            return NotFound();
+            foreach (var model in models)
+            {
+                if (!TryValidateModel(model))
+                    return ResponseApi(models);
 
-         var model = BindModel(value, tipoModel);
+                var entity = repositoryRead.GetSingle((model as IDefaultModel).Id) as IDefaultModel;
 
-         if (TryValidateModel(model))
-         {
-            var entity = repositoryRead.GetSingle(id) as IDefaultModel;
-            Mapper.Map(model, entity, tipoModel, Typer.CurrentTyper);
-            service.Update(entity);
+                mapper.Map(model, entity, tipoModel, Typer.CurrentTyper);
+                service.Update(entity);
+                //uoW.SaveChanges();
+            }
+
+            return ResponseApi(models);
+        }
+
+        [HttpDelete("{objectName}/{id}")]
+        public IActionResult Delete(string objectName, string id)
+        {
+            ModelState.Clear();
+
+            if (!Typer.TrySetCurrentTyper(objectName))
+                return BadRequest();
+
+            service.Delete(id);
             //uoW.SaveChanges();
-         }
-
-         return ResponseApi(model);
-      }
-
-      [HttpPut("{objectName}/lot")]
-      public IActionResult Put(string objectName, [FromBody] object value)
-      {
-         ModelState.Clear();
-
-         if (!Typer.TrySetCurrentTyper(objectName))
-            return BadRequest();
-
-         var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.Update);
-
-         if (tipoModel == null)
-            return NotFound();
-
-         var models = BindModel(value, tipoModel) as IEnumerable<object>;
-
-         foreach (var model in models)
-         {
-            if (!TryValidateModel(model))
-               return ResponseApi(models);
-
-            var entity = repositoryRead.GetSingle((model as IDefaultModel).Id) as IDefaultModel;
-            Mapper.Map(model, entity, tipoModel, Typer.CurrentTyper);
-            service.Update(entity);
-            //uoW.SaveChanges();
-         }
-
-         return ResponseApi(models);
-      }
-
-      [HttpDelete("{objectName}/{id}")]
-      public IActionResult Delete(string objectName, string id)
-      {
-         ModelState.Clear();
-
-         if (!Typer.TrySetCurrentTyper(objectName))
-            return BadRequest();
-
-         service.Delete(id);
-         //uoW.SaveChanges();
-         return ResponseApi(id);
-      }
-   }
+            return ResponseApi(id);
+        }
+    }
 }
