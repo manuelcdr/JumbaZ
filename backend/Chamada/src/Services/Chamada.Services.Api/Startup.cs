@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TyperCore;
+using TyperCore.Configuration;
 
 namespace Chamada.Services.Api
 {
@@ -26,7 +27,7 @@ namespace Chamada.Services.Api
         {
 
             services.AddSettings(Configuration);
-            Typer.Initialize();
+            TyperConfigurarion.Initialize();
             MongoConfiguration.Initialize();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddHttpContextAccessor();

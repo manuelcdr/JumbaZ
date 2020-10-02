@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar color="primary">
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title color="secondary">{{_model.date | date: "dd/MM hh:mm"}} <small>attendance list</small></ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  <ion-slides #slides (ionSlideTouchEnd)="updateSegment()" [options]="slideOpts">
+
+  <ion-slide #editSlide>
+    <ion-list lines="full">
+      <ion-item>
+        <ion-label position="floating">Date</ion-label>
+        <ion-datetime [(ngModel)]="_model.dateString" display-format="DD MMM YYYY" placeholder="Select Date">
+        </ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Time</ion-label>
+        <ion-datetime [(ngModel)]="_model.timeString" display-format="h:mm A" picker-format="h:mm A"></ion-datetime>
+      </ion-item>
+      <ion-item lines="none">
+        <div class="ion-text-center">
+          <ion-button fill="outline" (click)="save()">
+            {{ _new == true ? 'Save' : 'Update' }}
+          </ion-button>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-slide>
+
+  <ion-slide #attendanceListSlide>
+    <app-attendance-students-slide [attendanceList]="_model" [courseClass]="courseClass" ></app-attendance-students-slide>
+  </ion-slide>
+
+</ion-slides>
+
+  <!-- <ion-item-group>
+      <ion-item-divider>
+        <ion-label>Students</ion-label>
+      </ion-item-divider>
+
+      <ion-item *ngFor="let student of courseClass.students; let i = index">
+        <ion-label>{{ student.name }}</ion-label>
+        <ion-checkbox slot="end" (ionChange)="changeAttendance(i, student.id)" [(ngModel)]="attendances[i].isAttendant">
+        </ion-checkbox>
+      </ion-item>
+    </ion-item-group>
+
+  </ion-list> -->
+
+</ion-content>
+
+<ion-footer mode="md">
+  <ion-segment [(ngModel)]="segment" (ionChange)="updateSlide()">
+    <ion-segment-button routerLink="/home">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="edit">
+      <ion-icon name="create-outline"></ion-icon>
+      <ion-label>Edit</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="attendanceListStudents">
+      <ion-icon name="easel-outline"></ion-icon>
+      <ion-label>Attendance List</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-footer>

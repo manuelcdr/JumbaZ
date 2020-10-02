@@ -23,7 +23,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chamada.Services.Api", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chamada.Infra.Data", "src\Infra\Data\Chamada.Infra.Data\Chamada.Infra.Data.csproj", "{A7863E3D-A4DE-4120-AB84-286B4CBA33F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chamada.Infra.Cross.Helpers", "src\Infra\Cross\Chamada.Infra.Cross.Helpers\Chamada.Infra.Cross.Helpers.csproj", "{F07FEAE4-6CFA-4FFB-AD20-E716BC999A13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chamada.Infra.Cross.Helpers", "src\Infra\Cross\Chamada.Infra.Cross.Helpers\Chamada.Infra.Cross.Helpers.csproj", "{F07FEAE4-6CFA-4FFB-AD20-E716BC999A13}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chamada.Infra.Data.SqlServer", "src\Infra\Data\Chamada.Infra.Data.SqlServer\Chamada.Infra.Data.SqlServer\Chamada.Infra.Data.SqlServer.csproj", "{F36658CF-0B47-4BE2-A3EC-58D53AFA7574}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chamada.Services.Api.3.0", "src\Services\Chamada.Services.Api.3.0\Chamada.Services.Api.3.0\Chamada.Services.Api.3.0.csproj", "{A3CC9DDF-792D-4E1C-AA46-145FEAD4B1BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chamada.Services.Api.31", "src\Services\Chamada.Services.Api.31\Chamada.Services.Api.31.csproj", "{088B69E7-9307-40D3-A7E0-93090E37B570}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +61,18 @@ Global
 		{F07FEAE4-6CFA-4FFB-AD20-E716BC999A13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F07FEAE4-6CFA-4FFB-AD20-E716BC999A13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F07FEAE4-6CFA-4FFB-AD20-E716BC999A13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F36658CF-0B47-4BE2-A3EC-58D53AFA7574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F36658CF-0B47-4BE2-A3EC-58D53AFA7574}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F36658CF-0B47-4BE2-A3EC-58D53AFA7574}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F36658CF-0B47-4BE2-A3EC-58D53AFA7574}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3CC9DDF-792D-4E1C-AA46-145FEAD4B1BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3CC9DDF-792D-4E1C-AA46-145FEAD4B1BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3CC9DDF-792D-4E1C-AA46-145FEAD4B1BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3CC9DDF-792D-4E1C-AA46-145FEAD4B1BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{088B69E7-9307-40D3-A7E0-93090E37B570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{088B69E7-9307-40D3-A7E0-93090E37B570}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{088B69E7-9307-40D3-A7E0-93090E37B570}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{088B69E7-9307-40D3-A7E0-93090E37B570}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +86,9 @@ Global
 		{80E7C3EA-0E5F-4E10-9E02-BB7774CEACE6} = {B2DBCEAD-DCBB-4095-94B0-C85CA0ABF60D}
 		{A7863E3D-A4DE-4120-AB84-286B4CBA33F7} = {FB2F36FF-4BDA-4FC1-9875-9573A2B418D5}
 		{F07FEAE4-6CFA-4FFB-AD20-E716BC999A13} = {2C5C8527-86D2-4DD4-8255-DDC91D417A95}
+		{F36658CF-0B47-4BE2-A3EC-58D53AFA7574} = {FB2F36FF-4BDA-4FC1-9875-9573A2B418D5}
+		{A3CC9DDF-792D-4E1C-AA46-145FEAD4B1BC} = {B2DBCEAD-DCBB-4095-94B0-C85CA0ABF60D}
+		{088B69E7-9307-40D3-A7E0-93090E37B570} = {B2DBCEAD-DCBB-4095-94B0-C85CA0ABF60D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0DC2046D-0960-429D-A322-057A75BF65BC}

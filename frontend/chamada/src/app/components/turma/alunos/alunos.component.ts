@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Aluno } from 'src/app/models/Aluno';
 import { StoreService } from 'src/app/services/store.service';
-import { Turma } from 'src/app/models/Turma';
+import { Course } from 'src/app/models/Course';
 
 @Component({
   selector: 'app-alunos',
@@ -16,7 +16,7 @@ export class AlunosComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this._storeService.turma.alunos);
+    console.log(this._storeService.course.alunos);
   }
 
 }

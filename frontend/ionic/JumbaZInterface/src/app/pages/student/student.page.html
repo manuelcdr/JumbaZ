@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{_new && !_model.name ? 'New Student' : _model.name}} <small>Student</small></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" [(ngModel)]="_model.name" name="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Gender</ion-label>
+      <ion-select [(ngModel)]="_model.genre">
+        <ion-select-option value="Female">Female</ion-select-option>
+        <ion-select-option value="Male">Male</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="mail" [(ngModel)]="_model.email" name="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Phone Number</ion-label>
+      <ion-input type="phone" [(ngModel)]="_model.phone" name="phone"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div class="ion-text-center">
+    <ion-button fill="outline" (click)="save()">
+      {{ _new == true ? 'Save' : 'Update' }}
+    </ion-button>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-segment value="edit">
+    <ion-segment-button routerLink="/home">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="edit">
+      <ion-icon name="create-outline"></ion-icon>
+      <ion-label>Edit</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+</ion-footer>

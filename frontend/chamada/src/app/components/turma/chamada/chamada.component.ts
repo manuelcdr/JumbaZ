@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpGenericService } from 'src/app/services/http-generic.service';
 import { ActivatedRoute } from '@angular/router';
 import { MessengerService } from 'src/app/services/messenger.service';
-import { Turma } from 'src/app/models/Turma';
+import { Course } from 'src/app/models/Course';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { StoreService } from 'src/app/services/store.service';
 })
 export class ChamadaComponent implements OnInit {
 
-  turma: Turma;
+  course: Course;
 
   constructor(
     private _route: ActivatedRoute,
@@ -21,7 +21,7 @@ export class ChamadaComponent implements OnInit {
     private _messenger: MessengerService) { }
 
   ngOnInit() {
-    this.turma = this._storeService.turma;
+    this.course = this._storeService.course;
   }
 
 }

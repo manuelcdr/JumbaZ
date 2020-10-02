@@ -18,18 +18,22 @@ namespace Chamada.Services.Api.Controllers
         private readonly IGenericRepositoryRead repositoryRead;
         private readonly IGenericDomainService service;
         private readonly IMapper mapper;
+        public readonly Typer _typer;
+
         //private readonly IUnitOfWork uoW;
 
         public GenericController(
           IGenericRepositoryRead repositoryRead,
           IGenericDomainService service,
-          IMapper mapper
+          IMapper mapper,
+          Typer typer
           /*IUnitOfWork uoW*/)
           : base()
         {
             this.repositoryRead = repositoryRead;
             this.service = service;
             this.mapper = mapper;
+            this._typer = typer;
             //this.uoW = uoW;
         }
 
@@ -44,7 +48,7 @@ namespace Chamada.Services.Api.Controllers
         {
             ModelState.Clear();
 
-            if (!Typer.TrySetCurrentTyper(objectName))
+            if (!_typer.TrySetCurrentTyper(objectName))
                 return BadRequest();
 
             var entidades = repositoryRead.GetAll();
@@ -52,7 +56,7 @@ namespace Chamada.Services.Api.Controllers
             if (entidades == null)
                 return ResponseApi(null);
 
-            var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.GetAll);
+            var tipoModel = _typer.GetRefTyper("ViewModel", TyperAction.GetAll);
 
             if (tipoModel == null)
                 return ResponseApi(entidades);
@@ -67,10 +71,10 @@ namespace Chamada.Services.Api.Controllers
         {
             ModelState.Clear();
 
-            if (!Typer.TrySetCurrentTyper(objectName))
+            if (!_typer.TrySetCurrentTyper(objectName))
                 return BadRequest();
 
-            var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.GetSingle);
+            var tipoModel = _typer.GetRefTyper("ViewModel", TyperAction.GetSingle);
 
             var entidade = repositoryRead.GetSingle(id);
 
@@ -89,10 +93,10 @@ namespace Chamada.Services.Api.Controllers
         {
             ModelState.Clear();
 
-            if (!Typer.TrySetCurrentTyper(objectName))
+            if (!_typer.TrySetCurrentTyper(objectName))
                 return BadRequest();
 
-            var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.Insert);
+            var tipoModel = _typer.GetRefTyper("ViewModel", TyperAction.Insert);
 
             if (tipoModel == null)
                 return NotFound();
@@ -102,7 +106,7 @@ namespace Chamada.Services.Api.Controllers
 
             if (TryValidateModel(model))
             {
-                var entity = mapper.Map(model, tipoModel, Typer.CurrentTyper) as IDefaultModel;
+                var entity = mapper.Map(model, tipoModel, _typer.CurrentTyper) as IDefaultModel;
                 service.Add(entity);
                 //uoW.SaveChanges();
             }
@@ -115,10 +119,10 @@ namespace Chamada.Services.Api.Controllers
         {
             ModelState.Clear();
 
-            if (!Typer.TrySetCurrentTyper(objectName))
+            if (!_typer.TrySetCurrentTyper(objectName))
                 return BadRequest();
 
-            var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.Insert);
+            var tipoModel = _typer.GetRefTyper("ViewModel", TyperAction.Insert);
 
             if (tipoModel == null)
                 return NotFound();
@@ -130,8 +134,8 @@ namespace Chamada.Services.Api.Controllers
                 if (!TryValidateModel(model))
                     return ResponseApi(models);
 
-                var entity = Typer.CurrentTyper.CreateInstance();
-                mapper.Map(model, entity, tipoModel, Typer.CurrentTyper);
+                var entity = _typer.CurrentTyper.CreateInstance();
+                mapper.Map(model, entity, tipoModel, _typer.CurrentTyper);
                 service.Add(entity as IDefaultModel);
             }
 
@@ -144,10 +148,10 @@ namespace Chamada.Services.Api.Controllers
         {
             ModelState.Clear();
 
-            if (!Typer.TrySetCurrentTyper(objectName))
+            if (!_typer.TrySetCurrentTyper(objectName))
                 return BadRequest();
 
-            var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.Update);
+            var tipoModel = _typer.GetRefTyper("ViewModel", TyperAction.Update);
 
             if (tipoModel == null)
                 return NotFound();
@@ -157,7 +161,7 @@ namespace Chamada.Services.Api.Controllers
             if (TryValidateModel(model))
             {
                 var entity = repositoryRead.GetSingle(id) as IDefaultModel;
-                mapper.Map(model, entity, tipoModel, Typer.CurrentTyper);
+                mapper.Map(model, entity, tipoModel, _typer.CurrentTyper);
                 service.Update(entity);
                 //uoW.SaveChanges();
             }
@@ -170,10 +174,10 @@ namespace Chamada.Services.Api.Controllers
         {
             ModelState.Clear();
 
-            if (!Typer.TrySetCurrentTyper(objectName))
+            if (!_typer.TrySetCurrentTyper(objectName))
                 return BadRequest();
 
-            var tipoModel = Typer.GetRefTyper("ViewModel", TyperAction.Update);
+            var tipoModel = _typer.GetRefTyper("ViewModel", TyperAction.Update);
 
             if (tipoModel == null)
                 return NotFound();
@@ -187,7 +191,7 @@ namespace Chamada.Services.Api.Controllers
 
                 var entity = repositoryRead.GetSingle((model as IDefaultModel).Id) as IDefaultModel;
 
-                mapper.Map(model, entity, tipoModel, Typer.CurrentTyper);
+                mapper.Map(model, entity, tipoModel, _typer.CurrentTyper);
                 service.Update(entity);
                 //uoW.SaveChanges();
             }
@@ -200,7 +204,7 @@ namespace Chamada.Services.Api.Controllers
         {
             ModelState.Clear();
 
-            if (!Typer.TrySetCurrentTyper(objectName))
+            if (!_typer.TrySetCurrentTyper(objectName))
                 return BadRequest();
 
             service.Delete(id);

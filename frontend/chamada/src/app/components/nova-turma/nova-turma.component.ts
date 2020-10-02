@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { FloatLabelType } from '@angular/material';
+import { FloatLabelType } from '@angular/material/core';
 import { HttpGenericService } from 'src/app/services/http-generic.service';
 import { first } from 'rxjs/operators';
 import { MessengerService } from 'src/app/services/messenger.service';
@@ -9,11 +9,11 @@ import { MessengerService } from 'src/app/services/messenger.service';
  * @title Stepper vertical
  */
 @Component({
-  selector: 'nova-turma-component',
-  templateUrl: 'nova-turma.component.html',
-  styleUrls: ['nova-turma.component.css']
+  selector: 'nova-course-component',
+  templateUrl: 'nova-course.component.html',
+  styleUrls: ['nova-course.component.css']
 })
-export class NovaTurmaComponent implements OnInit {
+export class NovaCourseComponent implements OnInit {
   isLinear = false;
   formGroup: FormGroup;
 
@@ -26,10 +26,10 @@ export class NovaTurmaComponent implements OnInit {
     private _messenger: MessengerService) {}
 
   ngOnInit() {
-    this._httpService.initialize('turma');
+    this._httpService.initialize('course');
 
     this.formGroup = this._formBuilder.group({
-      nomeTurma: ['', Validators.required]
+      nomeCourse: ['', Validators.required]
     });
 
     this.floatLabel = 'always';
@@ -39,17 +39,17 @@ export class NovaTurmaComponent implements OnInit {
 
     console.log('submited');
 
-    const novaTurma = {
-      nome: this.formGroup.controls.nomeTurma.value
+    const novaCourse = {
+      nome: this.formGroup.controls.nomeCourse.value
     };
 
-    console.log('novaTurma', novaTurma);
+    console.log('novaCourse', novaCourse);
 
-    this._httpService.create(novaTurma)
+    this._httpService.create(novaCourse)
       .pipe(first())
       .subscribe(
         response => {
-          this._messenger.show('turma adicionada');
+          this._messenger.show('course adicionada');
         },
         error => {
           this._messenger.show('ops! ocorreu algum erro');

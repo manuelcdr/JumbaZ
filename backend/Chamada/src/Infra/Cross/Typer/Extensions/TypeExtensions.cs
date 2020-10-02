@@ -87,6 +87,21 @@ namespace TyperCore.Extensions
             return null;
         }
 
+        public static PropertyInfo GetPropertyReference(this Type sourceType, Type refType)
+        {
+            var props = sourceType.GetProperties();
+            foreach (var prop in props)
+            {
+                var attribute = prop.GetCustomAttribute<TyperReferenceAttribute>(false);
+                if (attribute == null)
+                    continue;
+
+                if (attribute.HasTyper(refType))
+                    return prop;
+            }
+            return null;
+        }
+
         public static object InvokeActionMethod(this Type refType, TyperAction action, params object[] @params)
         {
             var objRef = refType.CreateInstance() as ITyperRef;

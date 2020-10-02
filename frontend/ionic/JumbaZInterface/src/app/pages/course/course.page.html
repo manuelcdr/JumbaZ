@@ -1,0 +1,85 @@
+<!-- <ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="secondary"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="segment == 'course'" color="tertiary">{{_new && !_model.name ? 'New Course' : _model.name}}</ion-title>
+    <ion-title *ngIf="segment != 'course'" color="tertiary">{{ segment | titlecase }}</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<!-- <app-header-toolbar [title]="_model.name" ></app-header-toolbar> -->
+
+<ion-header>
+  <ion-toolbar color="primary">
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-nowrap" color="secondary">
+      {{_new && !_model.name ? 'New' : _model.name}} <small>course</small>
+    </ion-title>
+
+    <!-- <ion-buttons slot="end">
+      <ion-button size="small" color="secondary" routerLink="/home" routerDirection="back">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  <ion-slides #slides (ionSlideTouchEnd)="updateSegment()" [options]="slideOpts">
+
+    <ion-slide #editSlide>
+      <ion-list lines="full">
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" [(ngModel)]="_model.name" name="name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-input type="text" [(ngModel)]="_model.description" name="description"></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <ion-button fill="outline" (click)="save()">
+        {{ _new == true ? 'Save' : 'Update' }}
+      </ion-button>
+
+    </ion-slide>
+
+    <ion-slide #classSlide>
+
+      <app-classes-slide #classesSlide [courseId]="_model.id"></app-classes-slide>
+
+      <ion-fab vertical="bottom" horizontal="center">
+        <ion-fab-button routerLink="classes/new" size="small">
+          <ion-icon size="small" name="add-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+    </ion-slide>
+  </ion-slides>
+
+
+</ion-content>
+
+<ion-footer mode="md">
+  <ion-segment [(ngModel)]="segment" (ionChange)="updateSlide()">
+    <ion-segment-button routerLink="/home">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="course">
+      <ion-icon name="create-outline"></ion-icon>
+      <ion-label>Edit</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="classes">
+      <ion-icon name="easel-outline"></ion-icon>
+      <ion-label>Classes</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-footer>

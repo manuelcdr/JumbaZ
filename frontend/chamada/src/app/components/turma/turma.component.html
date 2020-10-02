@@ -1,8 +1,8 @@
 <mat-toolbar class="toolbar" color="primary">
-  <a [routerLink]="['/turmas']" mat-icon-button aria-label="Example icon-button with a menu">
+  <a [routerLink]="['/courses']" mat-icon-button aria-label="Example icon-button with a menu">
     <mat-icon>arrow_back</mat-icon>
   </a>
-  <span>{{turma.nome}}</span>
+  <span>{{course.nome}}</span>
   <span class="flex-spacer"></span>
   <!-- <button mat-icon-button aria-label="Buscar menus">
         <mat-icon>search</mat-icon>
@@ -16,10 +16,10 @@
     <app-chamadas></app-chamadas>
   </mat-tab>
   <mat-tab label="Alunos">
-    <app-alunos [alunos]="turma.alunos" ></app-alunos>
+    <app-alunos [alunos]="course.alunos" ></app-alunos>
   </mat-tab>
   <mat-tab label="Adicionar">
-    <app-adicionar-alunos [turmaId]="turma.nome" (adicionarAlunoNaLista)="adicionarAlunoNaLista($event)">
+    <app-adicionar-alunos [courseId]="course.nome" (adicionarAlunoNaLista)="adicionarAlunoNaLista($event)">
     </app-adicionar-alunos>
   </mat-tab>
 </mat-tab-group>

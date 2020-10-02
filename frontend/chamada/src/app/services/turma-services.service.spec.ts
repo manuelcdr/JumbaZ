@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TurmaService } from './turma-services.service';
+import { CourseService } from './course-services.service';
 
-describe('TurmaServicesService', () => {
+describe('CourseServicesService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: TurmaService = TestBed.get(TurmaService);
+    const service: CourseService = TestBed.get(CourseService);
     expect(service).toBeTruthy();
   });
 });

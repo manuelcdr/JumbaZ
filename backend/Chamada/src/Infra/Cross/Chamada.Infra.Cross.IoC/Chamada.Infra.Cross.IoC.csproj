@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Domain\Chamada.Domain\Chamada.Domain.csproj" />
+    <ProjectReference Include="..\..\Data\Chamada.Infra.Data.SqlServer\Chamada.Infra.Data.SqlServer\Chamada.Infra.Data.SqlServer.csproj" />
     <ProjectReference Include="..\..\Data\Chamada.Infra.Data\Chamada.Infra.Data.csproj" />
     <ProjectReference Include="..\Chamada.Infra.Cross.Helpers\Chamada.Infra.Cross.Helpers.csproj" />
     <ProjectReference Include="..\Typer\Typer.csproj" />

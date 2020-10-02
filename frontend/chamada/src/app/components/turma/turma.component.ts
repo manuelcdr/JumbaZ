@@ -1,49 +1,49 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { FloatLabelType } from '@angular/material';
+import { FloatLabelType } from '@angular/material/core';
 import { HttpGenericService } from 'src/app/services/http-generic.service';
-import { Turma } from 'src/app/models/Turma';
+import { Course } from 'src/app/models/Course';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { Aluno } from 'src/app/models/Aluno';
 import { StoreService } from 'src/app/services/store.service';
-import { TurmaService } from 'src/app/services/turma-services.service';
+import { CourseService } from 'src/app/services/course-services.service';
 
 @Component({
-  selector: 'app-turma',
-  templateUrl: './turma.component.html',
-  styleUrls: ['./turma.component.scss']
+  selector: 'app-course',
+  templateUrl: './course.component.html',
+  styleUrls: ['./course.component.scss']
 })
-export class TurmaComponent implements OnInit {
+export class CourseComponent implements OnInit {
   isLinear = false;
   panelOpenState = false;
   formGroupAdicionar: FormGroup;
-  turma = new Turma();
+  course = new Course();
 
   constructor(
     private _route: ActivatedRoute,
     private _httpService: HttpGenericService,
     private _storeService: StoreService,
     private _messenger: MessengerService,
-    private _turmaService: TurmaService) { }
+    private _courseService: CourseService) { }
 
   ngOnInit() {
-    // const turmaId = this._route.snapshot.paramMap.get('id');
-    // this._httpService.initialize('turma');
-    this.turma = this._storeService.turma;
-    // this._httpService.getOne(turmaId).subscribe(
-    //   turmaResponse => {
-    //     this.turma = turmaResponse as Turma;
-    //     console.log('turma', this._storeService.turma);
+    // const courseId = this._route.snapshot.paramMap.get('id');
+    // this._httpService.initialize('course');
+    this.course = this._storeService.course;
+    // this._httpService.getOne(courseId).subscribe(
+    //   courseResponse => {
+    //     this.course = courseResponse as Course;
+    //     console.log('course', this._storeService.course);
     //   },
-    //   error => this._messenger.show('ops! ocorreu algum erro ao buscar a turma'));
+    //   error => this._messenger.show('ops! ocorreu algum erro ao buscar a course'));
 
-    // this._turmaService.turma(turmaId).subscribe(result => this.turma = result);
+    // this._courseService.course(courseId).subscribe(result => this.course = result);
   }
 
   adicionarAlunoNaLista(aluno: Aluno) {
-    this.turma.alunos.push(aluno);
-    this._storeService.turma = this.turma;
+    this.course.alunos.push(aluno);
+    this._storeService.course = this.course;
   }
 
 }

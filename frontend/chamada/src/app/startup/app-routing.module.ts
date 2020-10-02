@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TurmasComponent } from '../components/turmas/turmas.component';
-import { TurmaComponent } from '../components/turma/turma.component';
-import { NovaTurmaComponent } from '../components/nova-turma/nova-turma.component';
+import { CoursesComponent } from '../components/courses/courses.component';
+import { CourseComponent } from '../components/course/course.component';
+import { NovaCourseComponent } from '../components/nova-course/nova-course.component';
 import { AppComponent } from './app.component';
-import { ChamadaComponent } from '../components/turma/chamada/chamada.component';
+import { ChamadaComponent } from '../components/course/chamada/chamada.component';
 import { TesteComponent } from '../components/teste/teste.component';
 
 const routes: Routes = [
@@ -12,10 +12,10 @@ const routes: Routes = [
   {
     path: '', component: AppComponent,
     children: [
-      { path: 'turmas', component: TurmasComponent },
-      { path: 'nova-turma', component: NovaTurmaComponent },
-      { path: 'turmas/:nome', component: TurmaComponent },
-      { path: 'turmas/:nome/chamada', component: ChamadaComponent }
+      { path: 'courses', component: CoursesComponent },
+      { path: 'nova-course', component: NovaCourseComponent },
+      { path: 'courses/:nome', component: CourseComponent },
+      { path: 'courses/:nome/chamada', component: ChamadaComponent }
     ]
   },
   { path: '**', redirectTo: '' }

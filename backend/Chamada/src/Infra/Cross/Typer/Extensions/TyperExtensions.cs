@@ -6,22 +6,22 @@ using TyperCore.Attributes;
 
 namespace TyperCore.Extensions
 {
-  public static class TyperExtensions
+    public static class TyperExtensions
     {
-        public static Type GetRefTyper(this ITyperEntity entity, string key, TyperAction action = TyperAction.None)
-        {
-            return Typer.GetRefTyper(key, entity.GetType(), action);
-        }
+        //public static Type GetRefTyper(this ITyperEntity entity, string key, TyperAction action = TyperAction.None)
+        //{
+        //    return Typer.GetRefTyper(key, entity.GetType(), action);
+        //}
 
-        public static Object GetRefObj(this ITyperEntity domainObj, string key, TyperAction action = TyperAction.None)
-        {
-            var refType = domainObj.GetRefTyper(key, action);
+        //public static Object GetRefObj(this ITyperEntity domainObj, string key, TyperAction action = TyperAction.None)
+        //{
+        //    var refType = domainObj.GetRefTyper(key, action);
 
-            if (refType == null)
-                return null;
+        //    if (refType == null)
+        //        return null;
 
-            return refType.CreateInstance();
-        }
+        //    return refType.CreateInstance();
+        //}
 
         public static MethodInfo GetActionMethod(this ITyperRef objRef, TyperAction action)
         {

@@ -12,9 +12,9 @@ import { StoreService } from 'src/app/services/store.service';
 })
 export class AdicionarAlunosComponent implements OnInit {
 
-  @Input('turmaId')
-  set turmaId(turmaId: string) {
-    console.log('turmaId', turmaId);
+  @Input('courseId')
+  set courseId(courseId: string) {
+    console.log('courseId', courseId);
     this.aluno = new Aluno();
   }
 
@@ -43,7 +43,7 @@ export class AdicionarAlunosComponent implements OnInit {
     this._httpService.create(this.aluno).subscribe(
       response => {
         if (response.success) {
-          this._messenger.show(`Aluno(a) ${this.aluno.nome} adicionado a turma!`);
+          this._messenger.show(`Aluno(a) ${this.aluno.nome} adicionado a course!`);
           this.adicionarAlunoNaLista.emit(response.data as Aluno);
         }
       },

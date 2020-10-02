@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Turma } from '../models/Turma';
+import { Course } from '../models/Course';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +8,12 @@ export class StoreService {
 
   constructor() { }
 
-  get turma(): Turma {
-    return this.getObject('current-turma') as Turma;
+  get course(): Course {
+    return this.getObject('current-course') as Course;
   }
 
-  set turma(turma: Turma) {
-    this.addObject('current-turma', turma);
+  set course(course: Course) {
+    this.addObject('current-course', course);
   }
 
   private addObject(local: string, objeto: any) {

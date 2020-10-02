@@ -1,0 +1,35 @@
+<ion-list class="ion-no-padding" mode="ios" lines="none">
+  <ion-item class="">
+    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="filterItems()"></ion-searchbar>
+  </ion-item>
+  <ion-item class="">
+    <ion-segment size="small" mode="ios" [(ngModel)]="searchType" (ionChange)="filterItems()">
+      <ion-segment-button value="in">
+        <ion-label color="success">In</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="all">
+        <ion-label>All</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="out">
+        <ion-label color="danger">Out</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-item>
+</ion-list>
+
+<ion-list lines="full">
+  <ion-item *ngFor="let student of filteredStudents">
+    <ion-label>{{ student.name }}</ion-label>
+    <ng-container *ngIf="isStudentClass(student.id); then thenTemplate; else elseTemplate"></ng-container>
+    <ng-template #thenTemplate>
+      <ion-button color="danger" slot="end" fill="clear" size="small" (click)="unRegisterStudent(student.id)">
+        <ion-icon name="exit-outline"></ion-icon>
+      </ion-button>
+    </ng-template>
+    <ng-template #elseTemplate>
+      <ion-button color="success" slot="end" fill="clear" size="small" (click)="registerStudent(student.id)">
+        <ion-icon name="enter-outline"></ion-icon>
+      </ion-button>
+    </ng-template>
+  </ion-item>
+</ion-list>

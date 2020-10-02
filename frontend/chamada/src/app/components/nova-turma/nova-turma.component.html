@@ -1,8 +1,8 @@
 <mat-toolbar class="toolbar" color="primary">
-  <a [routerLink]="['/turmas']" mat-icon-button aria-label="Example icon-button with a menu">
+  <a [routerLink]="['/courses']" mat-icon-button aria-label="Example icon-button with a menu">
     <mat-icon>arrow_back</mat-icon>
   </a>
-  <span>Nova Turma</span>
+  <span>Nova Course</span>
 </mat-toolbar>
 
 <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
@@ -11,8 +11,8 @@
 <div class="content">
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     <mat-form-field [floatLabel]="floatLabel">
-      <mat-label>Nome da turma</mat-label>
-      <input matInput placeholder="Turma C" formControlName="nomeTurma" required>
+      <mat-label>Nome da course</mat-label>
+      <input matInput placeholder="Course C" formControlName="nomeCourse" required>
     </mat-form-field>
     <div>
       <button type="submit" mat-raised-button color="primary" >Criar</button>

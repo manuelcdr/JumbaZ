@@ -14,37 +14,39 @@ namespace Chamada.Services.Api.Controllers
         private readonly IGenericRepositoryRead repositoryRead;
         private readonly IGenericDomainService service;
         private readonly IMapper mapper;
-        //private readonly IUnitOfWork uoW;
+        public readonly Typer _typer;
 
         public TurmasController(
           IGenericRepositoryRead repositoryRead,
           IGenericDomainService service,
-          IMapper mapper)
+          IMapper mapper,
+          Typer typer)
           : base()
         {
             this.repositoryRead = repositoryRead;
             this.service = service;
             this.mapper = mapper;
+            this._typer = typer;
         }
 
         [HttpGet("turma/{id}")]
         public IActionResult Get(string id)
         {
-            Typer.SetCurrentTyper(typeof(Turma));
+            _typer.SetCurrentTyper(typeof(Turma));
             var turma = repositoryRead.GetSingle(id) as Turma;
             if (turma == null)
                 return NotFound(id);
 
-            Typer.SetCurrentTyper(typeof(Aluno));
+            _typer.SetCurrentTyper(typeof(Aluno));
             var alunos = repositoryRead.Search<Aluno>(x => x.TurmaId == id);
             turma.SetAlunos(alunos);
 
-            Typer.SetCurrentTyper(typer: typeof(Domain.Entities.Chamada));
+            _typer.SetCurrentTyper(typer: typeof(Domain.Entities.Chamada));
             var chamadas = repositoryRead.Search<Domain.Entities.Chamada>(x => x.TurmaId == id);
             turma.SetChamadas(chamadas);
 
-            Typer.SetCurrentTyper(typeof(Turma));
-            var tipoModelTurma = Typer.GetRefTyper("ViewModel", TyperAction.GetSingle);
+            _typer.SetCurrentTyper(typeof(Turma));
+            var tipoModelTurma = _typer.GetRefTyper("ViewModel", TyperAction.GetSingle);
             var model = mapper.Map(turma, typeof(Turma), tipoModelTurma);
 
             return ResponseApi(model);

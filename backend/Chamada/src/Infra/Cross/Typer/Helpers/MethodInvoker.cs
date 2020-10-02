@@ -10,8 +10,8 @@ namespace TyperCore.Helpers
     {
       var bindingFlags = @private ? BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.InvokeMethod : BindingFlags.Public | BindingFlags.InvokeMethod;
       var types = parameters?.Select(x => x.GetType()).ToArray() ?? Type.EmptyTypes;
-      //var method = objCaller.GetType().GetMethod(methodName, bindingFlags, null, types, null);
-      var method = objCaller.GetType().GetMethods(bindingFlags).Where(x => x.IsGenericMethod).FirstOrDefault();
+      var method = objCaller.GetType().GetMethod(methodName);
+      //var method = objCaller.GetType().GetMethods(bindingFlags).Where(x => x.IsGenericMethod).FirstOrDefault();
       var genericMethod = method.MakeGenericMethod(genericTypes);
 
       var objReturn = genericMethod.Invoke(objCaller, parameters);

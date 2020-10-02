@@ -11,42 +11,49 @@ using TyperCore;
 
 namespace Chamada.Infra.Data
 {
-   public abstract class RepositoryBase
-   {
-      protected readonly IMongoDatabase MongoDB = MongoConfiguration.MongoDB;
+    public abstract class RepositoryBase
+    {
+        private readonly Typer _typer;
+        protected readonly IMongoDatabase MongoDB = MongoConfiguration.MongoDB;
 
-      protected IMongoCollection<T> GetCollection<T>()
-      {
-         var collection = MongoDB.GetCollection<T>(Typer.CurrentTyperName);
-         return collection;
-      }
+        public RepositoryBase(Typer typer)
+        {
+            this._typer = typer;
+        }
 
-      protected IMongoCollection<T> GetCollection<T>(T entidadeReferencia)
-      {
-         var collection = GetCollection<T>();
-         return collection;
-      }
 
-      protected FilterDefinition<T> GetFilterIdDefinition<T>(string id)
-      {
-         FilterDefinition<T> filter = $"{{_id: '{id}'}}";
-         return filter;
-      }
+        protected IMongoCollection<T> GetCollection<T>()
+        {
+            var collection = MongoDB.GetCollection<T>(_typer.CurrentTyperName);
+            return collection;
+        }
 
-      protected FilterDefinition<T> GetFilterIdDefinition<T>(string id, T entidadeReferencia)
-      {
-         return GetFilterIdDefinition<T>(id);
-      }
+        protected IMongoCollection<T> GetCollection<T>(T entidadeReferencia)
+        {
+            var collection = GetCollection<T>();
+            return collection;
+        }
 
-      protected FilterDefinition<T> GetFilterDefinition<T>(T entidadeReferencia, string filter = null)
-      {
-         if (string.IsNullOrEmpty(filter))
-            return Builders<T>.Filter.Empty;
+        protected FilterDefinition<T> GetFilterIdDefinition<T>(string id)
+        {
+            FilterDefinition<T> filter = $"{{_id: '{id}'}}";
+            return filter;
+        }
 
-         return Builders<T>.Filter.Text(filter);
-      }
+        protected FilterDefinition<T> GetFilterIdDefinition<T>(string id, T entidadeReferencia)
+        {
+            return GetFilterIdDefinition<T>(id);
+        }
 
-      public RepositoryBase() { }
+        protected FilterDefinition<T> GetFilterDefinition<T>(T entidadeReferencia, string filter = null)
+        {
+            if (string.IsNullOrEmpty(filter))
+                return Builders<T>.Filter.Empty;
 
-   }
+            return Builders<T>.Filter.Text(filter);
+        }
+
+        public RepositoryBase() { }
+
+    }
 }

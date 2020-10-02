@@ -1,6 +1,6 @@
 <div class="content">
   <!-- <section class="field">
-      <button class="acoes" [routerLink]="[ '/turma/chamada']" mat-raised-button color="primary">Fazer chamada!</button>
+      <button class="acoes" [routerLink]="[ '/course/chamada']" mat-raised-button color="primary">Fazer chamada!</button>
     </section> -->
   <section class="field">
     <a [routerLink]="['chamada']" class="acoes" mat-raised-button color="primary">Marcar presentes</a>
@@ -37,7 +37,7 @@
       <mat-divider></mat-divider>
     </mat-list>
   </mat-expansion-panel>
-  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+  <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
         Recentes

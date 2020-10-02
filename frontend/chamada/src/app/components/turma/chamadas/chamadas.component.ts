@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Turma } from 'src/app/models/Turma';
+import { Course } from 'src/app/models/Course';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -9,12 +9,12 @@ import { StoreService } from 'src/app/services/store.service';
 })
 export class ChamadasComponent implements OnInit {
 
-  turma: Turma;
+  course: Course;
 
   constructor(private _storeService: StoreService) { }
 
   ngOnInit() {
-    this.turma = this._storeService.turma;
+    this.course = this._storeService.course;
   }
 
 }

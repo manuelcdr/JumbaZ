@@ -1,0 +1,63 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title color="tertiary">Home page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+</ion-content>
+
+<ion-footer>
+  <ion-buttons>
+    <ion-button routerLink="/courses">Courses</ion-button>
+    <ion-button routerLink="/students">Students</ion-button>
+  </ion-buttons>
+</ion-footer> -->
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title color="secondary">JumbaZ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  <ion-slides #slides (ionSlideTouchEnd)="updateSegment()" [options]="slideOpts">
+    <ion-slide>
+      
+      <app-courses-slide #coursesComponent></app-courses-slide>
+
+      <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button routerLink="/courses/new" size="small">
+          <ion-icon size="small" name="add-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+    </ion-slide>
+    <ion-slide>
+      
+      <app-students-slide #studentsComponent></app-students-slide>
+      
+      <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button routerLink="/students/new" size="small">
+          <ion-icon size="small" name="add-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>
+
+<ion-footer mode="md">
+  <ion-segment [(ngModel)]="segment" (ionChange)="updateSlide()">
+    <ion-segment-button value="courses">
+      <ion-icon name="albums-outline"></ion-icon>
+      <ion-label>Courses</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="students">
+      <ion-icon name="people-outline"></ion-icon>
+      <ion-label size="small">Students</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-footer>

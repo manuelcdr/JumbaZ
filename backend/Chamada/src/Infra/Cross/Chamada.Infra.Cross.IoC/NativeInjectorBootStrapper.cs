@@ -1,11 +1,12 @@
-using AutoMapper;
 using Chamada.Abstractions.Services;
 using Chamada.Domain.Abstractions.Repositories;
 using Chamada.Domain.Services;
 using Chamada.Domain.Validations;
 using Chamada.Infra.Cross.Helpers;
 using Chamada.Infra.Data;
+using Chamada.Infra.Data.SqlServer;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Chamada.Infra.Cross.IoC
@@ -15,18 +16,25 @@ namespace Chamada.Infra.Cross.IoC
         public static void RegisterServices(IServiceCollection services)
         {
             // ASPNET
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddSingleton<ServiceBuilder>();
+            services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<ServiceBuilder>();
             //services.AddSingleton<MapperConfiguration>(); // mudei 
-            services.AddSingleton(MongoConfiguration.MongoDB);
+            //services.AddSingleton(MongoConfiguration.MongoDB);
             //services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
-            services.AddScoped<IGenericDomainService, GenericService>();
+
 
             // Contexts
+            services.AddDbContext<SqlServerContext>(opt => opt.UseSqlServer(""));
+            services.AddScoped<DbContext, SqlServerContext>();
+
+
+            // Services
+            services.AddScoped<IGenericDomainService, GenericDomainService>();
+
+            // Validations
             services.AddScoped<TurmaUpInsertValidation>();
 
-            // Repositorios de Juridico
-            //services.AddScoped<IUnitOfWork, UnitOfWork>();
+            // Repositories
             services.AddScoped<IGenericRepository, GenericRepository>();
             services.AddScoped<IGenericRepositoryRead, GenericRepository>();
 
