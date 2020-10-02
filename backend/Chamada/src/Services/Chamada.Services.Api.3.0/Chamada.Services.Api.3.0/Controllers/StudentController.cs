@@ -13,12 +13,10 @@ namespace Chamada.Services.Api30.Controllers
     [Route("api/students")]
     public class StudentController : ControllerBase
     {
-        private readonly SqlServerGenericRepository repository;
         private readonly DataContext context;
 
-        public StudentController(SqlServerGenericRepository repository, DataContext context)
+        public StudentController(DataContext context)
         {
-            this.repository = repository;
             this.context = context;
         }
 

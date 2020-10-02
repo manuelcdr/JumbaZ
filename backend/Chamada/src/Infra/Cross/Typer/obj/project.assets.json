@@ -3919,11 +3919,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj",
+      "projectUniqueName": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj",
       "projectName": "TyperCore",
-      "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj",
+      "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj",
       "packagesPath": "C:\\Users\\manue\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\obj\\",
+      "outputPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "c:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

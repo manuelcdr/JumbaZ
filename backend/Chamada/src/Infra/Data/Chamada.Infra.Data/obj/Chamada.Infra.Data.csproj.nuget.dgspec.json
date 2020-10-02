@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data\\Chamada.Infra.Data.csproj": {}
+    "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data\\Chamada.Infra.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Domain\\Chamada.Domain\\Chamada.Domain.csproj": {
+    "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Domain\\Chamada.Domain\\Chamada.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Domain\\Chamada.Domain\\Chamada.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Domain\\Chamada.Domain\\Chamada.Domain.csproj",
         "projectName": "Chamada.Domain",
-        "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Domain\\Chamada.Domain\\Chamada.Domain.csproj",
+        "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Domain\\Chamada.Domain\\Chamada.Domain.csproj",
         "packagesPath": "C:\\Users\\manue\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Domain\\Chamada.Domain\\obj\\",
+        "outputPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Domain\\Chamada.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "c:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,11 +30,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj": {
-                "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj"
+              "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj": {
+                "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj"
               },
-              "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj": {
-                "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj"
+              "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj": {
+                "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj"
               }
             }
           }
@@ -72,14 +72,14 @@
         }
       }
     },
-    "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj": {
+    "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj",
+        "projectUniqueName": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj",
         "projectName": "Chamada.Infra.Cross.Helpers",
-        "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj",
+        "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj",
         "packagesPath": "C:\\Users\\manue\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\obj\\",
+        "outputPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "c:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -133,14 +133,14 @@
         }
       }
     },
-    "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj": {
+    "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj",
+        "projectUniqueName": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj",
         "projectName": "TyperCore",
-        "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj",
+        "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj",
         "packagesPath": "C:\\Users\\manue\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\obj\\",
+        "outputPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "c:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -210,14 +210,14 @@
         }
       }
     },
-    "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data\\Chamada.Infra.Data.csproj": {
+    "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data\\Chamada.Infra.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data\\Chamada.Infra.Data.csproj",
+        "projectUniqueName": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data\\Chamada.Infra.Data.csproj",
         "projectName": "Chamada.Infra.Data",
-        "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data\\Chamada.Infra.Data.csproj",
+        "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data\\Chamada.Infra.Data.csproj",
         "packagesPath": "C:\\Users\\manue\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data\\obj\\",
+        "outputPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "c:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -236,11 +236,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Domain\\Chamada.Domain\\Chamada.Domain.csproj": {
-                "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Domain\\Chamada.Domain\\Chamada.Domain.csproj"
+              "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Domain\\Chamada.Domain\\Chamada.Domain.csproj": {
+                "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Domain\\Chamada.Domain\\Chamada.Domain.csproj"
               },
-              "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj": {
-                "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj"
+              "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj": {
+                "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj"
               }
             }
           }

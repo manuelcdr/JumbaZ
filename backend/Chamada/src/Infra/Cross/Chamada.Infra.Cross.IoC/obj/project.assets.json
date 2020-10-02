@@ -8604,11 +8604,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.IoC\\Chamada.Infra.Cross.IoC.csproj",
+      "projectUniqueName": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.IoC\\Chamada.Infra.Cross.IoC.csproj",
       "projectName": "Chamada.Infra.Cross.IoC",
-      "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.IoC\\Chamada.Infra.Cross.IoC.csproj",
+      "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.IoC\\Chamada.Infra.Cross.IoC.csproj",
       "packagesPath": "C:\\Users\\manue\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.IoC\\obj\\",
+      "outputPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.IoC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "c:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -8627,20 +8627,20 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Domain\\Chamada.Domain\\Chamada.Domain.csproj": {
-              "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Domain\\Chamada.Domain\\Chamada.Domain.csproj"
+            "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Domain\\Chamada.Domain\\Chamada.Domain.csproj": {
+              "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Domain\\Chamada.Domain\\Chamada.Domain.csproj"
             },
-            "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj": {
-              "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj"
+            "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj": {
+              "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Chamada.Infra.Cross.Helpers\\Chamada.Infra.Cross.Helpers.csproj"
             },
-            "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj": {
-              "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj"
+            "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj": {
+              "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Cross\\Typer\\Typer.csproj"
             },
-            "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data.SqlServer\\Chamada.Infra.Data.SqlServer\\Chamada.Infra.Data.SqlServer.csproj": {
-              "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data.SqlServer\\Chamada.Infra.Data.SqlServer\\Chamada.Infra.Data.SqlServer.csproj"
+            "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data.SqlServer\\Chamada.Infra.Data.SqlServer\\Chamada.Infra.Data.SqlServer.csproj": {
+              "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data.SqlServer\\Chamada.Infra.Data.SqlServer\\Chamada.Infra.Data.SqlServer.csproj"
             },
-            "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data\\Chamada.Infra.Data.csproj": {
-              "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\chamada\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data\\Chamada.Infra.Data.csproj"
+            "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data\\Chamada.Infra.Data.csproj": {
+              "projectPath": "C:\\Users\\manue\\Documents\\Projetos\\SmartTime\\JumbaZ\\backend\\Chamada\\src\\Infra\\Data\\Chamada.Infra.Data\\Chamada.Infra.Data.csproj"
             }
           }
         }
