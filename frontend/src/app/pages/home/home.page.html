@@ -1,18 +1,3 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-title color="tertiary">Home page</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content fullscreen>
-</ion-content>
-
-<ion-footer>
-  <ion-buttons>
-    <ion-button routerLink="/courses">Courses</ion-button>
-    <ion-button routerLink="/students">Students</ion-button>
-  </ion-buttons>
-</ion-footer> -->
 
 <ion-header>
   <ion-toolbar color="primary">
@@ -23,19 +8,28 @@
 <ion-content fullscreen>
 
   <ion-slides #slides (ionSlideTouchEnd)="updateSegment()" [options]="slideOpts">
-    <ion-slide>
-      
-      <app-courses-slide #coursesComponent></app-courses-slide>
+    
+    <ion-slide #slidePacks>
+      <app-packs-slide #packsComponent></app-packs-slide>
 
       <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-        <ion-fab-button routerLink="/courses/new" size="small">
+        <ion-fab-button routerLink="/packs/new" size="small">
           <ion-icon size="small" name="add-outline"></ion-icon>
         </ion-fab-button>
       </ion-fab>
-
     </ion-slide>
-    <ion-slide>
+
+    <ion-slide #slideClasses>
+      <app-classes-slide #classesComponent></app-classes-slide>
       
+      <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button routerLink="/classes/new" size="small">
+          <ion-icon size="small" name="add-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-slide>
+
+    <ion-slide #slideStudents>
       <app-students-slide #studentsComponent></app-students-slide>
       
       <ion-fab vertical="bottom" horizontal="center" slot="fixed">
@@ -43,17 +37,21 @@
           <ion-icon size="small" name="add-outline"></ion-icon>
         </ion-fab-button>
       </ion-fab>
-
     </ion-slide>
+
   </ion-slides>
 
 </ion-content>
 
 <ion-footer mode="md">
   <ion-segment [(ngModel)]="segment" (ionChange)="updateSlide()">
-    <ion-segment-button value="courses">
+    <ion-segment-button value="packs">
       <ion-icon name="albums-outline"></ion-icon>
-      <ion-label>Courses</ion-label>
+      <ion-label>Packs</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="classes">
+      <ion-icon name="easel-outline"></ion-icon>
+      <ion-label>Classes</ion-label>
     </ion-segment-button>
     <ion-segment-button value="students">
       <ion-icon name="people-outline"></ion-icon>

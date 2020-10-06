@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CourseClassPageRoutingModule } from './course-class-routing.module';
+import { ClassPageRoutingModule } from './class-routing.module';
 
-import { CourseClassPage } from './course-class.page';
+import { ClassPage } from './class.page';
 import { ClassStudentsSlideComponent } from './slides/students/classStudents.slide.component';
 import { AttendanceListSlideComponent } from './slides/attendanceLists/attendanceLists.slide.component';
 
@@ -15,8 +15,8 @@ import { AttendanceListSlideComponent } from './slides/attendanceLists/attendanc
     CommonModule,
     FormsModule,
     IonicModule,
-    CourseClassPageRoutingModule
+    ClassPageRoutingModule
   ],
-  declarations: [CourseClassPage, ClassStudentsSlideComponent, AttendanceListSlideComponent]
+  declarations: [ClassPage, ClassStudentsSlideComponent, AttendanceListSlideComponent]
 })
-export class CourseClassPageModule {}
+export class ClassPageModule {}

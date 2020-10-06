@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CourseClass } from '../models/CourseClass';
+import { Class } from '../models/Class';
 import { StorageService } from './storage.service';
 
 @Injectable({
@@ -11,14 +11,14 @@ export class ClassesStorageService extends StorageService {
     super('classes');
   }
 
-  getByCourseId(courseId: string): CourseClass[] {
-    let all = this.getAll() as CourseClass[];
-    let models = all.filter(x  => x.courseId == courseId);
+  getByPackId(packId: string): Class[] {
+    let all = this.getAll() as Class[];
+    let models = all.filter(x  => x.packId == packId);
     return models;
   }
 
   updateRegisteredStudents(classId: string, studentsId: string[]) {
-    let model = this.getById(classId) as CourseClass;
+    let model = this.getById(classId) as Class;
     model.studentsId = studentsId;
     this.update(model);
   }

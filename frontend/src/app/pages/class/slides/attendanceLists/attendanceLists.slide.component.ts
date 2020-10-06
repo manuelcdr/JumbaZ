@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AttendanceList } from 'src/app/models/AttendanceList';
-import { CourseClass } from 'src/app/models/CourseClass';
+import { Class } from 'src/app/models/Class';
 import { AttendanceListStorageService } from 'src/app/services/attendance.storage.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { AttendanceListStorageService } from 'src/app/services/attendance.storag
 export class AttendanceListSlideComponent implements OnInit {
 
   @Input()
-  courseClass: CourseClass;
+  $class: Class;
 
   public models: AttendanceList[];
 
@@ -22,7 +22,7 @@ export class AttendanceListSlideComponent implements OnInit {
   }
 
   public updateSlide(): void {
-    this.models = this.storage.getByClassId(this.courseClass.id);
+    this.models = this.storage.getByClassId(this.$class.id);
   }
 
 }

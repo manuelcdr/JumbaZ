@@ -4,10 +4,10 @@ import { StorageService } from './storage.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CoursesStorageService extends StorageService {
+export class PacksStorageService extends StorageService {
 
   constructor() {
-    super('courses');
+    super('packs');
   }
 
 }

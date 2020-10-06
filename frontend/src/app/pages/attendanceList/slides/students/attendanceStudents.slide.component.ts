@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Student } from 'src/app/models/Student';
 import { StudentsStorageService } from 'src/app/services/students.storage.service';
-import { CourseClass } from 'src/app/models/CourseClass';
+import { Class } from 'src/app/models/Class';
 import { ClassesStorageService } from 'src/app/services/classes.storage.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { Attendance, AttendanceList } from 'src/app/models/AttendanceList';
@@ -18,7 +18,7 @@ export class AttendanceStudentsSlideComponent implements OnInit {
   attendanceList: AttendanceList;
 
   @Input()
-  courseClass: CourseClass;
+  $class: Class;
 
   attendanceListStudentsId: string[];
   attendances: Attendance[] = [];
@@ -32,7 +32,7 @@ export class AttendanceStudentsSlideComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.attendanceList);
-    console.log(this.courseClass);
+    console.log(this.$class);
     console.log(this.attendanceListStudentsId);
     console.log(this.attendances);
     console.log(this.init);
@@ -49,7 +49,7 @@ export class AttendanceStudentsSlideComponent implements OnInit {
   }
 
   generateAttendances() {
-    this.courseClass.students.forEach(student => {
+    this.$class.students.forEach(student => {
       let attendance = new Attendance();
       attendance.studentId = student.id;
       attendance.student = student;
@@ -59,7 +59,7 @@ export class AttendanceStudentsSlideComponent implements OnInit {
   }
 
   isAttendance(studentId: string) {
-    if (!this.courseClass.studentsId) return false;
+    if (!this.$class.studentsId) return false;
     if (!this.attendanceListStudentsId) return false;
 
     return this.attendanceListStudentsId.includes(studentId);

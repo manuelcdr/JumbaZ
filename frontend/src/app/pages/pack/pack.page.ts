@@ -2,23 +2,23 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { Guid } from 'guid-typescript';
-import { Course } from 'src/app/models/Course';
-import { CoursesStorageService } from 'src/app/services/courses.storage.service';
+import { Pack } from 'src/app/models/Pack';
+import { PacksStorageService } from 'src/app/services/packs.storage.service';
 import { ToastService } from 'src/app/services/toast.service';
-import { CourseClassesSlideComponent } from './slides/classesSlide/classes.slide.component';
+import { ClassesSlideComponent } from './slides/classesSlide/classes.slide.component';
 
 @Component({
-  selector: 'app-course',
-  templateUrl: './course.page.html',
-  styleUrls: ['./course.page.scss'],
+  selector: 'app-pack',
+  templateUrl: './pack.page.html',
+  styleUrls: ['./pack.page.scss'],
 })
-export class CoursePage implements OnInit {
+export class PackPage implements OnInit {
 
   @ViewChild(IonSlides, {static: true})
   private slides: IonSlides;
 
-  @ViewChild(CourseClassesSlideComponent)
-  private classesSlide: CourseClassesSlideComponent;
+  @ViewChild(ClassesSlideComponent)
+  private classesSlide: ClassesSlideComponent;
 
   slideOpts = {
     initialSlide: 1,
@@ -26,19 +26,19 @@ export class CoursePage implements OnInit {
   };
 
   segment: string;
-  slideOrder = ["course", "classes"];
+  slideOrder = ["pack", "classes"];
 
   _new: boolean;
-  _model: Course;
+  _model: Pack;
 
-  constructor(private route: ActivatedRoute, private storage: CoursesStorageService, private toast: ToastService) {
+  constructor(private route: ActivatedRoute, private storage: PacksStorageService, private toast: ToastService) {
     let id = this.route.snapshot.paramMap.get('id');
 
     if (id == 'new') {
       this.slideOpts.initialSlide = 0;
 
       this._new = true;
-      this._model = new Course();
+      this._model = new Pack();
       this._model.id = Guid.create().toString();
     } else {
       this._new = false;
@@ -55,10 +55,10 @@ export class CoursePage implements OnInit {
     if (this._new == true) {
       this.storage.add(this._model);
       this._new = false;
-      this.toast.presentToast('Course Added!')
+      this.toast.presentToast('Pack Added!')
     } else {
       this.storage.update(this._model);
-      this.toast.presentToast('Course Atualizado!')
+      this.toast.presentToast('Pack Atualizado!')
     }
   }
 

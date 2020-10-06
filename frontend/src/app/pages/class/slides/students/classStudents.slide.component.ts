@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Student } from 'src/app/models/Student';
 import { StudentsStorageService } from 'src/app/services/students.storage.service';
 import { first } from 'rxjs/operators';
-import { CourseClass } from 'src/app/models/CourseClass';
+import { Class } from 'src/app/models/Class';
 import { ClassesStorageService } from 'src/app/services/classes.storage.service';
 import { ToastService } from 'src/app/services/toast.service';
 
@@ -15,7 +15,7 @@ import { ToastService } from 'src/app/services/toast.service';
 export class ClassStudentsSlideComponent implements OnInit {
 
   @Input()
-  courseClass: CourseClass;
+  $class: Class;
 
   matriculedStudents: Student[];
 
@@ -34,9 +34,9 @@ export class ClassStudentsSlideComponent implements OnInit {
 
     this.studentsForSearch = this.studentsStorage.getAll();
     this.filteredStudents = this.studentsForSearch;
-    this.matriculedStudents = this.studentsStorage.getByArrayId(this.courseClass.studentsId);
+    this.matriculedStudents = this.studentsStorage.getByArrayId(this.$class.studentsId);
 
-    if (!this.courseClass.studentsId) this.courseClass.studentsId = [];
+    if (!this.$class.studentsId) this.$class.studentsId = [];
 
   }
 
@@ -64,20 +64,20 @@ export class ClassStudentsSlideComponent implements OnInit {
   }
 
   isStudentClass(id: string) {
-    if (!this.courseClass.studentsId) return false;
-    return this.courseClass.studentsId.includes(id);
+    if (!this.$class.studentsId) return false;
+    return this.$class.studentsId.includes(id);
   }
 
   registerStudent(studentId: string) {
-    this.courseClass.studentsId.push(studentId);
-    this.classStorage.updateRegisteredStudents(this.courseClass.id, this.courseClass.studentsId);
+    this.$class.studentsId.push(studentId);
+    this.classStorage.updateRegisteredStudents(this.$class.id, this.$class.studentsId);
     this.toast.presentToast('Student registered!')
   }
 
   unRegisterStudent(studentId: string) {
-    let index = this.courseClass.studentsId.findIndex(x => x === studentId);
-    this.courseClass.studentsId.splice(index, 1);
-    this.classStorage.updateRegisteredStudents(this.courseClass.id, this.courseClass.studentsId);
+    let index = this.$class.studentsId.findIndex(x => x === studentId);
+    this.$class.studentsId.splice(index, 1);
+    this.classStorage.updateRegisteredStudents(this.$class.id, this.$class.studentsId);
     this.toast.presentToast('Student unregistered!')
   }
 

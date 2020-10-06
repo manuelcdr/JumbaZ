@@ -1,51 +1,37 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IonSlides, ToastController } from '@ionic/angular';
 import { Guid } from 'guid-typescript';
-import { CourseClass } from 'src/app/models/CourseClass';
+import { Class } from 'src/app/models/Class';
 import { ClassesStorageService } from 'src/app/services/classes.storage.service';
 import { ToastService } from 'src/app/services/toast.service';
-import { AttendanceListPage } from '../attendanceList/attendanceList.page';
+import { PageWithSlides } from 'src/app/utils/PageWithSlides';
 import { AttendanceListSlideComponent } from './slides/attendanceLists/attendanceLists.slide.component';
 
 @Component({
-  selector: 'app-course-class',
-  templateUrl: './course-class.page.html',
-  styleUrls: ['./course-class.page.scss'],
+  selector: 'app-pack-class',
+  templateUrl: './class.page.html',
+  styleUrls: ['./class.page.scss'],
 })
-export class CourseClassPage implements OnInit {
-
-  @ViewChild(IonSlides, { static: true })
-  private slides: IonSlides;
+export class ClassPage extends PageWithSlides implements OnInit {
 
   @ViewChild(AttendanceListSlideComponent)
   private attendanceListSlide: AttendanceListSlideComponent;
 
   _new: boolean;
-  _model: CourseClass;
-
-  slideOpts = {
-    initialSlide: 1,
-    speed: 400
-  };
-
-  segment: string;
-
-  slideOrder = ["class", "attendanceLists", "students"];
+  _model: Class;
 
   constructor(private route: ActivatedRoute, private storage: ClassesStorageService, private toast: ToastService) {
+    super(["class", "attendanceLists", "students"])
     let id = this.route.snapshot.paramMap.get('id');
-    let courseId = this.route.snapshot.paramMap.get('courseId');
+    let packId = this.route.snapshot.paramMap.get('packId');
 
     if (id == 'new') {
-
-      
       this.slideOpts.initialSlide = 0;
 
       this._new = true;
-      this._model = new CourseClass();
+      this._model = new Class();
       this._model.id = Guid.create().toString();
-      this._model.courseId = courseId;
+      this._model.packId = packId;
     } else {
       this._new = false;
       this._model = this.storage.getById(id);
@@ -65,17 +51,6 @@ export class CourseClassPage implements OnInit {
       this.storage.update(this._model);
       this.toast.presentToast('Class Updated!')
     }
-  }
-
-  updateSlide() {
-    let index = this.slideOrder.indexOf(this.segment);
-    this.slides.slideTo(index);
-  }
-
-  updateSegment() {
-    this.slides.getActiveIndex().then(index => {
-      this.segment = this.slideOrder[index];
-    });
   }
 
   ionViewWillEnter(): void {

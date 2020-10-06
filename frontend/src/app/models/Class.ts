@@ -1,10 +1,10 @@
 import { AttendanceList } from './AttendanceList';
 import { Student } from './Student';
 
-export class CourseClass {
+export class Class {
   public id: string;
   public name: string;
-  public courseId: string;
+  public packId: string;
   public date: Date;
   public description: string;
   

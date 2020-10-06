@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CourseClass } from 'src/app/models/CourseClass';
+import { Class } from 'src/app/models/Class';
 import { ClassesStorageService } from 'src/app/services/classes.storage.service';
 
 @Component({
@@ -7,21 +7,22 @@ import { ClassesStorageService } from 'src/app/services/classes.storage.service'
   templateUrl: './classes.slide.component.html',
   styleUrls: ['./classes.slide.component.scss'],
 })
-export class CourseClassesSlideComponent implements OnInit {
+export class ClassesSlideComponent implements OnInit {
 
   @Input()
-  courseId: string;
+  packId: string;
 
-  models: CourseClass[];
+  models: Class[];
 
   constructor(private storage: ClassesStorageService) { }
+  
 
   ngOnInit(): void {
     this.updateSlide();
   }
 
   public updateSlide(): void {
-    this.models = this.storage.getByCourseId(this.courseId);
+    this.models = this.storage.getByPackId(this.packId);
   }
 
 }

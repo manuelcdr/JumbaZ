@@ -5,8 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { CoursesSlideComponent } from './slides/courses/courses.slide.component';
+import { PacksSlideComponent } from './slides/packs/packs.slide.component';
 import { StudentsSlideComponent } from './slides/students/students.slide.component';
+import { ClassesSlideComponent } from './slides/classes/classes.slide.component';
 
 
 @NgModule({
@@ -16,6 +17,6 @@ import { StudentsSlideComponent } from './slides/students/students.slide.compone
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, CoursesSlideComponent, StudentsSlideComponent ]
+  declarations: [HomePage, PacksSlideComponent, ClassesSlideComponent, StudentsSlideComponent ]
 })
 export class HomePageModule {}

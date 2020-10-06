@@ -2,9 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { Guid } from 'guid-typescript';
-import { Timestamp } from 'rxjs/internal/operators/timestamp';
-import { Attendance, AttendanceList } from 'src/app/models/AttendanceList';
-import { CourseClass } from 'src/app/models/CourseClass';
+import { AttendanceList } from 'src/app/models/AttendanceList';
+import { Class } from 'src/app/models/Class';
 import { AttendanceListStorageService } from 'src/app/services/attendance.storage.service';
 import { ClassesStorageService } from 'src/app/services/classes.storage.service';
 import { StudentsStorageService } from 'src/app/services/students.storage.service';
@@ -27,7 +26,7 @@ export class AttendanceListPage implements OnInit {
   _new: boolean;
   _model: AttendanceList;
 
-  courseClass: CourseClass;
+  $class: Class;
 
   slideOpts = {
     initialSlide: 1,
@@ -45,11 +44,11 @@ export class AttendanceListPage implements OnInit {
     private tosat: ToastService) {
 
     let id = this.route.snapshot.paramMap.get('id');
-    let courseId = this.route.snapshot.paramMap.get('courseId');
+    let packId = this.route.snapshot.paramMap.get('packId');
     let classId = this.route.snapshot.paramMap.get('classId');
 
-    this.courseClass = classStorage.getById(classId);
-    this.courseClass.students = studentsStorage.getByArrayId(this.courseClass.studentsId);
+    this.$class = classStorage.getById(classId);
+    this.$class.students = studentsStorage.getByArrayId(this.$class.studentsId);
     
     if (id == 'new') {
       this.slideOpts.initialSlide = 0;

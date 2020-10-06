@@ -1,10 +1,10 @@
-import { Course } from './Course';
+import { Pack } from './Pack';
 import { Student } from './Student';
 
 export class User {
-  public coursesId: string[];
+  public packsId: string[];
   public studentsId: string[];
 
-  public courses: Course[];
+  public packs: Pack[];
   public students: Student[];
 }

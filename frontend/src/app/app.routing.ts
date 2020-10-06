@@ -11,22 +11,18 @@ const routes: Routes = [
     loadChildren: () => import('./pages/student/student.module').then( m => m.StudentPageModule)
   },
   {
-    path: 'courses/:id',
-    loadChildren: () => import('./pages/course/course.module').then( m => m.CoursePageModule),
+    path: 'packs/:id',
+    loadChildren: () => import('./pages/pack/pack.module').then( m => m.PackPageModule),
   },
   {
-    path: 'courses/:courseId/classes/:id',
-    loadChildren: () => import('./pages/course-class/course-class.module').then( m => m.CourseClassPageModule)
+    path: 'packs/:packId/classes/:id',
+    loadChildren: () => import('./pages/class/class.module').then( m => m.ClassPageModule)
   },
   {
-    path: 'courses/:courseId/classes/:classId/attendanceList/:id',
+    path: 'packs/:packId/classes/:classId/attendanceList/:id',
     loadChildren: () => import('./pages/attendanceList/attendanceList.module').then( m => m.AttendanceListPageModule)
   },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
+  { path: '',   redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 
 ];
