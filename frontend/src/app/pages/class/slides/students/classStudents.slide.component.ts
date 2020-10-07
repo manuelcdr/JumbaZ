@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Student } from 'src/app/models/Student';
 import { StudentsStorageService } from 'src/app/services/students.storage.service';
 import { first } from 'rxjs/operators';
-import { Class } from 'src/app/models/Class';
-import { ClassesStorageService } from 'src/app/services/classes.storage.service';
+import { MasterClass } from 'src/app/models/MasterClass';
+import { MasterClassesStorageService } from 'src/app/services/masterClasses.storage.service';
 import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
@@ -15,7 +15,7 @@ import { ToastService } from 'src/app/services/toast.service';
 export class ClassStudentsSlideComponent implements OnInit {
 
   @Input()
-  $class: Class;
+  masterClass: MasterClass;
 
   matriculedStudents: Student[];
 
@@ -27,16 +27,16 @@ export class ClassStudentsSlideComponent implements OnInit {
   searchType: string = "all";
   //------------------------------
 
-  constructor(private studentsStorage: StudentsStorageService, private classStorage: ClassesStorageService, private toast: ToastService) {
+  constructor(private studentsStorage: StudentsStorageService, private classStorage: MasterClassesStorageService, private toast: ToastService) {
   }
 
   ngOnInit() {
 
     this.studentsForSearch = this.studentsStorage.getAll();
     this.filteredStudents = this.studentsForSearch;
-    this.matriculedStudents = this.studentsStorage.getByArrayId(this.$class.studentsId);
+    this.matriculedStudents = this.studentsStorage.getByArrayId(this.masterClass.studentsId);
 
-    if (!this.$class.studentsId) this.$class.studentsId = [];
+    if (!this.masterClass.studentsId) this.masterClass.studentsId = [];
 
   }
 
@@ -64,20 +64,20 @@ export class ClassStudentsSlideComponent implements OnInit {
   }
 
   isStudentClass(id: string) {
-    if (!this.$class.studentsId) return false;
-    return this.$class.studentsId.includes(id);
+    if (!this.masterClass.studentsId) return false;
+    return this.masterClass.studentsId.includes(id);
   }
 
   registerStudent(studentId: string) {
-    this.$class.studentsId.push(studentId);
-    this.classStorage.updateRegisteredStudents(this.$class.id, this.$class.studentsId);
+    this.masterClass.studentsId.push(studentId);
+    this.classStorage.updateRegisteredStudents(this.masterClass.id, this.masterClass.studentsId);
     this.toast.presentToast('Student registered!')
   }
 
   unRegisterStudent(studentId: string) {
-    let index = this.$class.studentsId.findIndex(x => x === studentId);
-    this.$class.studentsId.splice(index, 1);
-    this.classStorage.updateRegisteredStudents(this.$class.id, this.$class.studentsId);
+    let index = this.masterClass.studentsId.findIndex(x => x === studentId);
+    this.masterClass.studentsId.splice(index, 1);
+    this.classStorage.updateRegisteredStudents(this.masterClass.id, this.masterClass.studentsId);
     this.toast.presentToast('Student unregistered!')
   }
 

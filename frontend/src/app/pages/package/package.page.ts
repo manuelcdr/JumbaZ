@@ -2,17 +2,17 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { Guid } from 'guid-typescript';
-import { Pack } from 'src/app/models/Pack';
-import { PacksStorageService } from 'src/app/services/packs.storage.service';
+import { Package } from 'src/app/models/Package';
+import { PackagesStorageService } from 'src/app/services/packages.storage.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { ClassesSlideComponent } from './slides/classesSlide/classes.slide.component';
 
 @Component({
-  selector: 'app-pack',
-  templateUrl: './pack.page.html',
-  styleUrls: ['./pack.page.scss'],
+  selector: 'app-package',
+  templateUrl: './package.page.html',
+  styleUrls: ['./package.page.scss'],
 })
-export class PackPage implements OnInit {
+export class PackagePage implements OnInit {
 
   @ViewChild(IonSlides, {static: true})
   private slides: IonSlides;
@@ -26,19 +26,19 @@ export class PackPage implements OnInit {
   };
 
   segment: string;
-  slideOrder = ["pack", "classes"];
+  slideOrder = ["package", "classes"];
 
   _new: boolean;
-  _model: Pack;
+  _model: Package;
 
-  constructor(private route: ActivatedRoute, private storage: PacksStorageService, private toast: ToastService) {
+  constructor(private route: ActivatedRoute, private storage: PackagesStorageService, private toast: ToastService) {
     let id = this.route.snapshot.paramMap.get('id');
 
     if (id == 'new') {
       this.slideOpts.initialSlide = 0;
 
       this._new = true;
-      this._model = new Pack();
+      this._model = new Package();
       this._model.id = Guid.create().toString();
     } else {
       this._new = false;
@@ -55,10 +55,10 @@ export class PackPage implements OnInit {
     if (this._new == true) {
       this.storage.add(this._model);
       this._new = false;
-      this.toast.presentToast('Pack Added!')
+      this.toast.presentToast('Package Added!')
     } else {
       this.storage.update(this._model);
-      this.toast.presentToast('Pack Atualizado!')
+      this.toast.presentToast('Package Atualizado!')
     }
   }
 

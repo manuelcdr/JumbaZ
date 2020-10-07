@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
 import { PageWithSlides } from 'src/app/utils/PageWithSlides';
-import { PacksSlideComponent } from './slides/packs/packs.slide.component';
+import { ClassesSlideComponent } from './slides/classes/classes.slide.component';
+import { PackagesSlideComponent } from './slides/packages/packages.slide.component';
 import { StudentsSlideComponent } from './slides/students/students.slide.component';
 
 @Component({
@@ -11,22 +11,22 @@ import { StudentsSlideComponent } from './slides/students/students.slide.compone
 })
 export class HomePage extends PageWithSlides {
 
-  @ViewChild(PacksSlideComponent)
-  private packsComponent: PacksSlideComponent;
+  @ViewChild(PackagesSlideComponent)
+  private packagesComponent: PackagesSlideComponent;
+
+  @ViewChild(ClassesSlideComponent)
+  private classesComponent: ClassesSlideComponent;
 
   @ViewChild(StudentsSlideComponent)
   private studentsComponent: StudentsSlideComponent;
 
-  packsCount: number = 0;
-
   constructor() {
-    super(["packs", "classes", "students"]);
+    super(["packages", "classes", "students"]);
   }
 
-
   ionViewWillEnter(): void {
-    this.packsComponent.updateSlide();
+    this.packagesComponent.updateSlide();
     this.studentsComponent.updateSlide();
-    this.packsCount = this.packsComponent.packs.length;
+    this.classesComponent.updateSlide();
   }
 }

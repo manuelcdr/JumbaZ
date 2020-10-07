@@ -1,0 +1,11 @@
+
+<ion-list mode="ios" lines="full">
+  <ion-item *ngIf="packages.length == 0" class="ion-text-center">
+    <ion-label color="medium">No items</ion-label>
+  </ion-item>
+
+  <ion-item *ngFor="let package of packages" routerLink="/packages/{{package.id}}">
+    <ion-label>{{ package.name }}</ion-label>
+  </ion-item>
+</ion-list>
+

@@ -9,11 +9,12 @@
 
   <ion-slides #slides (ionSlideTouchEnd)="updateSegment()" [options]="slideOpts">
     
-    <ion-slide #slidePacks>
-      <app-packs-slide #packsComponent></app-packs-slide>
+    <ion-slide #slidePackages>
+
+      <app-packages-slide #packagesComponent></app-packages-slide>
 
       <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-        <ion-fab-button routerLink="/packs/new" size="small">
+        <ion-fab-button routerLink="/packages/new" size="small">
           <ion-icon size="small" name="add-outline"></ion-icon>
         </ion-fab-button>
       </ion-fab>
@@ -45,9 +46,9 @@
 
 <ion-footer mode="md">
   <ion-segment [(ngModel)]="segment" (ionChange)="updateSlide()">
-    <ion-segment-button value="packs">
+    <ion-segment-button value="packages">
       <ion-icon name="albums-outline"></ion-icon>
-      <ion-label>Packs</ion-label>
+      <ion-label>Packages</ion-label>
     </ion-segment-button>
     <ion-segment-button value="classes">
       <ion-icon name="easel-outline"></ion-icon>

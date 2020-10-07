@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Class } from 'src/app/models/Class';
-import { ClassesStorageService } from 'src/app/services/classes.storage.service';
+import { MasterClass } from 'src/app/models/MasterClass';
+import { MasterClassesStorageService } from 'src/app/services/masterClasses.storage.service';
 
 @Component({
   selector: 'app-classes-slide',
@@ -10,18 +10,18 @@ import { ClassesStorageService } from 'src/app/services/classes.storage.service'
 export class ClassesSlideComponent implements OnInit {
 
   @Input()
-  packId: string;
+  packageId: string;
  
-  classes: Class[];
+  masterClasses: MasterClass[];
 
-  constructor(private storage: ClassesStorageService) { }
+  constructor(private storage: MasterClassesStorageService) { }
 
   ngOnInit(): void {
     this.updateSlide();
   }
 
   public updateSlide(): void {
-    this.classes = this.storage.getByPackId(this.packId);
+    this.masterClasses = this.storage.getByPackageId(this.packageId);
   }
 
 }

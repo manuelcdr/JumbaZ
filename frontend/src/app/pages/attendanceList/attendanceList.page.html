@@ -36,7 +36,7 @@
   </ion-slide>
 
   <ion-slide #attendanceListSlide>
-    <app-attendance-students-slide [attendanceList]="_model" [$class]="$class" ></app-attendance-students-slide>
+    <app-attendance-students-slide [attendanceList]="_model" [masterClass]="masterClass" ></app-attendance-students-slide>
   </ion-slide>
 
 </ion-slides>
@@ -46,7 +46,7 @@
         <ion-label>Students</ion-label>
       </ion-item-divider>
 
-      <ion-item *ngFor="let student of packClass.students; let i = index">
+      <ion-item *ngFor="let student of packageClass.students; let i = index">
         <ion-label>{{ student.name }}</ion-label>
         <ion-checkbox slot="end" (ionChange)="changeAttendance(i, student.id)" [(ngModel)]="attendances[i].isAttendant">
         </ion-checkbox>

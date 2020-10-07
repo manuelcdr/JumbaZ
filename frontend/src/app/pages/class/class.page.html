@@ -32,7 +32,7 @@
     </ion-slide>
 
     <ion-slide #attendanceSlide>
-      <app-attendanceLists-slide [$class]="_model"></app-attendanceLists-slide>
+      <app-attendanceLists-slide [masterClass]="_model"></app-attendanceLists-slide>
 
       <ion-fab vertical="bottom" horizontal="center">
         <ion-fab-button routerLink="attendanceList/new" size="small">
@@ -43,7 +43,7 @@
     </ion-slide>
 
     <ion-slide #studentsSlide>
-      <app-students-slide [$class]="_model"></app-students-slide>
+      <app-students-slide [masterClass]="_model"></app-students-slide>
     </ion-slide>
 
   </ion-slides>

@@ -1,6 +1,6 @@
 export class Shop {
   public id: String;
-  public packId: String;
+  public packageId: String;
   public studentId: String;
 
   public remainingValue: Number;

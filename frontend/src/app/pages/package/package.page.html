@@ -3,8 +3,8 @@
     <ion-buttons slot="start">
       <ion-back-button color="secondary"></ion-back-button>
     </ion-buttons>
-    <ion-title *ngIf="segment == 'pack'" color="tertiary">{{_new && !_model.name ? 'New Pack' : _model.name}}</ion-title>
-    <ion-title *ngIf="segment != 'pack'" color="tertiary">{{ segment | titlecase }}</ion-title>
+    <ion-title *ngIf="segment == 'package'" color="tertiary">{{_new && !_model.name ? 'New Package' : _model.name}}</ion-title>
+    <ion-title *ngIf="segment != 'package'" color="tertiary">{{ segment | titlecase }}</ion-title>
   </ion-toolbar>
 </ion-header> -->
 
@@ -17,7 +17,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title class="ion-text-nowrap" color="secondary">
-      {{_new && !_model.name ? 'New' : _model.name}} <small>pack</small>
+      {{_new && !_model.name ? 'New' : _model.name}} <small>package</small>
     </ion-title>
 
     <!-- <ion-buttons slot="end">
@@ -53,7 +53,7 @@
 
     <ion-slide #classSlide>
 
-      <app-classes-slide #classesSlide [packId]="_model.id"></app-classes-slide>
+      <app-classes-slide #classesSlide [packageId]="_model.id"></app-classes-slide>
 
       <ion-fab vertical="bottom" horizontal="center">
         <ion-fab-button routerLink="classes/new" size="small">
@@ -73,7 +73,7 @@
       <ion-icon name="home-outline"></ion-icon>
       <ion-label>Home</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="pack">
+    <ion-segment-button value="package">
       <ion-icon name="create-outline"></ion-icon>
       <ion-label>Edit</ion-label>
     </ion-segment-button>

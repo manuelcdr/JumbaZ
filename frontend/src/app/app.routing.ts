@@ -11,15 +11,19 @@ const routes: Routes = [
     loadChildren: () => import('./pages/student/student.module').then( m => m.StudentPageModule)
   },
   {
-    path: 'packs/:id',
-    loadChildren: () => import('./pages/pack/pack.module').then( m => m.PackPageModule),
-  },
-  {
-    path: 'packs/:packId/classes/:id',
+    path: 'classes/:id',
     loadChildren: () => import('./pages/class/class.module').then( m => m.ClassPageModule)
   },
   {
-    path: 'packs/:packId/classes/:classId/attendanceList/:id',
+    path: 'packages/:id',
+    loadChildren: () => import('./pages/package/package.module').then( m => m.PackagePageModule),
+  },
+  {
+    path: 'packages/:packageId/classes/:id',
+    loadChildren: () => import('./pages/class/class.module').then( m => m.ClassPageModule)
+  },
+  {
+    path: 'packages/:packageId/classes/:classId/attendanceList/:id',
     loadChildren: () => import('./pages/attendanceList/attendanceList.module').then( m => m.AttendanceListPageModule)
   },
   { path: '',   redirectTo: 'home', pathMatch: 'full' },

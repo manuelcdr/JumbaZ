@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { PackPage } from './pack.page';
+import { PackagePage } from './package.page';
 
-import { PackPageRoutingModule } from './pack-routing.module';
+import { PackagePageRoutingModule } from './package-routing.module';
 import { ClassesSlideComponent } from './slides/classesSlide/classes.slide.component';
 
 
@@ -13,8 +13,8 @@ import { ClassesSlideComponent } from './slides/classesSlide/classes.slide.compo
     CommonModule,
     FormsModule,
     IonicModule,
-    PackPageRoutingModule
+    PackagePageRoutingModule
   ],
-  declarations: [PackPage, ClassesSlideComponent]
+  declarations: [PackagePage, ClassesSlideComponent]
 })
-export class PackPageModule {}
+export class PackagePageModule {}

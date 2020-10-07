@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Guid } from 'guid-typescript';
-import { Class } from 'src/app/models/Class';
-import { ClassesStorageService } from 'src/app/services/classes.storage.service';
+import { MasterClass } from 'src/app/models/MasterClass';
+import { MasterClassesStorageService } from 'src/app/services/masterClasses.storage.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { PageWithSlides } from 'src/app/utils/PageWithSlides';
 import { AttendanceListSlideComponent } from './slides/attendanceLists/attendanceLists.slide.component';
 
 @Component({
-  selector: 'app-pack-class',
+  selector: 'app-package-class',
   templateUrl: './class.page.html',
   styleUrls: ['./class.page.scss'],
 })
@@ -18,20 +18,20 @@ export class ClassPage extends PageWithSlides implements OnInit {
   private attendanceListSlide: AttendanceListSlideComponent;
 
   _new: boolean;
-  _model: Class;
+  _model: MasterClass;
 
-  constructor(private route: ActivatedRoute, private storage: ClassesStorageService, private toast: ToastService) {
+  constructor(private route: ActivatedRoute, private storage: MasterClassesStorageService, private toast: ToastService) {
     super(["class", "attendanceLists", "students"])
     let id = this.route.snapshot.paramMap.get('id');
-    let packId = this.route.snapshot.paramMap.get('packId');
+    // let packageId = this.route.snapshot.paramMap.get('packageId');
 
     if (id == 'new') {
       this.slideOpts.initialSlide = 0;
 
       this._new = true;
-      this._model = new Class();
+      this._model = new MasterClass();
       this._model.id = Guid.create().toString();
-      this._model.packId = packId;
+      // this._model.packageId = packageId;
     } else {
       this._new = false;
       this._model = this.storage.getById(id);

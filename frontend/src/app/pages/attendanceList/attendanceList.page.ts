@@ -3,9 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { Guid } from 'guid-typescript';
 import { AttendanceList } from 'src/app/models/AttendanceList';
-import { Class } from 'src/app/models/Class';
+import { MasterClass } from 'src/app/models/MasterClass';
 import { AttendanceListStorageService } from 'src/app/services/attendance.storage.service';
-import { ClassesStorageService } from 'src/app/services/classes.storage.service';
+import { MasterClassesStorageService } from 'src/app/services/masterClasses.storage.service';
 import { StudentsStorageService } from 'src/app/services/students.storage.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { AttendanceStudentsSlideComponent } from './slides/students/attendanceStudents.slide.component';
@@ -26,7 +26,7 @@ export class AttendanceListPage implements OnInit {
   _new: boolean;
   _model: AttendanceList;
 
-  $class: Class;
+  masterClass: MasterClass;
 
   slideOpts = {
     initialSlide: 1,
@@ -39,16 +39,16 @@ export class AttendanceListPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private storage: AttendanceListStorageService,
-    private classStorage: ClassesStorageService,
+    private classStorage: MasterClassesStorageService,
     private studentsStorage: StudentsStorageService,
     private tosat: ToastService) {
 
     let id = this.route.snapshot.paramMap.get('id');
-    let packId = this.route.snapshot.paramMap.get('packId');
+    let packageId = this.route.snapshot.paramMap.get('packageId');
     let classId = this.route.snapshot.paramMap.get('classId');
 
-    this.$class = classStorage.getById(classId);
-    this.$class.students = studentsStorage.getByArrayId(this.$class.studentsId);
+    this.masterClass = classStorage.getById(classId);
+    this.masterClass.students = studentsStorage.getByArrayId(this.masterClass.studentsId);
     
     if (id == 'new') {
       this.slideOpts.initialSlide = 0;

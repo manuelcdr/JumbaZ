@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Student } from 'src/app/models/Student';
 import { StudentsStorageService } from 'src/app/services/students.storage.service';
-import { Class } from 'src/app/models/Class';
-import { ClassesStorageService } from 'src/app/services/classes.storage.service';
+import { MasterClass } from 'src/app/models/MasterClass';
+import { MasterClassesStorageService } from 'src/app/services/masterClasses.storage.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { Attendance, AttendanceList } from 'src/app/models/AttendanceList';
 import { AttendanceListStorageService } from 'src/app/services/attendance.storage.service';
@@ -18,7 +18,7 @@ export class AttendanceStudentsSlideComponent implements OnInit {
   attendanceList: AttendanceList;
 
   @Input()
-  $class: Class;
+  masterClass: MasterClass;
 
   attendanceListStudentsId: string[];
   attendances: Attendance[] = [];
@@ -32,7 +32,7 @@ export class AttendanceStudentsSlideComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.attendanceList);
-    console.log(this.$class);
+    console.log(this.masterClass);
     console.log(this.attendanceListStudentsId);
     console.log(this.attendances);
     console.log(this.init);
@@ -49,7 +49,7 @@ export class AttendanceStudentsSlideComponent implements OnInit {
   }
 
   generateAttendances() {
-    this.$class.students.forEach(student => {
+    this.masterClass.students.forEach(student => {
       let attendance = new Attendance();
       attendance.studentId = student.id;
       attendance.student = student;
@@ -59,7 +59,7 @@ export class AttendanceStudentsSlideComponent implements OnInit {
   }
 
   isAttendance(studentId: string) {
-    if (!this.$class.studentsId) return false;
+    if (!this.masterClass.studentsId) return false;
     if (!this.attendanceListStudentsId) return false;
 
     return this.attendanceListStudentsId.includes(studentId);

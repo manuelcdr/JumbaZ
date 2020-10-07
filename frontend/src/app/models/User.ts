@@ -1,10 +1,10 @@
-import { Pack } from './Pack';
+import { Package } from './Package';
 import { Student } from './Student';
 
 export class User {
-  public packsId: string[];
+  public packagesId: string[];
   public studentsId: string[];
 
-  public packs: Pack[];
+  public packages: Package[];
   public students: Student[];
 }

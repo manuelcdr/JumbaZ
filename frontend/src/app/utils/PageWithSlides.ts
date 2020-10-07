@@ -13,7 +13,7 @@ export class PageWithSlides {
 
   public segment: string;
 
-  public slideOrder = ["class", "attendanceLists", "students"];
+  public slideOrder: string[];
 
   constructor(slideOrder: string[], slideOpts: any = null) {
     if (slideOpts != null) this.slideOpts = slideOpts;
