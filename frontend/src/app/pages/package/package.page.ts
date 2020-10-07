@@ -1,37 +1,36 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, ModalController } from '@ionic/angular';
 import { Guid } from 'guid-typescript';
 import { Package } from 'src/app/models/Package';
 import { PackagesStorageService } from 'src/app/services/packages.storage.service';
 import { ToastService } from 'src/app/services/toast.service';
-import { ClassesSlideComponent } from './slides/classesSlide/classes.slide.component';
+import { PageWithSlides } from 'src/app/utils/PageWithSlides';
+import { OptionModalComponent } from './modals/option/option.modal.component';
+import { ClassesSlideComponent } from './slides/classes/classes.slide.component';
 
 @Component({
   selector: 'app-package',
   templateUrl: './package.page.html',
   styleUrls: ['./package.page.scss'],
 })
-export class PackagePage implements OnInit {
-
-  @ViewChild(IonSlides, {static: true})
-  private slides: IonSlides;
+export class PackagePage extends PageWithSlides implements OnInit {
 
   @ViewChild(ClassesSlideComponent)
   private classesSlide: ClassesSlideComponent;
 
-  slideOpts = {
-    initialSlide: 1,
-    speed: 400
-  };
-
-  segment: string;
-  slideOrder = ["package", "classes"];
+  // slideOrder = ["", "package", "options", "classes"];
 
   _new: boolean;
   _model: Package;
 
-  constructor(private route: ActivatedRoute, private storage: PackagesStorageService, private toast: ToastService) {
+  constructor(
+    private route: ActivatedRoute,
+    private storage: PackagesStorageService,
+    private toast: ToastService,
+    private modalController: ModalController) {
+
+    super(["", "package", "options", "classes"]);
     let id = this.route.snapshot.paramMap.get('id');
 
     if (id == 'new') {
@@ -62,18 +61,19 @@ export class PackagePage implements OnInit {
     }
   }
 
-  updateSlide() {
-    let index = this.slideOrder.indexOf(this.segment);
-    this.slides.slideTo(index);
-  }
+  currentModal = null;
 
-  updateSegment() {
-    this.slides.getActiveIndex().then(index => {
-      this.segment = this.slideOrder[index];
+  async createModal() {
+    const modal = await this.modalController.create({
+      component: OptionModalComponent
     });
+
+    await modal.present();
+    this.currentModal = modal;
   }
 
-  ionViewWillEnter():void {
+
+  ionViewWillEnter(): void {
     this.classesSlide.updateSlide();
   }
 

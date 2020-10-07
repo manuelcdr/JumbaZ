@@ -51,9 +51,21 @@
 
     </ion-slide>
 
+    <ion-slide #optionsSlide>
+
+      <app-options-slides #optionsComponent [package]="_model"></app-options-slides>
+
+      <ion-fab vertical="bottom" horizontal="center">
+        <ion-fab-button (click)="createModal()" size="small">
+          <ion-icon size="small" name="add-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+    </ion-slide>
+
     <ion-slide #classSlide>
 
-      <app-classes-slide #classesSlide [packageId]="_model.id"></app-classes-slide>
+      <app-classes-slide #classesSlide [package]="_model"></app-classes-slide>
 
       <ion-fab vertical="bottom" horizontal="center">
         <ion-fab-button routerLink="classes/new" size="small">
@@ -76,6 +88,10 @@
     <ion-segment-button value="package">
       <ion-icon name="create-outline"></ion-icon>
       <ion-label>Edit</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="options">
+      <ion-icon name="easel-outline"></ion-icon>
+      <ion-label>Options</ion-label>
     </ion-segment-button>
     <ion-segment-button value="classes">
       <ion-icon name="easel-outline"></ion-icon>

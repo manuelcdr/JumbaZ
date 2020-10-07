@@ -13,7 +13,7 @@ export class AttendanceListStorageService extends StorageService {
   }
 
   getByClassId(classId: string) {
-    let allModels = this.getAll() as AttendanceList[];
+    let allModels = this.getAll<AttendanceList>();
     let filteredModels = allModels.filter((x) => x.classId == classId);
     return filteredModels;
 
@@ -21,7 +21,7 @@ export class AttendanceListStorageService extends StorageService {
   }
 
   updateAttendanceStudents(attendanceListId: string, studentsId: string[]){
-    let model = this.getById(attendanceListId) as AttendanceList;
+    let model = this.getById<AttendanceList>(attendanceListId);
 
     console.log('storage antes', model.presentStudentsId, studentsId);
     model.presentStudentsId = studentsId;

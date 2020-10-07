@@ -14,4 +14,4 @@ export class MasterClass {
   public students: Student[];
   public attendanceLists: AttendanceList[];
 
-} 
+}

@@ -20,12 +20,12 @@ export class PageWithSlides {
     this.slideOrder = slideOrder;
   }
 
-  updateSlide() {
+  public updateSlide() {
     let index = this.slideOrder.indexOf(this.segment);
     this.slides.slideTo(index);
   }
 
-  updateSegment() {
+  public updateSegment() {
     this.slides.getActiveIndex().then(index => {
       this.segment = this.slideOrder[index];
     });

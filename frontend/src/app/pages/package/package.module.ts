@@ -5,7 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { PackagePage } from './package.page';
 
 import { PackagePageRoutingModule } from './package-routing.module';
-import { ClassesSlideComponent } from './slides/classesSlide/classes.slide.component';
+import { ClassesSlideComponent } from './slides/classes/classes.slide.component';
+import { OptionsSlidesComponent } from './slides/options.slides.component';
+import { OptionModalComponent } from './modals/option/option.modal.component';
 
 
 @NgModule({
@@ -15,6 +17,6 @@ import { ClassesSlideComponent } from './slides/classesSlide/classes.slide.compo
     IonicModule,
     PackagePageRoutingModule
   ],
-  declarations: [PackagePage, ClassesSlideComponent]
+  declarations: [PackagePage, ClassesSlideComponent, OptionsSlidesComponent, OptionModalComponent]
 })
 export class PackagePageModule {}

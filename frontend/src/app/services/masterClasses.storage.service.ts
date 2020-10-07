@@ -12,13 +12,13 @@ export class MasterClassesStorageService extends StorageService {
   }
 
   getByPackageId(packageId: string): MasterClass[] {
-    let all = this.getAll() as MasterClass[];
+    let all = this.getAll<MasterClass>();
     let models = all.filter(x  => x.packageId == packageId);
     return models;
   }
 
   updateRegisteredStudents(classId: string, studentsId: string[]) {
-    let model = this.getById(classId) as MasterClass;
+    let model = this.getById<MasterClass>(classId);
     model.studentsId = studentsId;
     this.update(model);
   }

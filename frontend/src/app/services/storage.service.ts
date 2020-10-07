@@ -11,16 +11,21 @@ export class StorageService {
   }
 
   public search<T>(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): T[] {
-    return this.getAll().filter(predicate);
+    return this.getAll<T>().filter(predicate);
   }
 
-  public getById(id: string): any {
-    const models = this.getAll();
-    return models.find(x => x.id === id);
+  public getById<T>(id: string): T {
+    const models = this.getAll<any>();
+    return models.find(x => x.id === id) as T;
   }
 
-  public getAll(): any[] {
-    return (this.getItem() ?? []) as any[];
+  // public getById(id: string): any {
+  //   const models = this.getAll();
+  //   return models.find(x => x.id === id);
+  // }
+
+  public getAll<T>(): T[] {
+    return (this.getItem() ?? []) as T[];
   }
 
   public add(model: any) {
@@ -34,7 +39,7 @@ export class StorageService {
   }
 
   public update(updateModel: any) {
-    const models = this.getAll();
+    const models = this.getAll<any>();
     let index = models.findIndex(x => x.id === updateModel.id);
     models.splice(index, 1, updateModel);
     this.updateAll(models);
