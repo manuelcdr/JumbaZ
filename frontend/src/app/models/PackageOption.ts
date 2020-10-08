@@ -1,12 +1,14 @@
 export class PackageOption {
-  public id: string;
+
   public packageId: string;
-  public type: PackType;
+  public type: OptionType;
   public price: Number;
   public quantity: Number;
+
+  constructor(public id: string) {}
 }
 
-enum PackType {
-  PerDay,
-  PerClass
+export enum OptionType {
+  PerDay = "PerDay",
+  PerClass = "PerClass"
 }

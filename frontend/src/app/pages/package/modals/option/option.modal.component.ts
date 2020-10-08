@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Guid } from 'guid-typescript';
+import { PackageOption, OptionType } from 'src/app/models/PackageOption';
+import { PackageOptionsStorageService } from 'src/app/services/packageOptions.storage.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-option-modal',
@@ -8,13 +12,43 @@ import { ModalController } from '@ionic/angular';
 })
 export class OptionModalComponent implements OnInit {
 
-  constructor(private modalController: ModalController) { }
+  @Input()
+  packageId: string;
 
-  ngOnInit() { }
+  @Input()
+  model: PackageOption;
 
-  dismissModal() {
-    this.modalController.dismiss().then(() => { });
+  _new = false;
+
+  constructor(
+    private modalController: ModalController,
+    private storage: PackageOptionsStorageService,
+    private toast: ToastService) {
   }
 
+  ngOnInit() {
+    if (!this.model) {
+      this.model = new PackageOption(Guid.create().toString());
+      this.model.type = OptionType.PerClass;
+      this.model.quantity = 1;
+      this.model.packageId = this.packageId;
+      this._new = true;
+    }
+  }
+
+  async dismissModal() {
+    this.modalController.dismiss("z");
+  }
+
+  save() {
+    if (this._new) {
+      this.storage.add(this.model);
+      this.toast.presentToast('Option Added!');
+    }
+    else {
+      this.storage.update(this.model);
+      this.toast.presentToast('Option Updated!');
+    }
+  }
 
 }

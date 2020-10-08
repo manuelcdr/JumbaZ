@@ -1,4 +1,4 @@
-import { AttendanceList } from './AttendanceList';
+import { Class } from './Class';
 import { Student } from './Student';
 
 export class MasterClass {
@@ -9,9 +9,6 @@ export class MasterClass {
   public description: string;
   
   public studentsId: string[];
-  public attendanceListsId: string[]
-  
-  public students: Student[];
-  public attendanceLists: AttendanceList[];
+  public classesId: string[]
 
 }

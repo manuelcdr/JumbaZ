@@ -15,9 +15,9 @@
     <ion-label color="medium">First add classes</ion-label>
   </ion-item>
 
-  <ion-item *ngFor="let check of checks; let i = index">
+  <ion-item *ngFor="let check of checks; let i = index" (click)="changeClasses(check)">
     <ion-label>{{ check.masterClass.name }}</ion-label>
-    <ion-checkbox slot="end" [(ngModel)]="check[i].isChecked">
+    <ion-checkbox slot="end" [(ngModel)]="check.isChecked">
     </ion-checkbox>
   </ion-item>
 </ion-list>

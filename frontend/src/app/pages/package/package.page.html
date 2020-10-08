@@ -55,23 +55,11 @@
 
       <app-options-slides #optionsComponent [package]="_model"></app-options-slides>
 
-      <ion-fab vertical="bottom" horizontal="center">
-        <ion-fab-button (click)="createModal()" size="small">
-          <ion-icon size="small" name="add-outline"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
-
     </ion-slide>
 
     <ion-slide #classSlide>
 
       <app-classes-slide #classesSlide [package]="_model"></app-classes-slide>
-
-      <ion-fab vertical="bottom" horizontal="center">
-        <ion-fab-button routerLink="classes/new" size="small">
-          <ion-icon size="small" name="add-outline"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
 
     </ion-slide>
   </ion-slides>

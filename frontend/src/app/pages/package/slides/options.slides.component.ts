@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { Package } from 'src/app/models/Package';
 import { PackageOption } from 'src/app/models/PackageOption';
 import { PackageOptionsStorageService } from 'src/app/services/packageOptions.storage.service';
 import { PackagesStorageService } from 'src/app/services/packages.storage.service';
+import { OptionModalComponent } from '../modals/option/option.modal.component';
 
 @Component({
   selector: 'app-options-slides',
@@ -17,7 +19,7 @@ export class OptionsSlidesComponent implements OnInit {
 
   options: PackageOption[]
 
-  constructor(private optionsStorage: PackageOptionsStorageService, private storagePackage: PackagesStorageService) { }
+  constructor(private modalController: ModalController, private optionsStorage: PackageOptionsStorageService, private storagePackage: PackagesStorageService) { }
 
   ngOnInit(): void {
     this.updateSlide();
@@ -34,5 +36,26 @@ export class OptionsSlidesComponent implements OnInit {
     this.options.splice(index, 1);
     // this.package.optionsId.filter(id => option.id === id)
   }
+
+  // currentModal = null;
+
+  async createModal(option: PackageOption = null) {
+
+    const modal = await this.modalController.create({
+      component: OptionModalComponent,
+      componentProps: {
+        'packageId': this.package.id,
+        'model': option,
+      }
+    });
+
+    await modal.present();
+    // this.currentModal = modal;
+
+    modal.onWillDismiss().then(() => {
+      this.updateSlide();
+    });
+  }
+
 
 }

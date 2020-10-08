@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AttendanceList } from 'src/app/models/AttendanceList';
+import { Class } from 'src/app/models/Class';
 import { MasterClass } from 'src/app/models/MasterClass';
-import { AttendanceListStorageService } from 'src/app/services/attendance.storage.service';
+import { ClassesStorageService } from 'src/app/services/classes.storage.service';
 
 @Component({
   selector: 'app-attendanceLists-slide',
@@ -13,16 +13,16 @@ export class AttendanceListSlideComponent implements OnInit {
   @Input()
   masterClass: MasterClass;
 
-  public models: AttendanceList[];
+  public models: Class[];
 
-  constructor(private storage: AttendanceListStorageService) {}
+  constructor(private storage: ClassesStorageService) {}
 
   ngOnInit(): void {
     this.updateSlide();
   }
 
   public updateSlide(): void {
-    this.models = this.storage.getByClassId(this.masterClass.id);
+    this.models = this.storage.getByMasterClassId(this.masterClass.id);
   }
 
 }

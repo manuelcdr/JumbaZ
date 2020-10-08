@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title color="secondary">{{_new && !_model.name ? 'New' : _model.name}} <small>class</small></ion-title>
+    <!-- <ion-title *ngIf="segment != 'class'">{{ segment | titlecase }}</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  <ion-slides #slides (ionSlideTouchEnd)="updateSegment()" [options]="slideOpts">
+
+    <ion-slide #editSlide>
+
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" [(ngModel)]="_model.name" name="name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-input type="text" [(ngModel)]="_model.description" name="description"></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <ion-button fill="outline" (click)="save()">
+        {{ _new == true ? 'Save' : 'Update' }}
+      </ion-button>
+
+    </ion-slide>
+
+    <ion-slide #attendanceSlide>
+      <app-attendanceLists-slide [masterClass]="_model"></app-attendanceLists-slide>
+
+      <ion-fab vertical="bottom" horizontal="center">
+        <ion-fab-button routerLink="attendanceList/new" size="small">
+          <ion-icon size="small" name="add-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+    </ion-slide>
+
+    <!-- <ion-slide #studentsSlide>
+      <app-students-slide [masterClass]="_model"></app-students-slide>
+    </ion-slide> -->
+
+  </ion-slides>
+
+
+
+
+</ion-content>
+
+<ion-footer mode="md">
+
+  <ion-segment [(ngModel)]="segment" (ionChange)="updateSlide()">
+    <ion-segment-button routerLink="/home">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="class">
+      <ion-icon name="create-outline"></ion-icon>
+      <ion-label>Edit</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="attendanceLists">
+      <ion-icon name="list-outline"></ion-icon>
+      <ion-label>Attendance</ion-label>
+    </ion-segment-button>
+    <!-- <ion-segment-button value="students">
+      <ion-icon name="people-outline"></ion-icon>
+      <ion-label>Students</ion-label>
+    </ion-segment-button> -->
+  </ion-segment>
+</ion-footer>

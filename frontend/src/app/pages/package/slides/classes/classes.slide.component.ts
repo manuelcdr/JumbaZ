@@ -3,6 +3,7 @@ import { MasterClass } from 'src/app/models/MasterClass';
 import { Package } from 'src/app/models/Package';
 import { MasterClassesStorageService } from 'src/app/services/masterClasses.storage.service';
 import { PackagesStorageService } from 'src/app/services/packages.storage.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-classes-slide',
@@ -16,28 +17,38 @@ export class ClassesSlideComponent implements OnInit {
 
   checks: MasterClassCheckbox[] = [];
 
-  constructor(private storageMasterClass: MasterClassesStorageService, private storagePackage: PackagesStorageService) { }
+  constructor(
+    private storageMasterClass: MasterClassesStorageService,
+    private storagePackage: PackagesStorageService,
+    private toast: ToastService) { }
 
   ngOnInit(): void {
+    if (!this.package.masterClassesId) this.package.masterClassesId = [];
     this.updateSlide();
   }
 
   public updateSlide(): void {
-    let allMasterClass = this.storageMasterClass.getByPackageId(this.package.id);
+    this.checks = [];
+    let allMasterClass = this.storageMasterClass.getAllMasterClass();
 
     allMasterClass.forEach((model) => {
-      let isChecked = this.package.masterClassesId.includes(model.id);
+      let isChecked = false;
+      if (this.package.masterClassesId && this.package.masterClassesId.includes(model.id)) {
+        isChecked = true;
+      }
       this.checks.push(new MasterClassCheckbox(model, isChecked))
     })
+
+    console.log('checks', this.checks);
   }
 
-  public toggleMasterClass(index: number) {
-    this.checks[index].isChecked = !this.checks[index].isChecked;
-    this.save();
-  }
-
-  public save() {
-    this.package.masterClassesId = this.checks.filter((x) => x.isChecked).map((x) => x.masterClass.id);
+  public changeClasses(checkbox: MasterClassCheckbox) {
+    if (checkbox.isChecked) {
+      this.package.masterClassesId.push(checkbox.masterClass.id);
+    } else {
+      let i = this.package.masterClassesId.indexOf(checkbox.masterClass.id);
+      this.package.masterClassesId.splice(i, 1);
+    }
     this.storagePackage.updateMasterClasses(this.package.id, this.package.masterClassesId);
   }
 
@@ -45,8 +56,5 @@ export class ClassesSlideComponent implements OnInit {
 
 
 export class MasterClassCheckbox {
-  constructor(
-    public masterClass: MasterClass,
-    public isChecked: boolean) {
-  }
+  constructor(public masterClass: MasterClass, public isChecked: Boolean) { }
 }

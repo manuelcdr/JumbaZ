@@ -1,13 +1,42 @@
 <ion-header translucent>
   <ion-toolbar>
-    <ion-title>Modal Content</ion-title>
+    <ion-title> {{ _new ? "New" : "Edit"}} Option</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="dismissModal()">Close</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
-  <p>
-    modals works!
-  </p>
+
+  <ion-list  lines="full">
+
+    <ion-item lines="none" >
+      <ion-segment mode="ios" size="small" mode="ios" [(ngModel)]="model.type">
+        <ion-segment-button value="PerDay">
+          <ion-label>Cust Per Day</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="PerClass">
+          <ion-label>Cust Per Class</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Price</ion-label>
+      <ion-input type="text" [(ngModel)]="model.price" name="price"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Quantity</ion-label>
+      <ion-input type="number" [(ngModel)]="model.quantity" name="quantity" value="1"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <div class="ion-text-center ion-margin-top">
+    <ion-button fill="outline" (click)="save()">Save</ion-button>
+  </div>
+
+  
+
 </ion-content>

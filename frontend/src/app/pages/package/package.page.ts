@@ -3,11 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { IonSlides, ModalController } from '@ionic/angular';
 import { Guid } from 'guid-typescript';
 import { Package } from 'src/app/models/Package';
+import { PackageOption } from 'src/app/models/PackageOption';
 import { PackagesStorageService } from 'src/app/services/packages.storage.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { PageWithSlides } from 'src/app/utils/PageWithSlides';
 import { OptionModalComponent } from './modals/option/option.modal.component';
 import { ClassesSlideComponent } from './slides/classes/classes.slide.component';
+import { OptionsSlidesComponent } from './slides/options.slides.component';
 
 @Component({
   selector: 'app-package',
@@ -18,6 +20,9 @@ export class PackagePage extends PageWithSlides implements OnInit {
 
   @ViewChild(ClassesSlideComponent)
   private classesSlide: ClassesSlideComponent;
+
+  @ViewChild(OptionsSlidesComponent)
+  private optionsSlide: OptionsSlidesComponent;
 
   // slideOrder = ["", "package", "options", "classes"];
 
@@ -30,7 +35,7 @@ export class PackagePage extends PageWithSlides implements OnInit {
     private toast: ToastService,
     private modalController: ModalController) {
 
-    super(["", "package", "options", "classes"]);
+    super(["package", "options", "classes"]);
     let id = this.route.snapshot.paramMap.get('id');
 
     if (id == 'new') {
@@ -61,16 +66,6 @@ export class PackagePage extends PageWithSlides implements OnInit {
     }
   }
 
-  currentModal = null;
-
-  async createModal() {
-    const modal = await this.modalController.create({
-      component: OptionModalComponent
-    });
-
-    await modal.present();
-    this.currentModal = modal;
-  }
 
 
   ionViewWillEnter(): void {

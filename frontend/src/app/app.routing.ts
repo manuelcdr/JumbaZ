@@ -11,20 +11,16 @@ const routes: Routes = [
     loadChildren: () => import('./pages/student/student.module').then( m => m.StudentPageModule)
   },
   {
-    path: 'classes/:id',
-    loadChildren: () => import('./pages/class/class.module').then( m => m.ClassPageModule)
+    path: 'masterClasses/:id',
+    loadChildren: () => import('./pages/masterClass/masterClass.module').then( m => m.MasterClassPageModule)
   },
   {
     path: 'packages/:id',
     loadChildren: () => import('./pages/package/package.module').then( m => m.PackagePageModule),
   },
   {
-    path: 'packages/:packageId/classes/:id',
+    path: 'masterClasses/:masterClassId/classes/:id',
     loadChildren: () => import('./pages/class/class.module').then( m => m.ClassPageModule)
-  },
-  {
-    path: 'packages/:packageId/classes/:classId/attendanceList/:id',
-    loadChildren: () => import('./pages/attendanceList/attendanceList.module').then( m => m.AttendanceListPageModule)
   },
   { path: '',   redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home', pathMatch: 'full' }

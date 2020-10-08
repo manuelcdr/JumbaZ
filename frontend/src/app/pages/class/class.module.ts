@@ -4,19 +4,18 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ClassPageRoutingModule } from './class-routing.module';
+import { AttendanceListPageRoutingModule } from './class-routing.module';
 
 import { ClassPage } from './class.page';
-import { ClassStudentsSlideComponent } from './slides/students/classStudents.slide.component';
-import { AttendanceListSlideComponent } from './slides/attendanceLists/attendanceLists.slide.component';
+import { AttendanceListSlideComponent } from './slides/attendanceList/attendanceList.slide.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ClassPageRoutingModule
+    AttendanceListPageRoutingModule
   ],
-  declarations: [ClassPage, ClassStudentsSlideComponent, AttendanceListSlideComponent]
+  declarations: [ClassPage, AttendanceListSlideComponent]
 })
 export class ClassPageModule {}

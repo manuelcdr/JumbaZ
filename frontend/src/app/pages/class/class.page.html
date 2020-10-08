@@ -1,10 +1,12 @@
 <ion-header>
   <ion-toolbar color="primary">
+
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title color="secondary">{{_new && !_model.name ? 'New' : _model.name}} <small>class</small></ion-title>
-    <!-- <ion-title *ngIf="segment != 'class'">{{ segment | titlecase }}</ion-title> -->
+
+    <ion-title color="secondary">{{_model.date | date: "dd/MM hh:mm"}} <small>attendance list</small></ion-title>
+
   </ion-toolbar>
 </ion-header>
 
@@ -12,65 +14,62 @@
 
   <ion-slides #slides (ionSlideTouchEnd)="updateSegment()" [options]="slideOpts">
 
-    <ion-slide #editSlide>
-      
-      <ion-list>
-        <ion-item>
-          <ion-label position="floating">Name</ion-label>
-          <ion-input type="text" [(ngModel)]="_model.name" name="name"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Description</ion-label>
-          <ion-input type="text" [(ngModel)]="_model.description" name="description"></ion-input>
-        </ion-item>
-      </ion-list>
+  <ion-slide #editSlide>
+    <ion-list lines="full">
+      <ion-item>
+        <ion-label position="floating">Date</ion-label>
+        <ion-datetime [(ngModel)]="_model.dateString" display-format="DD MMM YYYY" placeholder="Select Date">
+        </ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Time</ion-label>
+        <ion-datetime [(ngModel)]="_model.timeString" display-format="h:mm A" picker-format="h:mm A"></ion-datetime>
+      </ion-item>
+      <ion-item lines="none">
+        <div class="ion-text-center">
+          <ion-button fill="outline" (click)="save()">
+            {{ _new == true ? 'Save' : 'Update' }}
+          </ion-button>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-slide>
 
-        <ion-button fill="outline" (click)="save()">
-          {{ _new == true ? 'Save' : 'Update' }}
-        </ion-button>
+  <ion-slide #attendanceListSlide>
+    <app-attendance-students-slide [_class]="_model" [masterClass]="masterClass" ></app-attendance-students-slide>
+  </ion-slide>
 
-    </ion-slide>
+</ion-slides>
 
-    <ion-slide #attendanceSlide>
-      <app-attendanceLists-slide [masterClass]="_model"></app-attendanceLists-slide>
+  <!-- <ion-item-group>
+      <ion-item-divider>
+        <ion-label>Students</ion-label>
+      </ion-item-divider>
 
-      <ion-fab vertical="bottom" horizontal="center">
-        <ion-fab-button routerLink="attendanceList/new" size="small">
-          <ion-icon size="small" name="add-outline"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
+      <ion-item *ngFor="let student of packageClass.students; let i = index">
+        <ion-label>{{ student.name }}</ion-label>
+        <ion-checkbox slot="end" (ionChange)="changeAttendance(i, student.id)" [(ngModel)]="attendances[i].isAttendant">
+        </ion-checkbox>
+      </ion-item>
+    </ion-item-group>
 
-    </ion-slide>
-
-    <ion-slide #studentsSlide>
-      <app-students-slide [masterClass]="_model"></app-students-slide>
-    </ion-slide>
-
-  </ion-slides>
-
-
-
+  </ion-list> -->
 
 </ion-content>
 
 <ion-footer mode="md">
-
   <ion-segment [(ngModel)]="segment" (ionChange)="updateSlide()">
     <ion-segment-button routerLink="/home">
       <ion-icon name="home-outline"></ion-icon>
       <ion-label>Home</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="class">
+    <ion-segment-button value="edit">
       <ion-icon name="create-outline"></ion-icon>
       <ion-label>Edit</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="attendanceLists">
-      <ion-icon name="list-outline"></ion-icon>
-      <ion-label>Attendance</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="students">
-      <ion-icon name="people-outline"></ion-icon>
-      <ion-label>Students</ion-label>
+    <ion-segment-button value="attendanceListStudents">
+      <ion-icon name="easel-outline"></ion-icon>
+      <ion-label>Attendance List</ion-label>
     </ion-segment-button>
   </ion-segment>
 </ion-footer>
