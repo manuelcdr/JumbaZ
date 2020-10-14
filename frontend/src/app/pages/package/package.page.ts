@@ -42,8 +42,7 @@ export class PackagePage extends PageWithSlides implements OnInit {
       this.slideOpts.initialSlide = 0;
 
       this._new = true;
-      this._model = new Package();
-      this._model.id = Guid.create().toString();
+      this._model = new Package(Guid.create().toString());
     } else {
       this._new = false;
       this._model = this.storage.getById(id);

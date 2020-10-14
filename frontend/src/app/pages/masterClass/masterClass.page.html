@@ -23,6 +23,10 @@
           <ion-label position="floating">Description</ion-label>
           <ion-input type="text" [(ngModel)]="_model.description" name="description"></ion-input>
         </ion-item>
+        <ion-item>
+          <ion-label position="floating">Single Value</ion-label>
+          <ion-input type="text" [(ngModel)]="_model.singleValue" name="singleValue"></ion-input>
+        </ion-item>
       </ion-list>
 
       <ion-button fill="outline" (click)="save()">
@@ -35,7 +39,7 @@
       <app-attendanceLists-slide [masterClass]="_model"></app-attendanceLists-slide>
 
       <ion-fab vertical="bottom" horizontal="center">
-        <ion-fab-button routerLink="attendanceList/new" size="small">
+        <ion-fab-button routerLink="classes/new" size="small">
           <ion-icon size="small" name="add-outline"></ion-icon>
         </ion-fab-button>
       </ion-fab>

@@ -29,7 +29,7 @@ export class ClassesSlideComponent implements OnInit {
 
   public updateSlide(): void {
     this.checks = [];
-    let allMasterClass = this.storageMasterClass.getAllMasterClass();
+    let allMasterClass = this.storageMasterClass.getAll();
 
     allMasterClass.forEach((model) => {
       let isChecked = false;

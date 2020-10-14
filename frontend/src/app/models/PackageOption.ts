@@ -1,11 +1,11 @@
 export class PackageOption {
-
-  public packageId: string;
-  public type: OptionType;
-  public price: Number;
-  public quantity: Number;
-
-  constructor(public id: string) {}
+  constructor(
+    public id: string,
+    public packageId: string,
+    public type: OptionType = OptionType.PerClass,
+    public price: Number = 0,
+    public quantity: Number = 1
+  ) { }
 }
 
 export enum OptionType {

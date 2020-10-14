@@ -21,7 +21,7 @@ export class ClassesSlideComponent implements OnInit {
   }
 
   public updateSlide(): void {
-    this.masterClasses = this.storage.getByPackageId(this.packageId);
+    this.masterClasses = this.storage.getAll();
   }
 
 }

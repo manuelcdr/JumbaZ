@@ -34,9 +34,9 @@ export class ClassStudentsSlideComponent implements OnInit {
 
     this.studentsForSearch = this.studentsStorage.getAll();
     this.filteredStudents = this.studentsForSearch;
-    this.matriculedStudents = this.studentsStorage.getByArrayId(this.masterClass.studentsId);
+    // this.matriculedStudents = this.studentsStorage.getByArrayId(this.masterClass.studentsId);
 
-    if (!this.masterClass.studentsId) this.masterClass.studentsId = [];
+    // if (!this.masterClass.studentsId) this.masterClass.studentsId = [];
 
   }
 
@@ -63,22 +63,23 @@ export class ClassStudentsSlideComponent implements OnInit {
     );
   }
 
-  isStudentClass(id: string) {
-    if (!this.masterClass.studentsId) return false;
-    return this.masterClass.studentsId.includes(id);
+  isStudentClass(id: string): boolean {
+    // if (!this.masterClass.studentsId) return false;
+    // return this.masterClass.studentsId.includes(id);
+    return false;
   }
 
-  registerStudent(studentId: string) {
-    this.masterClass.studentsId.push(studentId);
-    this.classStorage.updateRegisteredStudents(this.masterClass.id, this.masterClass.studentsId);
-    this.toast.presentToast('Student registered!')
-  }
+  // registerStudent(studentId: string) {
+  //   this.masterClass.studentsId.push(studentId);
+  //   this.classStorage.updateRegisteredStudents(this.masterClass.id, this.masterClass.studentsId);
+  //   this.toast.presentToast('Student registered!')
+  // }
 
-  unRegisterStudent(studentId: string) {
-    let index = this.masterClass.studentsId.findIndex(x => x === studentId);
-    this.masterClass.studentsId.splice(index, 1);
-    this.classStorage.updateRegisteredStudents(this.masterClass.id, this.masterClass.studentsId);
-    this.toast.presentToast('Student unregistered!')
-  }
+  // unRegisterStudent(studentId: string) {
+  //   let index = this.masterClass.studentsId.findIndex(x => x === studentId);
+  //   this.masterClass.studentsId.splice(index, 1);
+  //   this.classStorage.updateRegisteredStudents(this.masterClass.id, this.masterClass.studentsId);
+  //   this.toast.presentToast('Student unregistered!')
+  // }
 
 }

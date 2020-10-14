@@ -5,14 +5,14 @@ import { StorageService } from './storage.service';
 @Injectable({
   providedIn: 'root'
 })
-export class PackagesStorageService extends StorageService {
+export class PackagesStorageService extends StorageService<Package> {
 
   constructor() {
     super('packages');
   }
 
   updateMasterClasses(packageId: string, masterClassesId: string[]) {
-    let model = this.getById(packageId) as Package;
+    let model = super.getById(packageId);
     model.masterClassesId = masterClassesId;
     this.update(model);
   }

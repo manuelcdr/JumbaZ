@@ -5,7 +5,7 @@ import { StorageService } from './storage.service';
 @Injectable({
   providedIn: 'root'
 })
-export class StudentsStorageService extends StorageService {
+export class StudentsStorageService extends StorageService<Student> {
 
   constructor() {
     super('students');
@@ -14,7 +14,7 @@ export class StudentsStorageService extends StorageService {
   public getByArrayId(ids: string[]): Student[] {
     if (!ids) return [];
     
-    let allModels = this.getAll<Student>();
+    let allModels = super.getAll();
 
     let selectedModels = allModels.filter((x) => ids.includes(x.id));
     return selectedModels;

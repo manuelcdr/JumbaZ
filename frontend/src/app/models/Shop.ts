@@ -1,13 +1,15 @@
 export class Shop {
-  public id: String;
-  public packageId: String;
-  public studentId: String;
+  constructor(
+    public id: String,
+    public packageId: String,
+    public studentId: String,
 
-  public remainingValue: Number;
-  public remainingQuantity: Number;
-  public valuePerUnit: Number;
+    public shopDate: Date = new Date(),
+    public startDate: Date = new Date(),
+    public endDate: Date = null,
 
-  public shopDate: Date;
-  public startDate: Date;
-  public endDate: Date;
+    public remainingValue: Number = 0,
+    public remainingQuantity: Number = 0,
+    public valuePerUnit: Number = 0,
+  ) { }
 }

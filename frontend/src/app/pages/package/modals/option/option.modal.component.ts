@@ -28,10 +28,7 @@ export class OptionModalComponent implements OnInit {
 
   ngOnInit() {
     if (!this.model) {
-      this.model = new PackageOption(Guid.create().toString());
-      this.model.type = OptionType.PerClass;
-      this.model.quantity = 1;
-      this.model.packageId = this.packageId;
+      this.model = new PackageOption(Guid.create().toString(), this.packageId);
       this._new = true;
     }
   }

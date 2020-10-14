@@ -29,9 +29,7 @@ export class MasterClassPage extends PageWithSlides implements OnInit {
       this.slideOpts.initialSlide = 0;
 
       this._new = true;
-      this._model = new MasterClass();
-      this._model.id = Guid.create().toString();
-      // this._model.packageId = packageId;
+      this._model = new MasterClass(Guid.create().toString());
     } else {
       this._new = false;
       this._model = this.storage.getById(id);

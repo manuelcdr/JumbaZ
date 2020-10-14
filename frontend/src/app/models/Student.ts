@@ -1,11 +1,13 @@
 
 export class Student {
-  public id: string;
-  public name: string;
-  public nickname: string;
-  public genre: Genre;
-  public email: string;
-  public phone: string;
+  constructor(
+  public id: string,
+  public name: string = null,
+  public genre: Genre = null,
+  public nickname: string = null,
+  public email: string = null,
+  public phone: string = null,
+  public optionsId: string[] = []) {}
 }
 
 enum Genre {

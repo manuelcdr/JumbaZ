@@ -20,8 +20,7 @@ export class StudentPage implements OnInit {
 
     if (id == 'new') {
       this._new = true;
-      this._model = new Student();
-      this._model.id = Guid.create().toString();
+      this._model = new Student(Guid.create().toString());
     } else {
       this._new = false;
       this._model = this.storage.getById(id);

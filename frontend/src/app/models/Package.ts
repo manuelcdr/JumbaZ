@@ -1,10 +1,12 @@
 export class Package {
-  public id: string;
-  public name: string;
-  public description: string;
+  constructor(
+    public id: string,
+    public name: string = null,
+    public description: string = null,
 
-  public allMasterClasses: Boolean;  
-  public masterClassesId: string[];
-  public optionsId: string[]
+    public allMasterClasses: Boolean = false,
+    public masterClassesId: string[] = [],
+    public optionsId: string[] = []
+  ) { }
 }
 

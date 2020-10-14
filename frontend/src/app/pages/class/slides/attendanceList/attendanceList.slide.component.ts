@@ -20,8 +20,7 @@ export class AttendanceListSlideComponent implements OnInit {
   @Input()
   masterClass: MasterClass;
 
-  @Input()
-  students: Student[];
+  students: Student[] = [];
 
   attendanceList: AttendanceStudent[]
 

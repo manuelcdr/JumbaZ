@@ -35,7 +35,7 @@ export class ClassPage extends PageWithSlides implements OnInit {
       super(["edit", "attendance"]);
 
     let id = this.route.snapshot.paramMap.get('id');
-    let masterClassId = this.route.snapshot.paramMap.get('classId');
+    let masterClassId = this.route.snapshot.paramMap.get('masterClassId');
 
     this.masterClass = masterClassStorage.getById(masterClassId);
     // this.masterClass.students = studentsStorage.getByArrayId(this.masterClass.studentsId);
