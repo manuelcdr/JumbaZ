@@ -6,8 +6,7 @@ export class Student {
   public genre: Genre = null,
   public nickname: string = null,
   public email: string = null,
-  public phone: string = null,
-  public optionsId: string[] = []) {}
+  public phone: string = null) {}
 }
 
 enum Genre {

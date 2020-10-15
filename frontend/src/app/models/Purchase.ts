@@ -1,7 +1,8 @@
-export class Shop {
+export class Purchase {
   constructor(
     public id: String,
     public packageId: String,
+    public optionId: string,
     public studentId: String,
 
     public shopDate: Date = new Date(),

@@ -1,21 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Guid } from 'guid-typescript';
 import { Student } from 'src/app/models/Student';
 import { StudentsStorageService } from 'src/app/services/students.storage.service';
+import { ToastService } from 'src/app/services/toast.service';
+import { PageWithSlides } from 'src/app/utils/PageWithSlides';
+import { PackagesSlideComponent } from './slides/packages/packages.slide.component';
 
 @Component({
   selector: 'app-student',
   templateUrl: './student.page.html',
   styleUrls: ['./student.page.scss'],
 })
-export class StudentPage implements OnInit {
+export class StudentPage extends PageWithSlides implements OnInit {
+
+  @ViewChild(PackagesSlideComponent)
+  private packagesComponent: PackagesSlideComponent;
 
   _new: boolean;
   _model: Student;
 
-  constructor(private route: ActivatedRoute, private storage: StudentsStorageService, private toastController: ToastController) {
+  constructor(
+    private route: ActivatedRoute,
+    private storage: StudentsStorageService,
+    private toast: ToastService) {
+    super(["edit", "packages"]);
+
     let id = this.route.snapshot.paramMap.get('id');
 
     if (id == 'new') {
@@ -28,24 +39,20 @@ export class StudentPage implements OnInit {
 
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   save() {
     if (this._new == true) {
       this.storage.add(this._model);
       this._new = false;
-      this.presentToast('Student Added!')
+      this.toast.presentToast('Student Added!')
     } else {
       this.storage.update(this._model);
-      this.presentToast('Student Updated!')
+      this.toast.presentToast('Student Updated!')
     }
   }
 
-  async presentToast(message: string) {
-    const toast = await this.toastController.create({
-      message: message,
-      duration: 2000
-    });
-    toast.present();
+  ionViewWillEnter(): void {
+    this.packagesComponent.updateSlide();
   }
 }

@@ -3,8 +3,8 @@ export class PackageOption {
     public id: string,
     public packageId: string,
     public type: OptionType = OptionType.PerClass,
-    public price: Number = 0,
-    public quantity: Number = 1
+    public price: number = 0,
+    public quantity: number = 1
   ) { }
 }
 

@@ -14,6 +14,6 @@ export class ToastService {
       message: message,
       duration: 2000
     });
-    toast.present();
+    await toast.present();
   }
 }
