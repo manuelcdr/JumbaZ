@@ -17,4 +17,8 @@ export class PackagesStorageService extends StorageService<Package> {
     this.update(model);
   }
 
+  getByMasterClass(masterClassId: string) {
+    return this.getAll().filter(x => x.masterClassesId.includes(masterClassId));
+  }
+
 }

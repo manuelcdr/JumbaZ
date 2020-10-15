@@ -24,8 +24,6 @@ export class PackagePage extends PageWithSlides implements OnInit {
   @ViewChild(OptionsSlidesComponent)
   private optionsSlide: OptionsSlidesComponent;
 
-  // slideOrder = ["", "package", "options", "classes"];
-
   _new: boolean;
   _model: Package;
 

@@ -1,16 +1,16 @@
 export class Purchase {
   constructor(
-    public id: String,
-    public packageId: String,
+    public id: string,
+    public packageId: string,
     public optionId: string,
-    public studentId: String,
+    public studentId: string,
 
     public shopDate: Date = new Date(),
     public startDate: Date = new Date(),
     public endDate: Date = null,
 
-    public remainingValue: Number = 0,
-    public remainingQuantity: Number = 0,
-    public valuePerUnit: Number = 0,
+    public remainingValue: number = 0,
+    public remainingQuantity: number = 0,
+    public valuePerUnit: number = 0,
   ) { }
 }

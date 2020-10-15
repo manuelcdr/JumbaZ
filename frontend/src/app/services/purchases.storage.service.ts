@@ -1,3 +1,4 @@
+import { dashCaseToCamelCase } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
 import { Purchase } from '../models/Purchase';
 import { StorageService } from './storage.service';
@@ -12,13 +13,19 @@ export class PurchasesStorageService extends StorageService<Purchase> {
   }
 
   getCurrentPurchasesByStudent(studentId: string): Purchase[] {
-    let now = new Date();
-    let all = this.getAll();
-    let models = all.filter(x => {
+    return this.getAll().filter(x => {
       let isStudent = x.studentId == studentId;
       if (!x.endDate) return isStudent;
-      return isStudent && x.endDate >= now;
+      return isStudent && x.endDate >= new Date();
     });
-    return models;
   }
+
+  getCurrentPurchasesByPackages(packageIds: string[]): Purchase[] {
+    return this.getAll().filter(x => {
+      let isPackage = packageIds.includes(x.packageId);
+      if (!x.endDate) return isPackage;
+      return isPackage && x.endDate >= new Date();
+    });
+  }
+
 }

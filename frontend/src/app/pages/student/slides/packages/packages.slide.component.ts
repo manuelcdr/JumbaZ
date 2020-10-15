@@ -49,7 +49,7 @@ export class PackagesSlideComponent implements OnInit {
   askAttachOption(option: PackageOption) {
     let buttons = [
       AlertButton.createCancelButton(),
-      AlertButton.createOkButton(undefined, () => { this.atachOption(option) })
+      AlertButton.createOkButton(undefined, () => { this.atachOption(option); this.updateSlide(); })
     ]
     this.alert.present("Vincular Opção de Pacote", buttons);
   }

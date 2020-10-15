@@ -69,17 +69,17 @@ export class ClassStudentsSlideComponent implements OnInit {
     return false;
   }
 
-  // registerStudent(studentId: string) {
-  //   this.masterClass.studentsId.push(studentId);
-  //   this.classStorage.updateRegisteredStudents(this.masterClass.id, this.masterClass.studentsId);
-  //   this.toast.presentToast('Student registered!')
-  // }
+  registerStudent(studentId: string) {
+    // this.masterClass.studentsId.push(studentId);
+    // this.classStorage.updateRegisteredStudents(this.masterClass.id, this.masterClass.studentsId);
+    // this.toast.presentToast('Student registered!')
+  }
 
-  // unRegisterStudent(studentId: string) {
-  //   let index = this.masterClass.studentsId.findIndex(x => x === studentId);
-  //   this.masterClass.studentsId.splice(index, 1);
-  //   this.classStorage.updateRegisteredStudents(this.masterClass.id, this.masterClass.studentsId);
-  //   this.toast.presentToast('Student unregistered!')
-  // }
+  unRegisterStudent(studentId: string) {
+    // let index = this.masterClass.studentsId.findIndex(x => x === studentId);
+    // this.masterClass.studentsId.splice(index, 1);
+    // this.classStorage.updateRegisteredStudents(this.masterClass.id, this.masterClass.studentsId);
+    // this.toast.presentToast('Student unregistered!')
+  }
 
 }
