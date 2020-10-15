@@ -43,10 +43,10 @@ export class AlertButton {
   ){}
 
   public static createCancelButton(cssClass: string = 'secondary', handler: Function = undefined) {
-    return new AlertButton('Cancelel', 'cancel', cssClass, handler);
+    return new AlertButton('Cancel', 'cancel', cssClass, handler);
   }
 
   public static createOkButton(cssClass: string = undefined, handler: Function = undefined) {
-    return new AlertButton('Okay', null, cssClass, handler);
+    return new AlertButton('Ok', null, cssClass, handler);
   }
 }
