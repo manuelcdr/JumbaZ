@@ -18,8 +18,10 @@
 </ion-list>
 
 <ion-list lines="full">
-  <ion-item *ngFor="let student of filteredStudents">
-    <ion-label>{{ student.name }}</ion-label>
-    <ion-checkbox slot="end" (click)="toggleStudent(student)"></ion-checkbox>
-  </ion-item>
+  <span *ngFor="let student of studentsForSearch; index as i;  ">
+    <ion-item [hidden]="hideStudent(student)" (click)="save()">
+      <ion-label>{{ student.name }}</ion-label>
+      <ion-checkbox slot="end" [(ngModel)]="_class.attendanceList[i].isAttendant"></ion-checkbox>
+    </ion-item>
+  </span>
 </ion-list>

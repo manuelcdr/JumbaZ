@@ -49,6 +49,8 @@ export class ClassPage extends PageWithSlides implements OnInit {
       this._model = this.storage.getById(id);
     }
 
+    console.log('model', this._model);
+
   }
 
   ngOnInit() {
@@ -68,10 +70,10 @@ export class ClassPage extends PageWithSlides implements OnInit {
     if (this._new == true) {
       this.storage.add(this._model);
       this._new = false;
-      this.tosat.presentToast('Attendance Set!')
+      this.tosat.presentToast('Class Updated!')
     } else {
       this.storage.update(this._model);
-      this.tosat.presentToast('Attendance Set!')
+      this.tosat.presentToast('Class Updated!')
     }
   }
 
