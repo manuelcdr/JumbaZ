@@ -18,7 +18,7 @@
           <ion-label position="floating">Name</ion-label>
           <ion-input type="text" [(ngModel)]="_model.name" name="name"></ion-input>
         </ion-item>
-<!-- 
+
         <ion-item>
           <ion-label position="floating">Gender</ion-label>
           <ion-select [(ngModel)]="_model.genre">
@@ -35,11 +35,8 @@
         <ion-item>
           <ion-label position="floating">Phone Number</ion-label>
           <ion-input type="phone" [(ngModel)]="_model.phone" name="phone"></ion-input>
-        </ion-item> -->
+        </ion-item>
       </ion-list>
-
-
-      <app-account-slide [student]="_model"></app-account-slide>
 
       <div class="ion-text-center">
         <ion-button fill="outline" (click)="save()">
@@ -49,9 +46,15 @@
 
     </ion-slide>
 
+    <ion-slide #slideAccount>
+
+      <app-account-slide #accountComponent [student]="_model"></app-account-slide>
+
+    </ion-slide>
+
     <ion-slide #slidePackages>
 
-      <app-packages-slide #packagesComponent [student]="_model" ></app-packages-slide>
+      <app-packages-slide #packagesComponent [student]="_model"></app-packages-slide>
 
     </ion-slide>
 
@@ -68,6 +71,10 @@
     <ion-segment-button value="edit">
       <ion-icon name="create-outline"></ion-icon>
       <ion-label>Edit</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="account">
+      <ion-icon name="wallet-outline"></ion-icon>
+      <ion-label>Account</ion-label>
     </ion-segment-button>
     <ion-segment-button value="packages">
       <ion-icon name="albums-outline"></ion-icon>

@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { Student } from 'src/app/models/Student';
 import { StudentAccount } from 'src/app/models/StundetAccount';
 import { StudentAccountStorageService } from 'src/app/services/studentAccount.storage.service';
+import { TransactionModalComponent } from '../../modals/transaction/transaction.modal.component';
 
 @Component({
   selector: 'app-account-slide',
@@ -16,17 +18,32 @@ export class StudentAccountComponent implements OnInit {
 
   public studentAccount: StudentAccount;
 
-  constructor(private accountStorage: StudentAccountStorageService) { }
+  constructor(
+    private accountStorage: StudentAccountStorageService,
+    private modalController: ModalController) { }
 
   ngOnInit() {
-    let account = this.accountStorage.getById(this.student.id);
-    console.log('component', this.student.id, account);
-    if (!account) {
-      let newAccount = new StudentAccount(this.student.id, 0, []);
-      this.accountStorage.add(new StudentAccount(this.student.id, 0, []));
-      account = newAccount;
-    }
-    this.studentAccount = account;
+    this.updateSlide();
+  }
+
+  public updateSlide(): void {
+    this.studentAccount = this.accountStorage.getById(this.student.id);
+  }
+
+  async createModal() {
+    
+    const modal = await this.modalController.create({
+      component: TransactionModalComponent,
+      componentProps: {
+        'studentId': this.student.id
+      }
+    });
+
+    await modal.present();
+
+    modal.onWillDismiss().then(() => {
+      this.updateSlide();
+    });
   }
 
 }

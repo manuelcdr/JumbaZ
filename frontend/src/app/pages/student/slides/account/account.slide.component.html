@@ -1,15 +1,42 @@
 <ion-list lines="full">
 
   <ion-item>
-    <ion-label>Current Balance: {{ studentAccount.balance }}</ion-label>
+    <ion-label>
+      Balance:
+      <ion-text *ngIf="studentAccount.balance < 0" color="danger" >
+        R$ {{ studentAccount.balance }}
+      </ion-text>
+      <ion-text *ngIf="studentAccount.balance >= 0" color="success">
+        R$ {{ studentAccount.balance }}
+      </ion-text>
+    </ion-label>
   </ion-item>
-
+<!-- 
   <ion-item>
-    <ion-label>Transactions</ion-label>
+    <ion-label class="ion-text-wrap">
+      <ion-text color="primary">
+        <h3>H3 Primary Title</h3>
+      </ion-text>
+      <p>Paragraph line 1</p>
+      <ion-text color="secondary">
+        <p>Paragraph line 2 secondary</p>
+      </ion-text>
+    </ion-label>
+  </ion-item> -->
+
+  <ion-item class="ion-text-center">
+    <ion-label color="medium">Transactions</ion-label>
   </ion-item>
 
   <ion-item *ngFor="let transaction of studentAccount.statement">
-    <ion-label>{{ transaction.value }}</ion-label>
+    <ion-label >{{ transaction.description }}</ion-label>
+    <ion-text [color]="transaction.value < 0 ? 'danger' : 'success'" slot="end">{{ transaction.value }}</ion-text>
   </ion-item>
 
 </ion-list>
+
+<ion-fab vertical="bottom" horizontal="center">
+  <ion-fab-button (click)="createModal()" size="small">
+    <ion-icon size="small" name="add-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

@@ -14,13 +14,10 @@ export class StudentAccount {
     description: string,
     classId: string = null,
     purchaseId: string = null) {
-    console.log($account);
 
     let transaction = new Transaction(Guid.create().toString(), value, $account.balance, description, classId, purchaseId);
-    $account.statement.push(transaction);
+    $account.statement.unshift(transaction);
     $account.balance = transaction.balanceAfterTransaction;
-
-    console.log($account);
   }
 }
 

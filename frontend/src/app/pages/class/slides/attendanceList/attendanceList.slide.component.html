@@ -1,4 +1,17 @@
 <ion-list class="ion-no-padding" mode="ios" lines="none">
+
+  <ion-item *ngIf="_class.closed" class="ion-text-center">
+    <ion-label color="medium">Esta lista já foi fechada</ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="!_class.closed" lines="none">
+    <div class="ion-text-center">
+      <ion-button fill="outline" (click)="calculate()">
+        {{ 'Calcular' }}
+      </ion-button>
+    </div>
+  </ion-item>
+
   <ion-item class="">
     <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="filterItems()"></ion-searchbar>
   </ion-item>
@@ -19,9 +32,9 @@
 
 <ion-list lines="full">
   <span *ngFor="let student of studentsForSearch; index as i;  ">
-    <ion-item [hidden]="hideStudent(student)" (click)="save()">
+    <ion-item [hidden]="hideStudent(student)" (click)="save()" >
       <ion-label>{{ student.name }}</ion-label>
-      <ion-checkbox slot="end" [(ngModel)]="_class.attendanceList[i].isAttendant"></ion-checkbox>
+      <ion-checkbox [disabled]="_class.closed" slot="end" [(ngModel)]="_class.attendanceList[i].isAttendant"></ion-checkbox>
     </ion-item>
   </span>
 </ion-list>

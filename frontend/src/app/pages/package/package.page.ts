@@ -1,13 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IonSlides, ModalController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { Guid } from 'guid-typescript';
 import { Package } from 'src/app/models/Package';
-import { PackageOption } from 'src/app/models/PackageOption';
 import { PackagesStorageService } from 'src/app/services/packages.storage.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { PageWithSlides } from 'src/app/utils/PageWithSlides';
-import { OptionModalComponent } from './modals/option/option.modal.component';
 import { ClassesSlideComponent } from './slides/classes/classes.slide.component';
 import { OptionsSlidesComponent } from './slides/options.slides.component';
 
@@ -30,8 +28,7 @@ export class PackagePage extends PageWithSlides implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private storage: PackagesStorageService,
-    private toast: ToastService,
-    private modalController: ModalController) {
+    private toast: ToastService) {
 
     super(["package", "options", "classes"]);
     let id = this.route.snapshot.paramMap.get('id');

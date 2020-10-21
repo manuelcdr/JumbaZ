@@ -8,6 +8,8 @@ import { ClassesStorageService } from 'src/app/services/classes.storage.service'
 import { PackagesStorageService } from 'src/app/services/packages.storage.service';
 import { PurchasesStorageService } from 'src/app/services/purchases.storage.service';
 import { Attendance, Class } from 'src/app/models/Class';
+import { Purchase } from 'src/app/models/Purchase';
+import { StudentAccountStorageService } from 'src/app/services/studentAccount.storage.service';
 
 @Component({
   selector: 'app-attendance-students-slide',
@@ -25,6 +27,8 @@ export class AttendanceListSlideComponent implements OnInit {
   matriculedStudents: Student[];
   matriculedStudentsIds: string[] = [];
 
+  packagesPurchases: Purchase[] = [];
+
   //search-----------------------
   studentsForSearch: Student[];
   filteredStudents: Student[];
@@ -38,6 +42,7 @@ export class AttendanceListSlideComponent implements OnInit {
     private packagesStorage: PackagesStorageService,
     private purchasesStorage: PurchasesStorageService,
     private classStorage: ClassesStorageService,
+    private accountStorage: StudentAccountStorageService,
     private toast: ToastService) {
   }
 
@@ -54,6 +59,7 @@ export class AttendanceListSlideComponent implements OnInit {
     let packagesPurchases = this.purchasesStorage.getCurrentPurchasesByPackages(packagesIds);
     let studentsIds = packagesPurchases.map(x => x.studentId);
 
+    this.packagesPurchases = packagesPurchases;
     this.matriculedStudentsIds = studentsIds;
     this.matriculedStudents = this.studentsStorage.getByArrayId(studentsIds);
 
@@ -158,10 +164,35 @@ export class AttendanceListSlideComponent implements OnInit {
   // }
 
   save(seconds: number = 1) {
+    if (this._class.closed)
+      return;
+
     setTimeout(() => {
       console.log(this._class.attendanceList);
       this.classStorage.updateAttendanceList(this._class.id, this._class.attendanceList);
     }, seconds * 1000);
+  }
+
+  
+  calculate() {
+    if (this._class.closed)
+      return;
+
+    this._class.attendanceList
+      .filter(x => x.isAttendant)
+      .forEach(attendance => {
+        let purchase = this.packagesPurchases.find(p => p.studentId == attendance.studentId);
+        let value = this.masterClass.singleValue;
+        let purchaseId = undefined;
+        if (purchase) {
+          value = purchase.valuePerUnit;
+          purchaseId = purchase.id;
+        }
+        this.accountStorage.addDebit(attendance.studentId, value, 'presence in class', this._class.id, purchaseId);
+      });
+
+    this._class.closed = true;
+    this.classStorage.update(this._class);
   }
 
   // registerStudent(studentId: string) {

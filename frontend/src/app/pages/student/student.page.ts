@@ -28,7 +28,7 @@ export class StudentPage extends PageWithSlides implements OnInit {
     private storage: StudentsStorageService,
     private accountStorage: StudentAccountStorageService,
     private toast: ToastService) {
-    super(["edit", "packages"]);
+    super(["edit", "account", "packages"]);
 
     let id = this.route.snapshot.paramMap.get('id');
 
@@ -51,10 +51,8 @@ export class StudentPage extends PageWithSlides implements OnInit {
       this._new = false;
       this.toast.presentToast('Student Added!')
     } else {
-      // this.storage.update(this._model);
-      // this.toast.presentToast('Student Updated!')
-
-      this.accountStorage.addTransaction(this._model.id, 15, 'teste');
+      this.storage.update(this._model);
+      this.toast.presentToast('Student Updated!')
     }
   }
 

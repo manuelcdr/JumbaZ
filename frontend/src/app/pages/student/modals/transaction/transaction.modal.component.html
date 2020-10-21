@@ -1,0 +1,29 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title> New Transaction</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+
+  <ion-list  lines="full">
+
+    <ion-item>
+      <ion-label position="floating">Value</ion-label>
+      <ion-input type="number" [(ngModel)]="value" name="value"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-input type="text" [(ngModel)]="description" name="description" ></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <div class="ion-text-center ion-margin-top">
+    <ion-button fill="outline" (click)="save()">Save</ion-button>
+  </div>
+
+</ion-content>

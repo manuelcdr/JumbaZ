@@ -8,7 +8,8 @@ export class Class {
     public date: Date = new Date(),
     public dateString: string = date.toString(),
     public timeString: string = date.toString(),
-    public attendanceList: Attendance[] = []
+    public attendanceList: Attendance[] = [],
+    public closed: boolean = false
   ) { }
 
 }
