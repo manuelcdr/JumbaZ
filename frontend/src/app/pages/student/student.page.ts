@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Guid } from 'guid-typescript';
 import { Student } from 'src/app/models/Student';
+import { StudentAccount } from 'src/app/models/StundetAccount';
+import { StudentAccountStorageService } from 'src/app/services/studentAccount.storage.service';
 import { StudentsStorageService } from 'src/app/services/students.storage.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { PageWithSlides } from 'src/app/utils/PageWithSlides';
@@ -24,6 +26,7 @@ export class StudentPage extends PageWithSlides implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private storage: StudentsStorageService,
+    private accountStorage: StudentAccountStorageService,
     private toast: ToastService) {
     super(["edit", "packages"]);
 
@@ -44,11 +47,14 @@ export class StudentPage extends PageWithSlides implements OnInit {
   save() {
     if (this._new == true) {
       this.storage.add(this._model);
+      this.accountStorage.add(new StudentAccount(this._model.id, 0, []));
       this._new = false;
       this.toast.presentToast('Student Added!')
     } else {
-      this.storage.update(this._model);
-      this.toast.presentToast('Student Updated!')
+      // this.storage.update(this._model);
+      // this.toast.presentToast('Student Updated!')
+
+      this.accountStorage.addTransaction(this._model.id, 15, 'teste');
     }
   }
 

@@ -38,9 +38,9 @@ export class StorageService<T> {
     this.setItem(models);
   }
 
-  public update(updateModel: any) {
+  public update(updateModel: T) {
     const models = this.getAll() as any[];
-    let index = models.findIndex(x => x.id === updateModel.id);
+    let index = models.findIndex(x => x.id === (updateModel as any).id);
     models.splice(index, 1, updateModel);
     this.updateAll(models);
   }

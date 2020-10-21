@@ -1,3 +1,4 @@
+import { StudentAccount } from './StundetAccount';
 
 export class Student {
   constructor(

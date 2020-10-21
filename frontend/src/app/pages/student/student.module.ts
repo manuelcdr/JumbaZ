@@ -8,6 +8,7 @@ import { StudentPageRoutingModule } from './student-routing.module';
 
 import { StudentPage } from './student.page';
 import { PackagesSlideComponent } from './slides/packages/packages.slide.component';
+import { StudentAccountComponent } from './slides/account/account.slide.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { PackagesSlideComponent } from './slides/packages/packages.slide.compone
     IonicModule,
     StudentPageRoutingModule
   ],
-  declarations: [StudentPage, PackagesSlideComponent]
+  declarations: [StudentPage, PackagesSlideComponent, StudentAccountComponent]
 })
 export class StudentPageModule {}
